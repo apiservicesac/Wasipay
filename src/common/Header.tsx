@@ -35,7 +35,7 @@ const Header = ({ handleDrawer }: any) => {
                                         </div>
                                     </Dropdown.Trigger>
                                     <Dropdown.Content placement="right-end" className="absolute z-50 p-4 ltr:text-left rtl:text-right bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[14rem] dark:bg-zink-600" aria-labelledby="dropdownMenuButton">
-                                        <h6 className="mb-2 text-sm font-normal text-slate-500 dark:text-zink-300">Welcome to Tailwick</h6>
+                                        <h6 className="mb-2 text-sm font-normal text-slate-500 dark:text-zink-300">Welcome to RedShop</h6>
                                         <a href="#!" className="flex gap-3 mb-3">
                                             <div className="relative inline-block shrink-0">
                                                 <div className="rounded bg-slate-100 dark:bg-zink-500">
@@ -45,7 +45,7 @@ const Header = ({ handleDrawer }: any) => {
                                             </div>
                                             <div>
                                                 <h6 className="mb-1 text-15">{"admin"}</h6>
-                                                <p className="text-slate-500 dark:text-zink-300">CEO & Founder</p>
+                                                <p className="text-slate-500 dark:text-zink-300">Accesorios</p>
                                             </div>
                                         </a>
                                         <ul>
