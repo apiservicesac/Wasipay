@@ -8,7 +8,7 @@ const NavItemCustom = ({ label } : { label: string}) => {
 
     return (
         <Nav.Item eventKey="overviewTabs" className="group">
-            <a href="#!" data-tab-toggle data-target="overviewTabs" className={overviewTabs}>{label}</a>
+            <a href="" data-tab-toggle data-target="overviewTabs" className={overviewTabs}>{label}</a>
         </Nav.Item>  
     );
 }

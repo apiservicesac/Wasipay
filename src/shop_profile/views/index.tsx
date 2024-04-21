@@ -4,6 +4,7 @@ import Tab from "../../common/components/Tab/Tab";
 import { Nav } from "../../common/components/Tab/Nav";
 import Layout from "../../common/Layout";
 import NavItemCustom from "../../common/components/Tab/NavItemCustom";
+import GridView from "./GridView";
 
 const Account = () => {
 
@@ -11,7 +12,7 @@ const Account = () => {
         <Layout>
             <React.Fragment>
                 <Tab.Container defaultActiveKey="overviewTabs">
-                    <div className="mt-1 -ml-3 -mr-3 rounded-none card">
+                    <div className="mt-1 -ml-3 -mr-3 rounded-none card md:mx-48">
                         <AccountInfo  className="card-body !px-2.5"/>
                         <div className="card-body !px-2.5 !py-0">
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
@@ -21,7 +22,7 @@ const Account = () => {
                     </div>
                     <Tab.Content className="tab-content">
                         <Tab.Pane eventKey="overviewTabs" id="overviewTabs">                            
-                            <>Productos</>
+                            <GridView />
                         </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>

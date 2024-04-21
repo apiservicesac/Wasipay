@@ -2,3 +2,29 @@
 @import "./tailwind.scss";
 // @import "../../../node_modules/prismjs/themes/prism-okaidia.css"; 
 // @import "../../../node_modules/lightbox.js-react/dist/index.css"; 
+
+
+html, body {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+    height: 100%;
+}
+
+/* SCROLL CSS */
+::-webkit-scrollbar {
+    border-radius: 10px;
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #c2c9d2;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
