@@ -8,26 +8,60 @@ import { Dropdown } from "../../common/components/Dropdown";
 import { Link } from "react-router-dom";
 import DeleteModal from "../../common/DeleteModal";
 
-// // react-redux
-// import { useDispatch, useSelector } from 'react-redux';
-// import { createSelector } from 'reselect';
+const dataTest = [
+    {
+        "id": 1,
+        "productName": "Producto Prueba",
+        "img": "http://37.60.239.85:3003/test/static/media/img-05.030c93e0d3fa35148d18.png",
+        "price": "S/. 674.12",
+        "delPrice": "784.99",
+        "rating": "4.5",
+        "ratingNumber": "198",
+        "isFav": true
+    },
+    {
+        "id": 2,
+        "productName": "Producto Prueba",
+        "img": "http://37.60.239.85:3003/test/static/media/img-05.030c93e0d3fa35148d18.png",
+        "price": "S/. 674.12",
+        "delPrice": "784.99",
+        "rating": "4.5",
+        "ratingNumber": "198",
+        "isFav": true
+    },
+    {
+        "id": 3,
+        "productName": "Producto Prueba",
+        "img": "http://37.60.239.85:3003/test/static/media/img-05.030c93e0d3fa35148d18.png",
+        "price": "S/. 674.12",
+        "delPrice": "784.99",
+        "rating": "4.5",
+        "ratingNumber": "198",
+        "isFav": true
+    },
+    {
+        "id": 4,
+        "productName": "Producto Prueba",
+        "img": "http://37.60.239.85:3003/test/static/media/img-05.030c93e0d3fa35148d18.png",
+        "price": "S/. 674.12",
+        "delPrice": "784.99",
+        "rating": "4.5",
+        "ratingNumber": "198",
+        "isFav": true
+    },
 
-// import {
-//     getProductGrid as onGetProductGrid,
-//     deleteProductGrid as onDeleteProductGrid
-// } from 'slices/thunk';
-// import { ToastContainer } from "react-toastify";
-
+]
 const GridView = () => {
 
-
     const [data, setData] = useState<any>([]);
-    const [eventData, setEventData] = useState<any>();
-    const [list, setList] = useState<boolean>(true);
 
     // Delete Modal
     const [deleteModal, setDeleteModal] = useState<boolean>(false);
     const deleteToggle = () => setDeleteModal(!deleteModal);
+
+    React.useEffect(() => {
+        setData(dataTest)
+    }, [])
 
     // Delete Data
     const onClickDelete = (cell: any) => {
@@ -45,7 +79,7 @@ const GridView = () => {
         <React.Fragment>            
             <DeleteModal show={deleteModal} onHide={deleteToggle} onDelete={handleDelete} />
             {/* <ToastContainer closeButton={false} limit={1} /> */}
-            <div className="grid grid-cols-1 2xl:grid-cols-12 gap-x-5 md:mx-48">
+            <div className="grid grid-cols-1 2xl:grid-cols-12 gap-x-5 xl:mx-40 lg:mx-32 md:mx-10 sm:mx-20">
                 <div className="hidden 2xl:col-span-3 2xl:block">
                     <div className="card">
                         <div className="card-body">
@@ -303,9 +337,8 @@ const GridView = () => {
                     </div>
                 </div>
                 <div className="2xl:col-span-9">
-                    <div className="flex flex-wrap items-center gap-2">
-                        <p className="grow">Showing all <b>7,410</b> items results</p>
-                        <div className="flex gap-2 shrink-0 items-cente">
+                    <div className="flex flex-wrap items-center gap-2">                        
+                        <div className="flex gap-2 shrink-0">
                             <Dropdown className="relative dropdown">
                                 <Dropdown.Trigger href="#!" className="bg-white text-custom-500 btn border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:bg-zink-700 dark:hover:bg-custom-500 dark:ring-custom-400/20 dark:focus:bg-custom-500 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown">Sort by: <b className="font-medium">Highest Price</b>
                                     <ChevronDown className="inline-block size-4 ltr:ml-1 rtl:mr-1" />
@@ -326,18 +359,10 @@ const GridView = () => {
                                     </li>
                                 </Dropdown.Content>
                             </Dropdown>
-                            <button type="button" id="listView" className={`flex items-center justify-center size-[37.5px] p-0 text-sky-500 btn bg-sky-100 hover:text-white hover:bg-sky-600 focus:text-white focus:bg-sky-600 [&.active]:text-white [&.active]:bg-sky-600 dark:bg-sky-500/20 dark:text-sky-400 dark:hover:bg-sky-500 dark:hover:text-white dark:focus:bg-sky-500 dark:focus:text-white dark:[&.active]:bg-sky-500 dark:[&.active]:text-white dark:ring-sky-400/20 ${!list && "active"}`} onClick={() => setList(false)}><List className="size-4" /></button>
-                            <button type="button" id="gridView" className={`flex items-center justify-center size-[37.5px] p-0 text-sky-500 btn bg-sky-100 hover:text-white hover:bg-sky-600 focus:text-white focus:bg-sky-600 [&.active]:text-white [&.active]:bg-sky-600 dark:bg-sky-500/20 dark:text-sky-400 dark:hover:bg-sky-500 dark:hover:text-white dark:focus:bg-sky-500 dark:focus:text-white dark:[&.active]:bg-sky-500 dark:[&.active]:text-white dark:ring-sky-400/20 ${list && "active"}`} onClick={() => setList(true)}><LayoutGrid className="size-4" /></button>
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-3 mt-3">
-                        <span className="px-2.5 py-0.5 text-sm font-medium rounded-full border bg-slate-100 border-slate-300 text-slate-500 inline-flex items-center dark:bg-zink-800 dark:border-zink-500 dark:text-zink-200">High to Low <Link to="#!" className="transition text-slate-500 dark:text-zink-200 hover:text-slate-600 dark:hover:text-zink-100"><X className="size-3 ltr:ml-1 rtl:mr-1" /></Link></span>
-                        <span className="px-2.5 py-0.5 text-sm font-medium rounded-full border bg-slate-100 border-slate-300 text-slate-500 inline-flex items-center dark:bg-zink-800 dark:border-zink-500 dark:text-zink-200">New <Link to="#!" className="transition text-slate-500 dark:text-zink-200 hover:text-slate-600 dark:hover:text-zink-100"><X className="size-3 ltr:ml-1 rtl:mr-1" /></Link></span>
-                        <Link to="#!" className="px-2.5 py-0.5 text-sm font-medium rounded border bg-transparent border-transparent text-slate-500 transition hover:bg-slate-200 dark:bg-zink-800 dark:hover:bg-zink-600 dark:text-zink-200">All Clear</Link>
-                    </div>
-
-                    <div className={`grid grid-cols-1 mt-5 md:grid-cols-2 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
+                    <div className={`grid grid-cols-1 mt-5 md:grid-cols-2 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5`} id="cardGridView">
 
                         {(data || []).map((item: any, key: number) => (<div className="card md:group-[.gridView]:flex relative" key={key}>
                             <div className="relative group-[.gridView]:static p-8 group-[.gridView]:p-5">
@@ -394,7 +419,10 @@ const GridView = () => {
                         </div>
                         <ul className="flex flex-wrap items-center gap-2 shrink-0">
                             <li>
-                                <Link to="#!" className="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-white dark:[&.active]:text-white [&.active]:bg-custom-500 dark:[&.active]:bg-custom-500 [&.active]:border-custom-500 dark:[&.active]:border-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto"><ChevronLeft className="size-4 mr-1 rtl:rotate-180" /> Prev</Link>
+                                <Link to="#!" className="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-white dark:[&.active]:text-white [&.active]:bg-custom-500 dark:[&.active]:bg-custom-500 [&.active]:border-custom-500 dark:[&.active]:border-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">
+                                    <ChevronLeft className="size-4 mr-1 rtl:rotate-180" /> 
+                                    <span className="hidden md:flex">Prev</span>
+                                </Link>
                             </li>
                             <li>
                                 <Link to="#!" className="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-white dark:[&.active]:text-white [&.active]:bg-custom-500 dark:[&.active]:bg-custom-500 [&.active]:border-custom-500 dark:[&.active]:border-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">1</Link>
@@ -412,7 +440,10 @@ const GridView = () => {
                                 <Link to="#!" className="inline-flex items-center justify-center bg-white dark:bg-zink-700 size-8 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-white dark:[&.active]:text-white [&.active]:bg-custom-500 dark:[&.active]:bg-custom-500 [&.active]:border-custom-500 dark:[&.active]:border-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">5</Link>
                             </li>
                             <li>
-                                <Link to="#!" className="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-white dark:[&.active]:text-white [&.active]:bg-custom-500 dark:[&.active]:bg-custom-500 [&.active]:border-custom-500 dark:[&.active]:border-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">Next <ChevronRight className="size-4 ml-1 rtl:rotate-180" /></Link>
+                                <Link to="#!" className="inline-flex items-center justify-center bg-white dark:bg-zink-700 h-8 px-3 transition-all duration-150 ease-linear border rounded border-slate-200 dark:border-zink-500 text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500 hover:bg-custom-100 dark:hover:bg-custom-500/10 focus:bg-custom-50 dark:focus:bg-custom-500/10 focus:text-custom-500 dark:focus:text-custom-500 [&.active]:text-white dark:[&.active]:text-white [&.active]:bg-custom-500 dark:[&.active]:bg-custom-500 [&.active]:border-custom-500 dark:[&.active]:border-custom-500 [&.active]:hover:text-custom-700 dark:[&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 dark:[&.disabled]:text-zink-300 [&.disabled]:cursor-auto">
+                                    <span className="hidden md:flex">Next</span>
+                                    <ChevronRight className="size-4 ml-1 rtl:rotate-180" />
+                                </Link>
                             </li>
                         </ul>
                     </div>

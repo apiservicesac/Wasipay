@@ -12,7 +12,7 @@ const Account = () => {
         <Layout>
             <React.Fragment>
                 <Tab.Container defaultActiveKey="overviewTabs">
-                    <div className="mt-1 -ml-3 -mr-3 rounded-none card md:mx-48">
+                    <div className="mt-1 -ml-3 -mr-3 rounded-none card xl:mx-40 lg:mx-32 md:mx-10 sm:mx-20">
                         <AccountInfo  className="card-body !px-2.5"/>
                         <div className="card-body !px-2.5 !py-0">
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
