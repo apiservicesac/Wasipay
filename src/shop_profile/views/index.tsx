@@ -16,7 +16,7 @@ const Account = () => {
                         <AccountInfo  className="card-body !px-2.5"/>
                         <div className="card-body !px-2.5 !py-0">
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
-                                <NavItemCustom label="Tienda"/>  
+                                <NavItemCustom label="Store"/>  
                             </Nav>
                         </div>
                     </div>

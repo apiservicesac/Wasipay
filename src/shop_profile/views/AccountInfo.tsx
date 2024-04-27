@@ -21,15 +21,15 @@ const AccountInfo = ({ className }: any) => {
                 <div className="grid grid-cols-1 place-items-center">
                     <div className="lg:col-span-2 2xl:col-span-1 inline-block">
                         <div className="relative inline-block size-20 rounded-full shadow-md bg-slate-100 profile-user xl:size-28">
-                            <img src={selectedImage?.toString() ?? "avatar1"} alt="" className="object-cover border-0 rounded-full img-thumbnail user-profile-image" />
-                            <div className="absolute bottom-0 flex items-center justify-center size-8 rounded-full ltr:right-0 rtl:left-0 profile-photo-edit">
+                            <img src={"https://aws.amazon.com/startups/upload/4418d4f8-8041-707f-0d8f-a8d3bf2b96ee/6fec953e-e5f9-4e9c-b849-e89557b81445.jpg"} alt="" className="object-cover border-0 rounded-full img-thumbnail user-profile-image" />
+                            {/* <div className="absolute bottom-0 flex items-center justify-center size-8 rounded-full ltr:right-0 rtl:left-0 profile-photo-edit">
                                 <input id="profile-img-file-input" type="file"
                                     className="hidden profile-img-file-input"
                                     onChange={handleImageChange} />
                                 <label htmlFor="profile-img-file-input" className="flex items-center justify-center size-8 bg-white rounded-full shadow-lg cursor-pointer dark:bg-zink-600 profile-photo-edit">
                                     <ImagePlus className="size-4 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></ImagePlus>
                                 </label>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="lg:col-span-10 2xl:col-span-9 text-center">
@@ -40,8 +40,8 @@ const AccountInfo = ({ className }: any) => {
                         </div>
                         <ul className="flex flex-wrap gap-3 mt-4 text-center items-center justify-center divide-x divide-slate-200 dark:divide-zink-500 rtl:divide-x-reverse">
                             <li className="px-5">
-                                <h5>1.2M</h5>
-                                <p className="text-slate-500 dark:text-zink-200">Followers</p>
+                                <h5>100+</h5>
+                                <p className="text-slate-500 dark:text-zink-200">Sales</p>
                             </li>
                             <li className="px-5">
                                 <h5>115+</h5>
