@@ -14,16 +14,16 @@ module.exports = plugin(function ({ addComponents, theme }) {
             }
         },
         '.toast-close': {
-            '@apply opacity-40 relative ltr:left-1 rtl:right-1 ltr:ml-1 rtl:mr-1': {},
+            '@apply opacity-40 relative right-1 mr-1': {},
             padding: '0 5px',
         },
         '.toastify-right': {
-            '@apply ltr:right-4 rtl:left-4': {},
+            '@apply left-4': {},
         },
         '.toastify-left': {
-            '@apply ltr:left-4 rtl:right-4': {},
+            '@apply right-4': {},
             '.toast-close': {
-                '@apply ltr:-left-1 rtl:-right-1 ltr:ml-1 rtl:mr-1 ltr:mr-0 rtl:ml-0': {},
+                '@apply -right-1 mr-1 ml-0': {},
             },
         },
 

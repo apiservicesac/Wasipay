@@ -1,19 +1,19 @@
 import React from "react";
-import AccountInfo from "./AccountInfo";
-import Tab from "../../common/components/Tab/Tab";
-import { Nav } from "../../common/components/Tab/Nav";
-import Layout from "../../common/Layout";
-import NavItemCustom from "../../common/components/Tab/NavItemCustom";
-import GridView from "./GridView";
+import ProfileInfo from "./profile_info";
+import Tab from "@/common/components/Tab/Tab";
+import { Nav } from "@/common/components/Tab/Nav";
+import Layout from "@/common/Layout";
+import NavItemCustom from "@/common/components/Tab/NavItemCustom";
+import Catalog from "./catalog";
 
-const Account = () => {
+const StoreProfile = () => {
 
     return (
         <Layout>
             <React.Fragment>
                 <Tab.Container defaultActiveKey="overviewTabs">
-                    <div className="mt-1 -ml-3 -mr-3 rounded-none card xl:mx-40 lg:mx-32 md:mx-10 sm:mx-20">
-                        <AccountInfo  className="card-body !px-2.5"/>
+                    <div className="mt-1 -ml-3 -mr-3 rounded-none card">
+                        <ProfileInfo  className="card-body !px-2.5"/>
                         <div className="card-body !px-2.5 !py-0">
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
                                 <NavItemCustom label="Store"/>  
@@ -22,7 +22,7 @@ const Account = () => {
                     </div>
                     <Tab.Content className="tab-content">
                         <Tab.Pane eventKey="overviewTabs" id="overviewTabs">                            
-                            <GridView />
+                            <Catalog />
                         </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>
@@ -31,4 +31,4 @@ const Account = () => {
     );
 }
 
-export default Account;
+export default StoreProfile;

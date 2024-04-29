@@ -4,12 +4,12 @@ module.exports = plugin(function ({ addComponents }) {
     addComponents({
         '[drawer-end]': {
             '&.show': {
-                '@apply ltr:translate-x-full rtl:-translate-x-full': {},
+                '@apply -translate-x-full': {},
             }
         },
         '[drawer-start]': {
             '&.show': {
-                '@apply rtl:translate-x-full ltr:-translate-x-full': {},
+                '@apply translate-x-full': {},
             }
         },
         '[drawer-bottom]': {

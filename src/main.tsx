@@ -1,4 +1,4 @@
-import './assets/scss/themes.scss';
+import '@/assets/scss/themes.scss';
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'

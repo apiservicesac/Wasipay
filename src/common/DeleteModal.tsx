@@ -4,7 +4,7 @@ import React from "react";
 import { X } from 'lucide-react';
 
 // Image
-import deleteImg from "../assets/images/delete.png";
+import deleteImg from "@/assets/images/delete.png";
 import Modal from "./components/Modal";
 
 interface props {
