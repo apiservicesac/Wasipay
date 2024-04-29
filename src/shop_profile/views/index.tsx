@@ -6,7 +6,7 @@ import Layout from "@/common/Layout";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
 import Catalog from "./components/catalog";
 
-const StoreProfile = () => {
+const ShopProfile = () => {
 
     return (
         <Layout>
@@ -31,4 +31,4 @@ const StoreProfile = () => {
     );
 }
 
-export default StoreProfile;
+export default ShopProfile;
