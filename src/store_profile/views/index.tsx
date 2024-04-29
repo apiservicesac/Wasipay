@@ -1,10 +1,10 @@
 import React from "react";
-import ProfileInfo from "./profile_info";
+import ProfileInfo from "./components/profile_info";
 import Tab from "@/common/components/Tab/Tab";
 import { Nav } from "@/common/components/Tab/Nav";
 import Layout from "@/common/Layout";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
-import Catalog from "./catalog";
+import Catalog from "./components/catalog";
 
 const StoreProfile = () => {
 

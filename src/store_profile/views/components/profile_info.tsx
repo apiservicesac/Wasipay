@@ -1,19 +1,7 @@
-import React, { ChangeEvent } from "react";
-import { BadgeCheck, ImagePlus, MapPin, UserCircle } from "lucide-react";
+import React from "react";
+import { BadgeCheck, MapPin, UserCircle } from "lucide-react";
 
 const ProfileInfo = ({ className }: any) => {
-
-    const [selectedImage, setSelectedImage] = React.useState<string | ArrayBuffer | null>("avatar1");
-
-    const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-
-        const file = event.target.files?.[0];
-
-        if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            setSelectedImage(imageUrl);
-        }
-    };
 
     return (
         <React.Fragment>
