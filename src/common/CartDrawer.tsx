@@ -133,10 +133,6 @@ const CartDrawer = ({ show, handleDrawer }: any) => {
                                     <td className="text-right cart-subtotal">${subTotal.toFixed(2)}</td>
                                 </tr>
                                 <tr>
-                                    <td className="py-2">Discount <span className="text-muted">(TAILWICK50)</span>:</td>
-                                    <td className="text-right cart-discount">-${dis.toFixed(2)}</td>
-                                </tr>
-                                <tr>
                                     <td className="py-2">Shipping Charge :</td>
                                     <td className="text-right cart-shipping">${charge}</td>
                                 </tr>

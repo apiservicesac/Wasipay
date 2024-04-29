@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Icon
-import { Search, ChevronDown, ChevronUp, Star, Heart, ShoppingCart, MoreHorizontal, Eye, FileEdit, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, ChevronDown, ChevronUp, Star, Heart, ShoppingCart, MoreHorizontal, Eye, FileEdit, Trash2, ChevronLeft, ChevronRight, List, LayoutGrid } from 'lucide-react';
 
 import { Dropdown } from "@/common/components/Dropdown";
 import { Link } from "react-router-dom";
@@ -54,6 +54,9 @@ const dataTest = [
 const Catalog = () => {
 
     const [data, setData] = useState<any>([]);
+
+    const [list, setList] = useState<boolean>(true);
+
 
     // Delete Modal
     const [deleteModal, setDeleteModal] = useState<boolean>(false);
@@ -341,10 +344,10 @@ const Catalog = () => {
                         <div className="flex gap-2 shrink-0">
                             <Dropdown className="relative dropdown">
                                 <Dropdown.Trigger href="#!" className="bg-white text-custom-500 btn border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:bg-zink-700 dark:hover:bg-custom-500 dark:ring-custom-400/20 dark:focus:bg-custom-500 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown">Sort by: <b className="font-medium">Highest Price</b>
-                                    <ChevronDown className="inline-block size-4 mr-1" />
+                                    <ChevronDown className="inline-block size-4 ml-1" />
                                 </Dropdown.Trigger>
 
-                                <Dropdown.Content placement="right-end" className="absolute z-50 py-2 mt-1 text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="dropdownMenuButton">
+                                <Dropdown.Content className="absolute z-50 py-2 mt-1 text-left list-none bg-white rounded-md shadow-md dropdown-menu min-w-[186px] dark:bg-zink-600" aria-labelledby="dropdownMenuButton">
                                     <li>
                                         <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="#!">Lowest Price</Link>
                                     </li>
@@ -359,14 +362,18 @@ const Catalog = () => {
                                     </li>
                                 </Dropdown.Content>
                             </Dropdown>
+
+                            <button type="button" id="listView" className={`flex items-center justify-center size-[37.5px] p-0 text-sky-500 btn bg-sky-100 hover:text-white hover:bg-sky-600 focus:text-white focus:bg-sky-600 [&.active]:text-white [&.active]:bg-sky-600 dark:bg-sky-500/20 dark:text-sky-400 dark:hover:bg-sky-500 dark:hover:text-white dark:focus:bg-sky-500 dark:focus:text-white dark:[&.active]:bg-sky-500 dark:[&.active]:text-white dark:ring-sky-400/20 ${!list && "active"}`} onClick={() => setList(false)}><List className="size-4" /></button>
+                            <button type="button" id="gridView" className={`flex items-center justify-center size-[37.5px] p-0 text-sky-500 btn bg-sky-100 hover:text-white hover:bg-sky-600 focus:text-white focus:bg-sky-600 [&.active]:text-white [&.active]:bg-sky-600 dark:bg-sky-500/20 dark:text-sky-400 dark:hover:bg-sky-500 dark:hover:text-white dark:focus:bg-sky-500 dark:focus:text-white dark:[&.active]:bg-sky-500 dark:[&.active]:text-white dark:ring-sky-400/20 ${list && "active"}`} onClick={() => setList(true)}><LayoutGrid className="size-4" /></button>
+
                         </div>
                     </div>
 
-                    <div className={`grid grid-cols-1 mt-5 md:grid-cols-2 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5`} id="cardGridView">
+                    <div className={`grid grid-cols-1 mt-5 md:grid-cols-2 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
 
-                        {(data || []).map((item: any, key: number) => (<div className="card md:group-[.gridView]:flex relative" key={key}>
+                    {(data || []).map((item: any, key: number) => (<div className="card md:group-[.gridView]:flex relative" key={key}>
                             <div className="relative group-[.gridView]:static p-8 group-[.gridView]:p-5">
-                                <Link to="#!" className={`absolute group/item toggle-button top-6 left-6 ${item.isFav && "active"}`} onClick={(e) => btnFav(e.target)}>
+                                <Link to="#!" className={`absolute group/item toggle-button top-6 right-6 ${item.isFav && "active"}`} onClick={(e) => btnFav(e.target)}>
                                     <Heart className="size-5 text-slate-400 fill-slate-200 transition-all duration-150 ease-linear dark:text-zink-200 dark:fill-zink-600 group-[.active]/item:text-red-500 dark:group-[.active]/item:text-red-500 group-[.active]/item:fill-red-200 dark:group-[.active]/item:fill-red-500/20 group-hover/item:text-red-500 dark:group-hover/item:text-red-500 group-hover/item:fill-red-200 dark:group-hover/item:fill-red-500/20" />
                                 </Link>
                                 <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">
@@ -396,15 +403,15 @@ const Catalog = () => {
                                         <Dropdown.Trigger className="flex items-center justify-center w-[38.39px] h-[38.39px] dropdown-toggle p-0 text-slate-500 btn bg-slate-100 hover:text-white hover:bg-slate-600 focus:text-white focus:bg-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:ring active:ring-slate-100 dark:bg-slate-500/20 dark:text-slate-400 dark:hover:bg-slate-500 dark:hover:text-white dark:focus:bg-slate-500 dark:focus:text-white dark:active:bg-slate-500 dark:active:text-white dark:ring-slate-400/20" id="productList1" data-bs-toggle="dropdown">
                                             <MoreHorizontal className="size-3" />
                                         </Dropdown.Trigger>
-                                        <Dropdown.Content placement="right-end" className="absolute z-50 py-2 mt-1 text-right list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="productList1">
+                                        <Dropdown.Content placement="right-end" className="absolute z-50 py-2 mt-1 text-left list-none bg-white rounded-md shadow-md dropdown-menu min-w-[10rem] dark:bg-zink-600" aria-labelledby="productList1">
                                             <li>
-                                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="/apps-ecommerce-product-overview"><Eye className="inline-block size-3 ml-1" /> <span className="align-middle">Overview</span></Link>
+                                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="/apps-ecommerce-product-overview"><Eye className="inline-block size-3 mr-1" /> <span className="align-middle">Overview</span></Link>
                                             </li>
                                             <li>
-                                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="/apps-ecommerce-product-create"><FileEdit className="inline-block size-3 ml-1" /> <span className="align-middle">Edit</span></Link>
+                                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="/apps-ecommerce-product-create"><FileEdit className="inline-block size-3 mr-1" /> <span className="align-middle">Edit</span></Link>
                                             </li>
                                             <li>
-                                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="#!" onClick={() => onClickDelete(item)}><Trash2 className="inline-block size-3 ml-1" /> <span className="align-middle">Delete</span></Link>
+                                                <Link className="block px-4 py-1.5 text-base transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:bg-slate-100 hover:text-slate-500 focus:bg-slate-100 focus:text-slate-500 dark:text-zink-100 dark:hover:bg-zink-500 dark:hover:text-zink-200 dark:focus:bg-zink-500 dark:focus:text-zink-200" to="#!" onClick={() => onClickDelete(item)}><Trash2 className="inline-block size-3 mr-1" /> <span className="align-middle">Delete</span></Link>
                                             </li>
                                         </Dropdown.Content>
                                     </Dropdown>

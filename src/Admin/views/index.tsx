@@ -1,10 +1,9 @@
-import { ChevronLeft, ChevronRight, Edit2Icon, Edit3, Eye, FileEdit, Heart, MoreHorizontal, Plus, Search, ShoppingCart, SquarePen, Trash2 } from "lucide-react";
+import { Eye, FileEdit, MoreHorizontal, Plus, Search, Trash2 } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Dropdown } from "@/common/components/Dropdown";
-import Layout from "@/common/Layout";
-import Flatpickr from 'react-flatpickr';
 import TableContainer from "@/common/TableContainer";
+import LayoutAuth from "@/common/LayoutAuth";
 
 
 const dataTest = [
@@ -214,7 +213,7 @@ const Admin = () => {
 
     return (
 
-        <Layout>
+        <LayoutAuth>
             
             <div className="card card-body p-4 mt-4">
                     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-12">
@@ -259,7 +258,7 @@ const Admin = () => {
                 </div>
                 </div>
            
-        </Layout>
+        </LayoutAuth>
         
         
     );
