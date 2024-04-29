@@ -23,7 +23,7 @@ const LayoutAuth = ({ children }: any) => {
 
     return (        
         <div className="group-data-[sidebar-size=sm]:min-h-sm group-data-[sidebar-size=sm]:relative">
-        <Header handleDrawer={handleDrawer}>
+        <Header>
             <div className="relative flex items-center h-header">
                     <Link to="/" className="inline-flex relative justify-center items-center p-0 text-topbar-item transition-all size-[37.5px] duration-200 ease-linear bg-topbar rounded-md btn hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover">
                         <StoreIcon className="inline-block size-5 stroke-1 fill-slate-100"></StoreIcon>
