@@ -1,7 +1,7 @@
 import React from "react";
 import { BadgeCheck, MapPin, UserCircle } from "lucide-react";
 
-const ProfileInfo = ({ className }: any) => {
+const ShopProfileInfo = ({ className }: any) => {
 
     return (
         <React.Fragment>
@@ -51,4 +51,4 @@ const ProfileInfo = ({ className }: any) => {
     );
 }
 
-export default ProfileInfo;
+export default ShopProfileInfo;

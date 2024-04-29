@@ -1,5 +1,5 @@
-import Admin from "@/admin/views";
-import ShopProfile from "@/shop_profile/views";
+import AdminComponent from "@/admin/views";
+import ShopComponent from "@/shop/views";
 
 interface RouteObject {
     path: string;
@@ -8,11 +8,11 @@ interface RouteObject {
 }
 
 const publicRoutes: Array<RouteObject> = [
-    { path: "/", component: ShopProfile },
+    { path: "/", component: ShopComponent },
 ]
 
 const authRoutes: Array<RouteObject> = [
-    { path: "/dashboard", component: Admin },
+    { path: "/dashboard", component: AdminComponent },
 ]
 
 export { publicRoutes, authRoutes };

@@ -109,7 +109,7 @@ const dataTest = [
     },    
 ]
 
-const Admin = () => {
+const AdminComponent = () => {
     const [data, setData] = React.useState<any>([]);
 
     const { columns } = Helpers();
@@ -121,11 +121,9 @@ const Admin = () => {
 
     return (
 
-        <LayoutAuth>
-            
+        <LayoutAuth>            
             <ActionCard />
-                <div className="card">
-                    
+                <div className="card">                    
                     <div className="card-body">
                         {data && data.length > 0 ?
                             <TableContainer
@@ -149,12 +147,9 @@ const Admin = () => {
                                 </div>
                             )}
                     </div>
-                </div>
-           
-        </LayoutAuth>
-        
-        
+                </div>           
+        </LayoutAuth>        
     );
 }
 
-export default Admin;
+export default AdminComponent;
