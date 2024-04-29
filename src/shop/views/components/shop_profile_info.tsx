@@ -18,7 +18,7 @@ const ShopProfileInfo = ({ className }: any) => {
                             <p className="text-slate-500 dark:text-zink-200"><UserCircle className="inline-block size-4 ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></UserCircle> Accesorios</p>
                             <p className="text-slate-500 dark:text-zink-200"><MapPin className="inline-block size-4 ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></MapPin> Santa Anita, Lima</p>
                         </div>
-                        <ul className="flex flex-wrap gap-3 mt-4 text-center items-center justify-center divide-x divide-slate-200 dark:divide-zink-500 divide-x-reverse">
+                        <ul className="flex flex-wrap gap-3 mt-4 text-center items-center justify-center divide-x divide-slate-200 dark:divide-zink-500">
                             <li className="px-5">
                                 <h5>100+</h5>
                                 <p className="text-slate-500 dark:text-zink-200">Sales</p>
