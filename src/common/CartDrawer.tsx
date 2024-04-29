@@ -83,7 +83,7 @@ const CartDrawer = ({ show, handleDrawer }: any) => {
                 </div>
                 <div>
                     <div className="h-[calc(100vh_-_370px)] p-4 overflow-y-auto product-list">
-                        <div className="flex flex-col gap-4">
+                        {/* <div className="flex flex-col gap-4">
                             {
                                 (cart || [])?.map((item: AddToCard, index: number) => (
                                     <div key={index} className="flex gap-2 product" id={`product${item.id}`}>
@@ -122,13 +122,13 @@ const CartDrawer = ({ show, handleDrawer }: any) => {
                                     </div>
                                 ))
                             }
-                        </div>
+                        </div> */}
                     </div>
                     <div className="p-4 border-t border-slate-200 dark:border-zink-500">
 
                         <table className="w-full mb-3 ">
                             <tbody className="table-total">
-                                <tr>
+                                {/* <tr>
                                     <td className="py-2">Sub Total :</td>
                                     <td className="text-right cart-subtotal">${subTotal.toFixed(2)}</td>
                                 </tr>
@@ -139,10 +139,10 @@ const CartDrawer = ({ show, handleDrawer }: any) => {
                                 <tr>
                                     <td className="py-2">Estimated Tax (12.5%) : </td>
                                     <td className="text-right cart-tax">${tax.toFixed(2)}</td>
-                                </tr>
+                                </tr> */}
                                 <tr className="font-semibold">
                                     <td className="py-2">Total : </td>
-                                    <td className="text-right cart-total">${(subTotal + charge + tax - dis).toFixed(2)}</td>
+                                    <td className="text-right cart-total">S/.{(subTotal + charge + tax - dis).toFixed(2)}</td>
                                 </tr>
                             </tbody>
                         </table>
