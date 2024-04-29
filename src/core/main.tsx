@@ -2,13 +2,14 @@ import '@/assets/scss/themes.scss';
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { RouterProvider } from 'react-router-dom'
-import routerBase from './Router'
-
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={routerBase} />
+      <BrowserRouter basename={'/web'}>
+        <App />
+      </BrowserRouter>
   </React.StrictMode>,
 )
