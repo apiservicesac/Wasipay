@@ -3,11 +3,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 type ShopSlice = {
-  shop?: ShopEntity | null;    
+  profile?: ShopEntity | null;    
 };
 
 const initialState: ShopSlice = {
-  shop: null,
+  profile: null,
 };
 
 export const fetchAll = createAsyncThunk(
@@ -28,12 +28,12 @@ export const shop_slice = createSlice({
   initialState,
   reducers: {
     setShopProfile: (state, action: PayloadAction<ShopEntity>) => {
-      state.shop = action.payload;
+      state.profile = action.payload;
     },
   },  
   extraReducers: (builder) => {
     builder.addCase(fetchAll.fulfilled, (state: ShopSlice, action: PayloadAction<ShopEntity | null>) => {
-      state.shop = action.payload
+      state.profile = action.payload
     })
   },
 });

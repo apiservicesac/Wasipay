@@ -5,6 +5,7 @@ import { Nav } from "@/common/components/Tab/Nav";
 import Layout from "@/common/Layout";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
 import Catalog from "./components/catalog";
+import { useAppSelector } from "@/redux/hooks";
 
 const ShopComponent = () => {
 

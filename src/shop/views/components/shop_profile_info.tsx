@@ -1,7 +1,9 @@
 import React from "react";
 import { BadgeCheck, MapPin, UserCircle } from "lucide-react";
+import { useAppSelector } from "@/redux/hooks";
 
 const ShopProfileInfo = ({ className }: any) => {
+    const shop = useAppSelector((state) => state.shopReducer);
 
     return (
         <React.Fragment>
@@ -13,10 +15,12 @@ const ShopProfileInfo = ({ className }: any) => {
                         </div>
                     </div>
                     <div className="lg:col-span-10 2xl:col-span-9 text-center">
-                        <h5 className="mb-1">RedShop <BadgeCheck className="inline-block size-4 text-sky-500 fill-sky-100 dark:fill-custom-500/20"></BadgeCheck></h5>
+                        <h5 className="mb-1">{shop?.profile?.name} <BadgeCheck className="inline-block size-4 text-sky-500 fill-sky-100 dark:fill-custom-500/20"></BadgeCheck></h5>
                         <div className="flex gap-3 mb-4">
-                            <p className="text-slate-500 dark:text-zink-200"><UserCircle className="inline-block size-4 ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></UserCircle> Accesorios</p>
-                            <p className="text-slate-500 dark:text-zink-200"><MapPin className="inline-block size-4 ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></MapPin> Santa Anita, Lima</p>
+                            <p className="text-slate-500 dark:text-zink-200"><UserCircle className="inline-block size-4 ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></UserCircle> {shop?.profile?.description}</p>
+                            <p className="text-slate-500 dark:text-zink-200"><MapPin className="inline-block size-4 ml-1 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-500"></MapPin>
+                             {shop?.profile?.city}
+                            </p>
                         </div>
                         <ul className="flex flex-wrap gap-3 mt-4 text-center items-center justify-center divide-x divide-slate-200 dark:divide-zink-500">
                             <li className="px-5">
@@ -29,16 +33,16 @@ const ShopProfileInfo = ({ className }: any) => {
                             </li>
                         </ul>
                         <div className="flex gap-2 mt-4  items-center justify-center">
-                            <a href="#!" className="text-lg flex items-center justify-center text-[#37C5BB] transition-all duration-200 ease-linear bg-[#C0F2EF] rounded size-9 hover:bg-[#9CE9E5] dark:bg-red-500/20 dark:hover:bg-red-500/30">                                                        
+                            <a href={shop?.profile?.social_media?.tiktok} className="text-lg flex items-center justify-center text-[#37C5BB] transition-all duration-200 ease-linear bg-[#C0F2EF] rounded size-9 hover:bg-[#9CE9E5] dark:bg-red-500/20 dark:hover:bg-red-500/30">                                                        
                                 <i className="ri-tiktok-line"></i>
                             </a>
-                            <a href="#!" className="text-lg flex items-center justify-center text-pink-500 transition-all duration-200 ease-linear bg-pink-100 rounded size-9 hover:bg-pink-200 dark:bg-pink-500/20 dark:hover:bg-pink-500/30">                            
+                            <a href={shop?.profile?.social_media?.instagram} className="text-lg flex items-center justify-center text-pink-500 transition-all duration-200 ease-linear bg-pink-100 rounded size-9 hover:bg-pink-200 dark:bg-pink-500/20 dark:hover:bg-pink-500/30">                            
                                 <i className="ri-instagram-line"></i>
                             </a>
-                            <a href="#!" className="text-lg flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-sky-500 bg-sky-100 hover:bg-sky-200 dark:bg-sky-500/20 dark:hover:bg-sky-500/30">
+                            <a href={shop?.profile?.social_media?.facebook} className="text-lg flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-sky-500 bg-sky-100 hover:bg-sky-200 dark:bg-sky-500/20 dark:hover:bg-sky-500/30">
                                 <i className="ri-facebook-fill"></i>
                             </a>                            
-                            <a href="#!" className="text-lg flex items-center justify-center text-red-500 transition-all duration-200 ease-linear bg-red-100 rounded size-9 hover:bg-red-200 dark:bg-red-500/20 dark:hover:bg-red-500/30">                            
+                            <a href={shop?.profile?.social_media?.youtube} className="text-lg flex items-center justify-center text-red-500 transition-all duration-200 ease-linear bg-red-100 rounded size-9 hover:bg-red-200 dark:bg-red-500/20 dark:hover:bg-red-500/30">                            
                                 <i className="ri-youtube-line"></i>
                             </a>
                         </div>
