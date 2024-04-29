@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/redux/hooks";
 import RouteIndex from "./routes";
-import { fetchAll } from "@/redux/features/shopSlice";
+import { fetchShopProfile } from "@/redux/features/shopSlice";
 import React from "react";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    dispatch(fetchAll())
+    dispatch(fetchShopProfile())
   }, []);
 
   return (

@@ -10,12 +10,12 @@ const initialState: ShopSlice = {
   profile: null,
 };
 
-export const fetchAll = createAsyncThunk(
+export const fetchShopProfile = createAsyncThunk(
   "shop/fetchShopProfile",
   async () => {
     try {      
-      const { data } = await axios.get(`http://37.60.239.85:3095/api/v1/shop/get-all`);
-      return data.data[0]
+      const { data } = await axios.get(`http://37.60.239.85:3095/api/v1/shop/get-by-id/${import.meta.env.VITE_SHOP_ID}`);
+      return data.data
     } catch (error) {
       console.error("Error fetching:", error);
       throw error;
@@ -32,7 +32,7 @@ export const shop_slice = createSlice({
     },
   },  
   extraReducers: (builder) => {
-    builder.addCase(fetchAll.fulfilled, (state: ShopSlice, action: PayloadAction<ShopEntity | null>) => {
+    builder.addCase(fetchShopProfile.fulfilled, (state: ShopSlice, action: PayloadAction<ShopEntity | null>) => {
       state.profile = action.payload
     })
   },
