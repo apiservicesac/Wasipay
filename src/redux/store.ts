@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import gatewayApplicationReducer from "@/redux/features/shopSlice"
+import shopReducer from "@/redux/features/shopSlice"
 
 export const store = configureStore({
   reducer: {
-    gatewayApplicationReducer,
+    shopReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
