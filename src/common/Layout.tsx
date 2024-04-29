@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import CartDrawer from "./CartDrawer";
 
 const Layout = ({ children }: any) => {
 
@@ -28,6 +29,7 @@ const Layout = ({ children }: any) => {
             </div>
         </div>
         </div>
+        <CartDrawer show={show} handleDrawer={handleDrawer} />
     </div>
     );
 }

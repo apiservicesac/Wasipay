@@ -3,6 +3,7 @@ import { LogOut, Search, ShoppingCart, Store, User2 } from 'lucide-react';
 import { Dropdown } from '@/common/components/Dropdown';
 import { Link } from 'react-router-dom';
 
+import logoDark from "@/assets/images/logo-dark.png";
 
 const Header = ({ handleDrawer }: any) => {
 
@@ -14,10 +15,12 @@ const Header = ({ handleDrawer }: any) => {
                         <div className="xl:mx-40 lg:mx-32 md:mx-10 sm:mx-20 flex items-center w-full group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl navbar-header group-data-[layout=horizontal]:xl:pl-3">                                              
 
                             {/* TODO: CHANGE SEARCH BAR TO ICON BUSSINESS */}
-                            <div className="relative hidden mr-3 lg:block group-data-[layout=horizontal]:hidden group-data-[layout=horizontal]:lg:block">
-                                <input type="text" className="py-2 pr-4 text-sm text-topbar-item bg-topbar border border-topbar-border rounded pl-8 placeholder:text-slate-400 form-control focus-visible:outline-0 min-w-[300px] focus:border-blue-400 group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:border-topbar-border-dark group-data-[topbar=dark]:placeholder:text-slate-500 group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:border-topbar-border-brand group-data-[topbar=brand]:placeholder:text-blue-300 group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:border-zink-500 group-data-[topbar=dark]:dark:text-zink-100" placeholder="Search for ..." autoComplete="off" />
-                                <Search className="inline-block size-4 absolute left-2.5 top-2.5 text-topbar-item fill-slate-100 group-data-[topbar=dark]:fill-topbar-item-bg-hover-dark group-data-[topbar=dark]:text-topbar-item-dark group-data-[topbar=brand]:fill-topbar-item-bg-hover-brand group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:dark:fill-zink-600" />
-                            </div>
+{/* 
+                            <div className="px-1">
+                                <Link to="#">
+                                    <img src={logoDark} alt="" className="h-6 mx-auto" />
+                                </Link>                    
+                            </div> */}
 
                             <div className="flex gap-3 ms-auto">
 
@@ -35,20 +38,20 @@ const Header = ({ handleDrawer }: any) => {
                                             <User2 className="inline-block size-6 stroke-1 fill-slate-100 group-data-[topbar=dark]:fill-topbar-item-bg-hover-dark group-data-[topbar=brand]:fill-topbar-item-bg-hover-brand"/>
                                         </div>
                                     </Dropdown.Trigger>
-                                    <Dropdown.Content placement="right-end" className="absolute z-50 p-4 text-right bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[14rem] dark:bg-zink-600" aria-labelledby="dropdownMenuButton">
+                                    <Dropdown.Content placement="right-end" className="absolute z-50 p-4 text-left bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[14rem] dark:bg-zink-600" aria-labelledby="dropdownMenuButton">
                                         <h6 className="mb-2 text-sm font-normal text-slate-500 dark:text-zink-300">Bienvenido a RedShop</h6>
                                         <ul>
                                             <li>
-                                                <Link className="block pl-4 py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
-                                                to={"/profile"}><User2 className="inline-block size-4 ml-2"></User2> Profile</Link>
+                                                <Link className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
+                                                to={"/profile"}><User2 className="inline-block size-4"></User2> Profile</Link>
                                             </li>
                                             <li>
-                                                <Link className="block pl-4 py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
-                                                to={"/dashboard"}><Store className="inline-block size-4 ml-2"></Store> Dashboard </Link>
+                                                <Link className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
+                                                to={"/dashboard"}><Store className="inline-block size-4"></Store> Dashboard </Link>
                                             </li>
                                             <li className="pt-2 mt-2 border-t border-slate-200 dark:border-zink-500">
-                                                <a className="block pl-4 py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
-                                                href={"/logout"}><LogOut className="inline-block size-4 ml-2"></LogOut> Sign Out</a>
+                                                <a className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
+                                                href={"/logout"}><LogOut className="inline-block size-4"></LogOut> Sign Out</a>
                                             </li>
                                         </ul>
                                     </Dropdown.Content>
