@@ -14,7 +14,7 @@ export const fetchShopProfile = createAsyncThunk(
   "shop/fetchShopProfile",
   async () => {
     try {      
-      const { data } = await axios.get(`http://37.60.239.85:3095/api/v1/shop/get-by-id/${import.meta.env.VITE_SHOP_ID}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/shop/get-by-id/${import.meta.env.VITE_SHOP_ID}`);
       return data.data
     } catch (error) {
       console.error("Error fetching:", error);
