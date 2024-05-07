@@ -17,7 +17,7 @@ const FilterCard = () => {
                     <Search className="inline-block size-4 absolute right-2.5 top-2.5 text-slate-500 dark:text-zink-200 fill-slate-100 dark:fill-zink-600" />
                 </div>
 
-                <div className="mt-4 collapsible">
+                {/* <div className="mt-4 collapsible">
                     <button className="flex items-center w-full text-left collapsible-header group">
                         <h6 className="underline grow">Color</h6>
                         <div className="shrink-0 text-slate-500 dark:text-zink-200">
@@ -40,8 +40,10 @@ const FilterCard = () => {
                             <input id="color10" className="size-5 border rounded-sm appearance-none cursor-pointer bg-emerald-300 border-embg-emerald-300 checked:bg-emerald-300 checked:border-embg-emerald-300" type="checkbox" value="" />
                         </div>
                     </div>
-                </div>
-                <div className="mt-4 collapsible">
+                </div> */}
+
+
+                {/* <div className="mt-4 collapsible">
                     <button className="flex items-center w-full text-left collapsible-header group">
                         <h6 className="underline grow">Price</h6>
                         <div className="shrink-0 text-slate-500 dark:text-zink-200">
@@ -101,7 +103,8 @@ const FilterCard = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
+                
                 <div className="mt-4 collapsible">
                     <button className="flex items-center w-full text-left collapsible-header group">
                         <h6 className="underline grow">Product Category</h6>
@@ -163,7 +166,7 @@ const FilterCard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="mt-4 collapsible">
+                {/* <div className="mt-4 collapsible">
                     <button className="flex items-center w-full text-left collapsible-header group">
                         <h6 className="underline grow">Rating</h6>
                         <div className="shrink-0 text-slate-500 dark:text-zink-200">
@@ -217,8 +220,9 @@ const FilterCard = () => {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="mt-4 collapsible">
+                </div> */}
+                 
+                {/* <div className="mt-4 collapsible">
                     <button className="flex items-center w-full text-left collapsible-header group show">
                         <h6 className="underline grow">Gender</h6>
                         <div className="ml-2 shrink-0">
@@ -226,7 +230,7 @@ const FilterCard = () => {
                             <ChevronUp className="inline-block size-4 group-[.show]:hidden" />
                         </div>
                     </button>
-                    <div className="hidden mt-4 collapsible-content">
+                    <div className="mt-4 collapsible-content">
                         <div className="flex flex-col gap-2">
                             <div className="flex items-center gap-2">
                                 <input id="genderAll" className="size-4 cursor-pointer bg-white border border-slate-200 checked:bg-none dark:bg-zink-700 dark:border-zink-500 rounded-sm appearance-none arrow-none relative after:absolute after:content-['\eb7b'] after:top-0 after:left-0 after:font-remix after:leading-none after:opacity-0 checked:after:opacity-100 after:text-custom-500 checked:border-custom-500 dark:after:text-custom-500 dark:checked:border-custom-800" type="checkbox" value="" />
@@ -254,7 +258,7 @@ const FilterCard = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
