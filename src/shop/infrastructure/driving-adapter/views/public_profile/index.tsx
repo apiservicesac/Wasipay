@@ -1,11 +1,10 @@
 import React from "react";
-import ShopProfileInfo from "./components/shop_profile_info";
+import ShopProfileInfo from "./components/profile";
 import Tab from "@/common/components/Tab/Tab";
 import { Nav } from "@/common/components/Tab/Nav";
-import Layout from "@/common/Layout";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
 import Catalog from "./components/catalog";
-import { useAppSelector } from "@/redux/hooks";
+import Layout from "./components/layout";
 
 const ShopComponent = () => {
 

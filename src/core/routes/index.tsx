@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { authRoutes, publicRoutes } from './allRoutes';
+import LayoutAuth from '@/common/LayoutAuth';
 
 const RouteIndex = () => {
   return (
@@ -20,7 +21,9 @@ const RouteIndex = () => {
             key={idx}
             path={route.path}
             element={
+              <LayoutAuth>
                 <route.component />
+              </LayoutAuth>
             }
           />
         ))}        

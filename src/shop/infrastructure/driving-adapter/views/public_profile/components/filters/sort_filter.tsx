@@ -2,7 +2,7 @@ import { Dropdown } from "@/common/components/Dropdown";
 import { ChevronDown, LayoutGrid, List } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const SortFilter = ({ list, setList } : { list: boolean, setList: any}) => {
+export const SortFilterComponent = ({ list, setList } : { list: boolean, setList: any}) => {
     return (
         <div className="flex flex-wrap items-center gap-2">                        
             <div className="flex gap-2 shrink-0">
@@ -34,4 +34,3 @@ const SortFilter = ({ list, setList } : { list: boolean, setList: any}) => {
         </div>
     );
 }
-export default SortFilter;

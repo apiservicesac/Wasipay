@@ -1,4 +1,4 @@
-import { ShopEntity } from "@/shop/entities/Shop";
+import { ShopEntity } from "@/shop/domain/entities/Shop";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 

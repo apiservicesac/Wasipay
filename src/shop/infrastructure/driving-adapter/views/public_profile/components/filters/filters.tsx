@@ -1,7 +1,7 @@
 import { ChevronDown, ChevronUp, Search, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const FilterCard = () => {
+export const FilterComponent = () => {
     return (
         <div className="card">
             <div className="card-body">
@@ -105,7 +105,7 @@ const FilterCard = () => {
                     </div>
                 </div> */}
                 
-                <div className="mt-4 collapsible">
+                {/* <div className="mt-4 collapsible">
                     <button className="flex items-center w-full text-left collapsible-header group">
                         <h6 className="underline grow">Product Category</h6>
                         <div className="shrink-0 text-slate-500 dark:text-zink-200">
@@ -165,7 +165,8 @@ const FilterCard = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
+                
                 {/* <div className="mt-4 collapsible">
                     <button className="flex items-center w-full text-left collapsible-header group">
                         <h6 className="underline grow">Rating</h6>
@@ -263,4 +264,3 @@ const FilterCard = () => {
         </div>
     );
 }
-export default FilterCard;

@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
-import CartDrawer from "./CartDrawer";
-import { LogOut, Store, StoreIcon, User2 } from 'lucide-react';
+import CartDrawer from "../shop/infrastructure/driving-adapter/views/public_profile/components/cart";
+import { LogOut, StoreIcon, User2 } from 'lucide-react';
 import { Dropdown } from '@/common/components/Dropdown';
 import { Link } from "react-router-dom";
 const LayoutAuth = ({ children }: any) => {

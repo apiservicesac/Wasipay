@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const PaginationCard = () => {
+export const PaginationComponent = () => {
     return (
         <div className="flex flex-col items-center mb-5 md:flex-row">
             <div className="mb-4 grow md:mb-0">
@@ -36,4 +36,3 @@ const PaginationCard = () => {
         </div>
     );
 }
-export default PaginationCard;
