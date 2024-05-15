@@ -1,6 +1,6 @@
 import React from "react";
 import { BadgeCheck, MapPin, UserCircle } from "lucide-react";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppSelector } from "@/core/redux/hooks";
 
 const ShopProfileInfo = ({ className }: any) => {
     const shop = useAppSelector((state) => state.shopReducer);

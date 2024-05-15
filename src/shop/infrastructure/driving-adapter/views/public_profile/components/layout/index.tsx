@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppSelector } from "@/core/redux/hooks";
 import { HeaderLayout } from "./header";
 import CartComponent from "../cart";
 import { WhatsAppIcon } from "../wsp_icon";
