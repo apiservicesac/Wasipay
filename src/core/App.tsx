@@ -9,6 +9,7 @@ import { GetAllUseCase as ProductUseCaseGetAll } from '@/shop/application/use_ca
 
 import { setShopProfile } from "@/shop/infrastructure/driving-adapter/redux/shopSlice";
 import { setProducts } from "@/shop/infrastructure/driving-adapter/redux/productSlice";
+import { ProductCartEntity } from "@/shop/domain/entities";
 
 const LoadedData = async (dispatch:any) => {
 
@@ -25,7 +26,17 @@ const LoadedData = async (dispatch:any) => {
     const productRepository = new AxiosProduct()
     const productUseCase = new ProductUseCaseGetAll(productRepository) 
     const product_response = await productUseCase.run(shop_id)
-    dispatch(setProducts(product_response!))
+
+    const new_list_product = product_response?.map((product) => {
+      const product_cart_entity : ProductCartEntity = {
+        product: product,
+        quantity: 0,
+        total_price: 0,
+        in_cart: false
+      }
+      return product_cart_entity
+    })
+    dispatch(setProducts(new_list_product!))
 
 }
 
