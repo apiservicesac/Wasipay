@@ -1,9 +1,13 @@
-import { Minus, Plus, ShoppingCart } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/core/redux/hooks";
 import { HelperCart } from '../cart/helper';
 import { ProductCartEntity } from '@/shop/domain/entities';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 export const ProductsComponent = ({ list }: { list: boolean }) => {
 
@@ -15,10 +19,26 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
         <div className={`grid grid-cols-1 mt-5 md:grid-cols-2 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
 
             {(products || []).map((item: ProductCartEntity, key: number) => (
-                <div className="card md:group-[.gridView]:flex relative" key={key}>
+                <div className="card md:group-[.gridView]:flex relative" key={item.product?._id}>
                     <div className="relative group-[.gridView]:static p-5 group-[.gridView]:p-2">
                         <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">
-                            <img src={item?.product?.file![0].url} alt="" className="group-[.gridView]:h-16" />
+                            {/* <img src={item?.product?.file![0].url} alt="" className="group-[.gridView]:h-16" /> */}
+                            <Swiper className="pagination-slider"
+                                        // pagination={{ type: 'progressbar' }}
+                                        navigation={{
+                                            nextEl: '.swiper-button-next',
+                                            prevEl: '.swiper-button-prev',
+                                        }}
+                                        modules={[Pagination, Navigation]}>
+                                            {item?.product?.file!.map((file) => (
+                                                <SwiperSlide><img src={file.url} alt="" /></SwiperSlide>
+                                            ))
+
+                                            }
+                                        <div className="swiper-button-next after:hidden text-custom-700"><ChevronRight /></div>
+                                        <div className="swiper-button-prev after:hidden text-custom-700"><ChevronLeft /></div>
+                                    </Swiper>
+
                         </div>
                     </div>
                     <div className="card-body !pt-0 md:group-[.gridView]:flex group-[.gridView]:!p-5 group-[.gridView]:gap-3 group-[.gridView]:grow">
