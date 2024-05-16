@@ -46,21 +46,21 @@ const CartComponent = ({ show, handleDrawer }: any) => {
 
                         <table className="w-full mb-3 ">
                             <tbody className="table-total">
-                                {/* <tr>
-                                    <td className="py-2">Sub Total :</td>
-                                    <td className="text-right cart-subtotal">${subTotal.toFixed(2)}</td>
-                                </tr>
                                 <tr>
+                                    <td className="py-2">Sub Total :</td>
+                                    <td className="text-right cart-subtotal">S/. {cart_price.subtotal_price!.toFixed(2)}</td>
+                                </tr>
+                                {/* <tr>
                                     <td className="py-2">Shipping Charge :</td>
                                     <td className="text-right cart-shipping">${charge}</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-2">Estimated Tax (12.5%) : </td>
-                                    <td className="text-right cart-tax">${tax.toFixed(2)}</td>
                                 </tr> */}
+                                <tr>
+                                    <td className="py-2">Estimated Tax (18.0%) : </td>
+                                    <td className="text-right cart-tax">S/. {cart_price.total_tax!.toFixed(2)}</td>
+                                </tr>
                                 <tr className="font-semibold">
                                     <td className="py-2">Total : </td>
-                                    <td className="text-right cart-total">S/.{cart_price.total_price}</td>
+                                    <td className="text-right cart-total">S/.{cart_price.total_price!.toFixed(2)}</td>
                                 </tr>
                             </tbody>
                         </table>

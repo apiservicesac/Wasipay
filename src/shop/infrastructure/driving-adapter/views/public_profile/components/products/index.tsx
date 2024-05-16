@@ -35,8 +35,8 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
                                             ))
 
                                             }
-                                        <div className="swiper-button-next after:hidden text-custom-700"><ChevronRight /></div>
-                                        <div className="swiper-button-prev after:hidden text-custom-700"><ChevronLeft /></div>
+                                        <div className="swiper-button-next after:hidden text-custom-500"><ChevronRight className='text-white'/></div>
+                                        <div className="swiper-button-prev after:hidden text-custom-500"><ChevronLeft className='text-white'/></div>
                                     </Swiper>
 
                         </div>

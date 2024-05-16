@@ -10,5 +10,6 @@ export interface ProductCartEntity {
 export interface CartEntity {
     products?: ProductCartEntity[];
     subtotal_price?: number;
+    total_tax?: number;
     total_price?: number;
 }

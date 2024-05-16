@@ -1,11 +1,15 @@
+import { useAppSelector } from "@/core/redux/hooks";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const PaginationComponent = () => {
+
+    const products = useAppSelector((state) => state.productReducer.products)
+
     return (
         <div className="flex flex-col items-center mb-5 md:flex-row">
             <div className="mb-4 grow md:mb-0">
-                <p className="text-slate-500 dark:text-zink-200">Showing <b>12</b> of <b>44</b> Results</p>
+                <p className="text-slate-500 dark:text-zink-200">Showing <b>{products?.length}</b> of <b>{products?.length}</b> Results</p>
             </div>
             <ul className="flex flex-wrap items-center gap-2 shrink-0">
                 <li>

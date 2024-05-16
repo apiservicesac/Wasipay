@@ -4,6 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 const initialState: CartEntity = {
   products: [],
   subtotal_price: 0,
+  total_tax: 0,
   total_price: 0
 };
 
@@ -16,6 +17,8 @@ export const cart_slice = createSlice({
     },
     setTotalPriceCart: (state, action: PayloadAction<number>) => {
       state.total_price = action.payload
+      state.subtotal_price = action.payload - (action.payload * 0.18)
+      state.total_tax =  action.payload * 0.18
     },
     setSubtotalPriceCart: (state, action: PayloadAction<number>) => {
       state.subtotal_price = action.payload
