@@ -1,9 +1,11 @@
+import { setTotalPriceCart } from "@/core/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/core/redux/hooks"
 import { ProductCartEntity } from "@/shop/domain/entities";
 import { setProducts } from "@/shop/infrastructure/driving-adapter/redux/productSlice";
 
 export const HelperCart = () => {
     const products = useAppSelector((state) => state.productReducer.products)
+    const total_cart_price = useAppSelector((state) => state.carttReducer.total_price)
 
     const dispatch = useAppDispatch()
 
@@ -14,11 +16,12 @@ export const HelperCart = () => {
                 updatedProduct.in_cart = true;
                 updatedProduct.quantity! ++;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
+                dispatch(setTotalPriceCart(total_cart_price! + updatedProduct.total_price))
                 return updatedProduct;
             }
             return p;
         })
-        dispatch(setProducts(updatedProducts))
+        dispatch(setProducts(updatedProducts))        
     };
     
     const removeProductCart = (product_id: string) => {
@@ -27,9 +30,10 @@ export const HelperCart = () => {
             const updatedProducts = [...products!]?.map((p: ProductCartEntity) => {
                 if (p.product?._id === product_id) {
                     const updatedProduct = { ...p };
+                    dispatch(setTotalPriceCart(total_cart_price! - updatedProduct.total_price!))
                     updatedProduct.in_cart = false;
                     updatedProduct.quantity = 0;
-                    updatedProduct.total_price = 0;
+                    updatedProduct.total_price = 0;                    
                     return updatedProduct;
                 }
                 return p;
@@ -44,8 +48,9 @@ export const HelperCart = () => {
                 const updatedProduct = { ...p };
                 updatedProduct.quantity! --;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
+                dispatch(setTotalPriceCart(total_cart_price! - updatedProduct.product!.price!))
                 if(updatedProduct.quantity === 0) {                    
-                    updatedProduct.in_cart = false;                    
+                    updatedProduct.in_cart = false;                   
                 }
                 return updatedProduct;
             }
@@ -62,6 +67,7 @@ export const HelperCart = () => {
                 const updatedProduct = { ...p };
                 updatedProduct.quantity! ++;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
+                dispatch(setTotalPriceCart(total_cart_price! + updatedProduct.product!.price!))
                 return updatedProduct;
             }
             return p;

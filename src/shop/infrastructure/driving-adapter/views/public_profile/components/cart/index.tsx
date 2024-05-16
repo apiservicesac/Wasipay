@@ -9,8 +9,8 @@ import { ProductItem } from "./components/Product";
 const CartComponent = ({ show, handleDrawer }: any) => {
 
     const cart_products = useAppSelector((state) => state.productReducer.products)
-
     const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
+    const cart_price = useAppSelector((state) => state.carttReducer)
 
     return (
         <React.Fragment>
@@ -36,7 +36,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                         <div className="flex flex-col gap-4">
                             {
                                 (filter_product_cart || [])?.map((item: ProductCartEntity, index: number) => (
-                                    <ProductItem item={item} key={index}/>
+                                    <ProductItem item={item} key={item.product?._id}/>
                                 ))
                             }
                         </div>
@@ -60,7 +60,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                                 </tr> */}
                                 <tr className="font-semibold">
                                     <td className="py-2">Total : </td>
-                                    {/* <td className="text-right cart-total">S/.{(subTotal + charge + tax - dis).toFixed(2)}</td> */}
+                                    <td className="text-right cart-total">S/.{cart_price.total_price}</td>
                                 </tr>
                             </tbody>
                         </table>
