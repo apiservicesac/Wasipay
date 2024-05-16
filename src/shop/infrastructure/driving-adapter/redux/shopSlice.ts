@@ -1,7 +1,5 @@
 import { ShopEntity } from "@/shop/domain/entities/Shop";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ImplementationAxios } from "../../implementation/axios/shop";
-import { GetByIdUseCase as UseCase} from '@/shop/application/use_cases/shop'
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type ShopSlice = {
   profile?: ShopEntity | null;    
@@ -11,18 +9,6 @@ const initialState: ShopSlice = {
   profile: null,
 };
 
-// export const getShoProfile = createAsyncThunk(
-//   "shop/getShoProfile",
-//   async () => {
-//     try {      
-
-//     } catch (error) {
-//       console.error("Error fetching:", error);
-//       throw error;
-//     }
-//   },
-// )
-
 export const shop_slice = createSlice({
   name: "shop_slice",
   initialState,
@@ -30,12 +16,7 @@ export const shop_slice = createSlice({
     setShopProfile: (state, action: PayloadAction<ShopEntity>) => {
       state.profile = action.payload;
     },
-  },  
-  // extraReducers: (builder) => {
-  //   builder.addCase(getShoProfile.fulfilled, (state: ShopSlice, action: PayloadAction<ShopEntity | null>) => {
-  //     state.profile = action.payload
-  //   })
-  // },
+  },
 });
 
 

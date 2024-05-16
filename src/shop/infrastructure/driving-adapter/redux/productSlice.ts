@@ -1,43 +1,22 @@
-import { ProductEntity } from "@/shop/domain/entities";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import { ProductCartEntity } from "@/shop/domain/entities";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type ProductSlice = {
-  products?: ProductEntity[] | null;    
+  products?: ProductCartEntity[];    
 };
 
 const initialState: ProductSlice = {
-  products: null,
+  products: [],
 };
-
-// export const getAllProducts = createAsyncThunk(
-//   "product_slice/getAllProducts",
-//   async () => {
-//     try {      
-//       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/product/get-all/${import.meta.env.VITE_SHOP_ID}`);
-//       return data.data
-//     } catch (error) {
-//       console.error("Error fetching:", error);
-//       return null;
-//     }
-//   },
-// )
 
 export const product_slice = createSlice({
   name: "product_slice",
   initialState,
   reducers: {
-    setProducts: (state, action: PayloadAction<any>) => {
+    setProducts: (state, action: PayloadAction<ProductCartEntity[]>) => {
       state.products = action.payload;
     },
-  },  
-  // extraReducers: (builder) => {
-  //   builder.addCase(getAllProducts.fulfilled, (state: ProductSlice, action: PayloadAction<ProductEntity | null>) => {
-  //     if(action.payload){
-  //       state.products = action.payload?
-  //     }
-  //   })
-  // },
+  },
 });
 
 
