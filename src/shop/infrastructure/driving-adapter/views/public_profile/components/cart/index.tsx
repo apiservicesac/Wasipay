@@ -1,6 +1,5 @@
 import React from "react";
-import { Minus, Plus, X } from "lucide-react";
-
+import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/core/redux/hooks";
 import Drawer from "@/common/components/Drawer";
@@ -9,7 +8,9 @@ import { ProductItem } from "./components/Product";
 
 const CartComponent = ({ show, handleDrawer }: any) => {
 
-    const cart_products = useAppSelector((state) => state.carttReducer.products)
+    const cart_products = useAppSelector((state) => state.productReducer.products)
+
+    const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
 
     return (
         <React.Fragment>
@@ -19,7 +20,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                         <h5 className="mb-0 text-16">
                             Shopping Cart 
                             <span className="inline-flex items-center justify-center size-5 ml-1 text-[11px] font-medium border     rounded-full text-white bg-custom-500 border-custom-500">
-                                {cart_products?.length}
+                                {filter_product_cart?.length}
                             </span>
                         </h5>
                     </div>
@@ -34,7 +35,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                     <div className="h-[calc(100vh_-_370px)] p-4 overflow-y-auto product-list">
                         <div className="flex flex-col gap-4">
                             {
-                                (cart_products || [])?.map((item: ProductCartEntity, index: number) => (
+                                (filter_product_cart || [])?.map((item: ProductCartEntity, index: number) => (
                                     <ProductItem item={item} key={index}/>
                                 ))
                             }

@@ -1,72 +1,57 @@
-import { addProductCartStore } from "@/core/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/core/redux/hooks"
-import { ProductCartEntity, ProductEntity } from "@/shop/domain/entities";
+import { ProductCartEntity } from "@/shop/domain/entities";
+import { setProducts } from "@/shop/infrastructure/driving-adapter/redux/productSlice";
 
 export const HelperCart = () => {
-    const products = useAppSelector((state) => state.carttReducer.products)
+    const products = useAppSelector((state) => state.productReducer.products)
+
     const dispatch = useAppDispatch()
 
-    const addProductCart = (newProduct: ProductEntity) => {   
-        const allProducts = [...products!];    
-
-        if(allProducts?.length === 0 ){
-            const addProduct: ProductCartEntity = {
-                product: newProduct,
-                quantity: 1,
-                total_price: newProduct.price
-            };
-            allProducts.push(addProduct);
-            console.log(allProducts);
-            dispatch(addProductCartStore(allProducts))
-        }else {
-            const updatedProducts = allProducts?.find((p: ProductCartEntity) => p.product?._id === newProduct?._id)
-            console.log(updatedProducts)
-            if(updatedProducts){
-                const updatedProducts = allProducts?.map((p: ProductCartEntity) => {
-                    if (p.product?._id === newProduct?._id) {
-                        const updatedProduct = { ...p };
-                        updatedProduct.quantity! ++;
-                        updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
-                        return updatedProduct;
-                    }
-                    return p;
-                })
-                dispatch(addProductCartStore(updatedProducts))
-            }
-            else {
-                const addProduct: ProductCartEntity = {
-                    product: newProduct,
-                    quantity: 1,
-                    total_price: newProduct.price
-                };
-                allProducts.push(addProduct);
-                console.log(allProducts);
-                dispatch(addProductCartStore(allProducts))
-            }
-        }
-
-
-    };
-    
-    const removeProductCart = (product_id: string) => {
-        const new_state_products = products?.filter((product) => product.product?._id !== product_id)
-        console.log(new_state_products)
-        dispatch(addProductCartStore(new_state_products!))
-    };
-    
-    const decreaseProductQuantity = (product_id: string) => {
-        const allProducts = [...products!];    
-
-        const updatedProducts = allProducts?.map((p: ProductCartEntity) => {
-            if (p.product?._id === product_id && p.quantity !== 0) {
+    const addProductCart = (newProduct: ProductCartEntity) => {
+        const updatedProducts = [...products!]?.map((p: ProductCartEntity) => {
+            if (p.product?._id === newProduct?.product!._id) {
                 const updatedProduct = { ...p };
-                updatedProduct.quantity! --;
+                updatedProduct.in_cart = true;
+                updatedProduct.quantity! ++;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
                 return updatedProduct;
             }
             return p;
         })
-        dispatch(addProductCartStore(updatedProducts))
+        dispatch(setProducts(updatedProducts))
+    };
+    
+    const removeProductCart = (product_id: string) => {
+        const updatedProducts = [...products!]?.find((p: ProductCartEntity) => p.product?._id === product_id)
+        if(updatedProducts){
+            const updatedProducts = [...products!]?.map((p: ProductCartEntity) => {
+                if (p.product?._id === product_id) {
+                    const updatedProduct = { ...p };
+                    updatedProduct.in_cart = false;
+                    updatedProduct.quantity = 0;
+                    updatedProduct.total_price = 0;
+                    return updatedProduct;
+                }
+                return p;
+            })
+            dispatch(setProducts(updatedProducts))
+        }
+    };
+    
+    const decreaseProductQuantity = (product_id: string) => {  
+        const updatedProducts = [...products!]?.map((p: ProductCartEntity) => {
+            if (p.product?._id === product_id && p.quantity !== 0) {
+                const updatedProduct = { ...p };
+                updatedProduct.quantity! --;
+                updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
+                if(updatedProduct.quantity === 0) {                    
+                    updatedProduct.in_cart = false;                    
+                }
+                return updatedProduct;
+            }
+            return p;
+        })
+        dispatch(setProducts(updatedProducts))
     };
     
     const increaseProductQuantity = (product_id: string) => {
@@ -81,7 +66,7 @@ export const HelperCart = () => {
             }
             return p;
         })
-        dispatch(addProductCartStore(updatedProducts))
+        dispatch(setProducts(updatedProducts))
     };
 
 
