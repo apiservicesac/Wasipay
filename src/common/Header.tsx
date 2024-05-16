@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ChevronsLeft } from 'lucide-react';
 
 const Header = ({ children }: { children : React.ReactNode }) => {    
 
