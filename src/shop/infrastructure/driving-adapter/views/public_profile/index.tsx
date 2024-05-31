@@ -5,6 +5,7 @@ import { Nav } from "@/common/components/Tab/Nav";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
 import Catalog from "./components/catalog";
 import Layout from "./components/layout";
+import { ProfileInfo } from "./components/profile-info";
 
 const ShopComponent = () => {
 
@@ -26,7 +27,7 @@ const ShopComponent = () => {
                             <Catalog />
                         </Tab.Pane>
                         <Tab.Pane eventKey="profile-tab" id="profile-tab">                            
-                            profile
+                            <ProfileInfo />
                         </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>
