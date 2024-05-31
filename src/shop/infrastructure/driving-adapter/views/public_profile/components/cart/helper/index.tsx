@@ -5,7 +5,7 @@ import { setProducts } from "@/shop/infrastructure/driving-adapter/redux/product
 
 export const HelperCart = () => {
     const products = useAppSelector((state) => state.productReducer.products)
-    const total_cart_price = useAppSelector((state) => state.carttReducer.total_price)
+    const total_cart_price = useAppSelector((state) => state.cartReducer.total_price)
 
     const dispatch = useAppDispatch()
 

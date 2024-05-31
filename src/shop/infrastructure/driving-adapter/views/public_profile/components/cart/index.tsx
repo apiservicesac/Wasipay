@@ -10,7 +10,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
 
     const cart_products = useAppSelector((state) => state.productReducer.products)
     const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
-    const cart_price = useAppSelector((state) => state.carttReducer)
+    const cart_price = useAppSelector((state) => state.cartReducer)
 
     return (
         <React.Fragment>
@@ -35,7 +35,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                     <div className="h-[calc(100vh_-_370px)] p-4 overflow-y-auto product-list">
                         <div className="flex flex-col gap-4">
                             {
-                                (filter_product_cart || [])?.map((item: ProductCartEntity, index: number) => (
+                                (filter_product_cart || [])?.map((item: ProductCartEntity) => (
                                     <ProductItem item={item} key={item.product?._id}/>
                                 ))
                             }
