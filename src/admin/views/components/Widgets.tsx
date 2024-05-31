@@ -1,6 +1,7 @@
 import React from 'react';
 import { Package, Truck, View, Wallet2 } from 'lucide-react';
 import CountUp from 'react-countup';
+import { Link } from 'react-router-dom';
 
 const Widgets = () => {
     return (
@@ -25,7 +26,7 @@ const Widgets = () => {
                     <p className="text-slate-500 dark:text-zink-200">Total Orders</p>
                 </div>
             </div>
-            <div className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer">
+            <Link to={'/dashboard/product'} className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer">
                 <div className="text-center card-body">
                     <div className="flex items-center justify-center mx-auto text-green-500 bg-green-100 rounded-full size-14 dark:bg-green-500/20">
                         <Package />
@@ -33,7 +34,7 @@ const Widgets = () => {
                     <h5 className="mt-4 mb-2"><CountUp end={10} className="counter-value" /></h5>
                     <p className="text-slate-500 dark:text-zink-200">Total Products</p>
                 </div>
-            </div>
+            </Link>
             <div className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer">
                 <div className="text-center card-body">
                     <div className="flex items-center justify-center mx-auto text-red-500 bg-red-100 rounded-full size-14 dark:bg-red-500/20">
