@@ -6,7 +6,7 @@ import dashboard from "@/assets/images/dashboard.png";
 const WelcomeWidget = () => {
     return (
         <React.Fragment>
-            <div className="relative col-span-12 overflow-hidden card 2xl:col-span-8 bg-slate-900">
+            <div className="relative col-span-12 overflow-hidden card 2xl:col-span-8 bg-slate-900 order-1">
                 <div className="absolute inset-0">
                     <svg xmlns="http://www.w3.org/2000/svg" className="size-100" version="1.1" xmlnsXlink="http://www.w3.org/1999/xlink"  width="1440" height="560" preserveAspectRatio="none" viewBox="0 0 1440 560">
                         <g mask="url(&quot;#SvgjsMask1000&quot;)" fill="none">

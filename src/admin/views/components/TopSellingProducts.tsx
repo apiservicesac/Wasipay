@@ -13,7 +13,7 @@ import { Dropdown } from '@/common/components/Dropdown';
 const TopSellingProducts = () => {
     return (
         <React.Fragment>
-            <div className="col-span-12 card 2xl:col-span-4 2xl:row-span-2">
+            <div className="col-span-12 card 2xl:col-span-4 2xl:row-span-2 order-3 2xl:order-2">
                 <div className="card-body">
                     <div className="flex items-center mb-3">
                         <h6 className="grow text-15">Top Selling Products</h6>

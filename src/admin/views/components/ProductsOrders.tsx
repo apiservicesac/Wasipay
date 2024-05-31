@@ -137,7 +137,7 @@ const ProductsOrders = () => {
 
     return (
         <React.Fragment>
-            <div className="col-span-12 card 2xl:col-span-12">
+            <div className="col-span-12 card 2xl:col-span-12 order-4">
                 <div className="card-body">
                     <div className="grid items-center grid-cols-1 gap-3 mb-5 2xl:grid-cols-12">
                         <div className="2xl:col-span-3">
