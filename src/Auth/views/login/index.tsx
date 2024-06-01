@@ -70,7 +70,7 @@ export const LoginView = () => {
                             </div>
 
                             <div className="mt-10 text-center">
-                                <p className="mb-0 text-slate-500 dark:text-zink-200">Don't have an account ? <Link to="/auth-register-basic" className="font-semibold underline transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500"> SignUp</Link> </p>
+                                <p className="mb-0 text-slate-500 dark:text-zink-200">Don't have an account ? <Link to="/register" className="font-semibold underline transition-all duration-150 ease-linear text-slate-500 dark:text-zink-200 hover:text-custom-500 dark:hover:text-custom-500"> SignUp</Link> </p>
                             </div>
                         </form>
                     </div>
