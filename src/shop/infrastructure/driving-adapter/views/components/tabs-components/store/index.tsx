@@ -1,11 +1,11 @@
 import React from "react";
 
-import { ProductsComponent } from "../products";
+import { ProductsComponent } from "./components/products";
 import { PaginationComponent } from "./pagination";
-import { FilterComponent } from "../filters/filters";
-import { SortFilterComponent } from "../filters/sort_filter";
+import { FilterComponent } from "./components/filters/filters";
+import { SortFilterComponent } from "./components/filters/sort_filter";
 
-const Catalog = () => {
+export const Store = () => {
 
     const [list, setList] = React.useState<boolean>(true);
 
@@ -24,5 +24,3 @@ const Catalog = () => {
         </React.Fragment>
     );
 };
-
-export default Catalog;

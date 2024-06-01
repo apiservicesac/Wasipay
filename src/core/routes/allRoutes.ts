@@ -1,7 +1,7 @@
 import AdminComponent from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
 import { CreateProductView } from "@/admin/views/products/create";
-import ShopComponent from "@/shop/infrastructure/driving-adapter/views/public_profile";
+import ShopComponent from "@/shop/infrastructure/driving-adapter/views";
 
 interface RouteObject {
     path: string;

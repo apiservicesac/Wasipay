@@ -3,7 +3,7 @@ import ShopProfileInfo from "./components/profile";
 import Tab from "@/common/components/Tab/Tab";
 import { Nav } from "@/common/components/Tab/Nav";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
-import Catalog from "./components/catalog";
+import { Store } from "./components/tabs-components/store";
 import Layout from "./components/layout";
 import { ProfileInfo } from "./components/tabs-components/profile-info";
 import { Integration } from "./components/tabs-components/integration";
@@ -26,7 +26,7 @@ const ShopComponent = () => {
                     </div>
                     <Tab.Content className="tab-content">
                         <Tab.Pane eventKey="store-tab" id="store-tab">                            
-                            <Catalog />
+                            <Store />
                         </Tab.Pane>
                         <Tab.Pane eventKey="profile-tab" id="profile-tab">                            
                             <ProfileInfo />
