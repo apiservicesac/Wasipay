@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { authRoutes, publicRoutes } from './allRoutes';
-import LayoutAuth from '@/common/LayoutAuth';
+import LayoutAuth from '@/common/layout_1';
 
 const RouteIndex = () => {
   return (

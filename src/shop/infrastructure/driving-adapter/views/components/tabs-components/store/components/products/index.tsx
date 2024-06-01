@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/core/redux/hooks";
-import { HelperCart } from '../../../../cart/helper';
+import { HelperCart } from '../../../../../../../../../common/components/cart/helper';
 import { ProductCartEntity } from '@/shop/domain/entities';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';

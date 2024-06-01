@@ -1,10 +1,11 @@
 import { LoginView } from "@/Auth/views/login";
 import { LogoutView } from "@/Auth/views/logout";
 import { RegisterView } from "@/Auth/views/register";
+import { RegisterWizardView } from "@/Auth/views/register-wizard-view";
 import AdminView from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
 import { CreateProductView } from "@/admin/views/products/create";
-import ShopView from "@/shop/infrastructure/driving-adapter/views";
+import ShopView from "@/shop/infrastructure/driving-adapter/views/shop-view";
 
 interface RouteObject {
     path: string;
@@ -17,6 +18,7 @@ const publicRoutes: Array<RouteObject> = [
     { path: "/login", component: LoginView },
     { path: "/register", component: RegisterView },
     { path: "/logout", component: LogoutView },
+    { path: "/register-wizard", component: RegisterWizardView },
 ]
 
 const authRoutes: Array<RouteObject> = [
