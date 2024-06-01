@@ -5,7 +5,8 @@ import { Nav } from "@/common/components/Tab/Nav";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
 import Catalog from "./components/catalog";
 import Layout from "./components/layout";
-import { ProfileInfo } from "./components/profile-info";
+import { ProfileInfo } from "./components/tabs-components/profile-info";
+import { Integration } from "./components/tabs-components/integration";
 
 const ShopComponent = () => {
 
@@ -19,6 +20,7 @@ const ShopComponent = () => {
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
                                 <NavItemCustom label="Store" eventKey={'store-tab'}/>  
                                 <NavItemCustom label="Profile" eventKey={'profile-tab'}/>  
+                                <NavItemCustom label="Integration" eventKey={'integration-tab'}/>  
                             </Nav>
                         </div>
                     </div>
@@ -28,6 +30,9 @@ const ShopComponent = () => {
                         </Tab.Pane>
                         <Tab.Pane eventKey="profile-tab" id="profile-tab">                            
                             <ProfileInfo />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="integration-tab" id="integration-tab">                            
+                            <Integration />
                         </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>

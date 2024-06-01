@@ -36,16 +36,16 @@ const ShopProfileInfo = ({ className }: any) => {
                             </li>
                         </ul>
                         <div className='flex gap-2 mt-4  items-center justify-center'>
-                            <a href={shop?.profile?.social_media?.tiktok} target='_blank' className='text-lg flex items-center justify-center text-[#37C5BB] transition-all duration-200 ease-linear bg-[#C0F2EF] rounded size-9 hover:bg-[#9CE9E5] dark:bg-red-500/20 dark:hover:bg-red-500/30'>                                                        
+                            <a href={shop?.profile?.social_media?.tiktok} target='_blank' className='text-lg flex items-center justify-center text-[#37C5BB] transition-all duration-200 ease-linear bg-[#C0F2EF] rounded size-9 hover:bg-[#9CE9E5]'>                                                        
                                 <i className='ri-tiktok-line'></i>
                             </a>
-                            <a href={shop?.profile?.social_media?.instagram} target='_blank' className='text-lg flex items-center justify-center text-pink-500 transition-all duration-200 ease-linear bg-pink-100 rounded size-9 hover:bg-pink-200 dark:bg-pink-500/20 dark:hover:bg-pink-500/30'>                            
+                            <a href={shop?.profile?.social_media?.instagram} target='_blank' className='text-lg flex items-center justify-center text-pink-500 transition-all duration-200 ease-linear bg-pink-100 rounded size-9 hover:bg-pink-200'>                            
                                 <i className='ri-instagram-line'></i>
                             </a>
-                            <a href={shop?.profile?.social_media?.facebook} target='_blank' className='text-lg flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-sky-500 bg-sky-100 hover:bg-sky-200 dark:bg-sky-500/20 dark:hover:bg-sky-500/30'>
+                            <a href={shop?.profile?.social_media?.facebook} target='_blank' className='text-lg flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-sky-500 bg-sky-100 hover:bg-sky-200'>
                                 <i className='ri-facebook-fill'></i>
                             </a>                            
-                            <a href={shop?.profile?.social_media?.youtube} target='_blank' className='text-lg flex items-center justify-center text-red-500 transition-all duration-200 ease-linear bg-red-100 rounded size-9 hover:bg-red-200 dark:bg-red-500/20 dark:hover:bg-red-500/30'>                            
+                            <a href={shop?.profile?.social_media?.youtube} target='_blank' className='text-lg flex items-center justify-center text-red-500 transition-all duration-200 ease-linear bg-red-100 rounded size-9 hover:bg-red-200'>
                                 <i className='ri-youtube-line'></i>
                             </a>
                         </div>
