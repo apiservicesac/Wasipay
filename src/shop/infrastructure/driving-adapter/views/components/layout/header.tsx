@@ -35,7 +35,7 @@ export const HeaderLayout = ({ cart_products, handleDrawer } : { cart_products :
                         </li>
                         <li className="pt-2 mt-2 border-t border-slate-200 dark:border-zink-500">
                             <Link className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
-                            to={"/login"}><LogOut className="inline-block size-4"></LogOut> Sign Out</Link>
+                            to={"/logout"}><LogOut className="inline-block size-4"></LogOut> Sign Out</Link>
                         </li>
                     </ul>
                 </Dropdown.Content>
