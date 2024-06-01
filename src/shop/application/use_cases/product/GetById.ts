@@ -1,5 +1,5 @@
-import { ProductEntity as Entity } from '@/product/domain/entities'
-import { ProductRepository as Repository } from '@/product/domain/repositories'
+import { ProductEntity as Entity } from '@/shop/domain/entities'
+import { ProductRepository as Repository } from '@/shop/domain/repositories'
 
 export class GetByIdUseCase {
 

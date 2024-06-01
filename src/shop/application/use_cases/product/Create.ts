@@ -1,5 +1,5 @@
-import { ProductEntity as Entity } from "@/product/domain/entities"
-import { ProductRepository as Repository } from "@/product/domain/repositories"
+import { ProductEntity as Entity } from "@/shop/domain/entities"
+import { ProductRepository as Repository } from "@/shop/domain/repositories"
 import { CreateEntityException } from "@/shared/exceptions"
 
 export class CreateUseCase {
@@ -12,9 +12,9 @@ export class CreateUseCase {
         this._repository = repository
     }
 
-    async run(data: Entity): Promise<Entity> {
+    async run(shop_id: string, data: Entity): Promise<Entity> {
        
-        const entity: Entity | null = await this._repository.save(data)
+        const entity: Entity | null = await this._repository.save(shop_id, data)
 
         if(entity === null) throw new CreateEntityException()
         
