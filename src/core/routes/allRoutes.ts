@@ -1,3 +1,4 @@
+import { LoginView } from "@/Auth/views/login";
 import AdminView from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
 import { CreateProductView } from "@/admin/views/products/create";
@@ -11,6 +12,7 @@ interface RouteObject {
 
 const publicRoutes: Array<RouteObject> = [
     { path: "/", component: ShopView },
+    { path: "/login", component: LoginView },
 ]
 
 const authRoutes: Array<RouteObject> = [
