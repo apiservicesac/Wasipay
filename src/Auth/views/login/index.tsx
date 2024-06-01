@@ -2,11 +2,13 @@ import React from "react";
 import { Mail } from "lucide-react";
 import AuthIcon from "@/Auth/components/AuthIcon";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const LoginView = () => {
 
     document.title = "Sign In | Tailwick - React Admin & Dashboard Template";
+
+    const navigate = useNavigate()
 
     React.useEffect(() => {
         const bodyElement = document.body;
@@ -56,7 +58,7 @@ export const LoginView = () => {
                                 <div id="remember-error" className="hidden mt-1 text-sm text-red-500">Please check the "Remember me" before submitting the form.</div>
                             </div>
                             <div className="mt-10">
-                                <button type="submit" className="w-full text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Sign In</button>
+                                <button onClick={() => navigate('/')} type="submit" className="w-full text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Sign In</button>
                             </div>
 
                             <div className="relative text-center my-9 before:absolute before:top-3 before:left-0 before:right-0 before:border-t before:border-t-slate-200 dark:before:border-t-zink-500">
