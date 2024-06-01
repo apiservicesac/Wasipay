@@ -1,10 +1,10 @@
 import React from "react";
 import { useAppSelector } from "@/core/redux/hooks";
 import { HeaderLayout } from "./header";
-import CartComponent from "../cart";
-import { WhatsAppIcon } from "../wsp_icon";
+import CartComponent from "../components/cart";
+import { WhatsAppIcon } from "../components/wsp_icon";
 
-const Layout = ({ children }: any) => {
+export const LayoutPublic = ({ children }: any) => {
 
     document.title = "Web";
 
@@ -43,5 +43,3 @@ const Layout = ({ children }: any) => {
     </div>
     );
 }
-
-export default Layout;
