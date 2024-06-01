@@ -5,7 +5,7 @@ import Widgets from "./components/Widgets";
 import TopSellingProducts from "./components/TopSellingProducts";
 import ProductsOrders from "./components/ProductsOrders";
 
-const AdminComponent = () => {
+const AdminView = () => {
     return (
         <React.Fragment>
             <BreadCrumb title='Ecommerce' pageTitle='Dashboards' />
@@ -19,4 +19,4 @@ const AdminComponent = () => {
     );
 }
 
-export default AdminComponent;
+export default AdminView;

@@ -8,7 +8,7 @@ import Layout from "./components/layout";
 import { ProfileInfo } from "./components/tabs-components/profile-info";
 import { Integration } from "./components/tabs-components/integration";
 
-const ShopComponent = () => {
+const ShopView = () => {
 
     return (
         <Layout>
@@ -41,4 +41,4 @@ const ShopComponent = () => {
     );
 }
 
-export default ShopComponent;
+export default ShopView;

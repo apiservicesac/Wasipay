@@ -1,7 +1,7 @@
-import AdminComponent from "@/admin/views";
+import AdminView from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
 import { CreateProductView } from "@/admin/views/products/create";
-import ShopComponent from "@/shop/infrastructure/driving-adapter/views";
+import ShopView from "@/shop/infrastructure/driving-adapter/views";
 
 interface RouteObject {
     path: string;
@@ -10,11 +10,11 @@ interface RouteObject {
 }
 
 const publicRoutes: Array<RouteObject> = [
-    { path: "/", component: ShopComponent },
+    { path: "/", component: ShopView },
 ]
 
 const authRoutes: Array<RouteObject> = [
-    { path: "/dashboard", component: AdminComponent },
+    { path: "/dashboard", component: AdminView },
 
     // Products
     { path: "/dashboard/product", component: ProductsView },
