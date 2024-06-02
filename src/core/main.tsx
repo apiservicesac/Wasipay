@@ -11,7 +11,7 @@ import App from './App';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Providers>
-      <BrowserRouter basename={'/web'}>
+      <BrowserRouter basename={'/'}>
         <App />
       </BrowserRouter>
     </Providers>
