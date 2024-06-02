@@ -47,9 +47,24 @@ const countryOptions: Option[] = [
 ];
 
 
-export const ProfileInfo = () => {
 
+export const ProfileInfo = () => {
     const shop = useAppSelector((state) => state.shopReducer.profile);
+    const [formData, setFormData] = React.useState({
+        name: shop?.name || "",
+        description: shop?.description || "",
+        phone: shop?.phone || "",
+        email: shop?.email || "",
+        address: shop?.address || "",
+    });
+
+    const handleChange = (e:any) => {
+        const { id, value } = e.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [id]: value,
+        }));
+    };
 
     return (
         <React.Fragment>
@@ -60,53 +75,94 @@ export const ProfileInfo = () => {
                     <form action="#!">
                         <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
                             <div className="xl:col-span-6">
-                                <label htmlFor="inputValueName" className="inline-block mb-2 text-base font-medium">Name</label>
-                                <input type="text" id="inputValueName" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter your value" value={shop?.name} />
+                                <label htmlFor="name" className="inline-block mb-2 text-base font-medium">Name</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="Enter your value"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className="xl:col-span-6">
-                                <label htmlFor="inputValueDescription" className="inline-block mb-2 text-base font-medium">Description</label>
-                                <input type="text" id="inputValueDescription" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter your value" value={shop?.description} />
+                                <label htmlFor="description" className="inline-block mb-2 text-base font-medium">Description</label>
+                                <input
+                                    type="text"
+                                    id="description"
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="Enter your value"
+                                    value={formData.description}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className="xl:col-span-6">
-                                <label htmlFor="inputValuePhone" className="inline-block mb-2 text-base font-medium">Phone Number</label>
-                                <input type="text" id="inputValuePhone" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="+214 8456 8459 23" value={shop?.phone} />
+                                <label htmlFor="phone" className="inline-block mb-2 text-base font-medium">Phone Number</label>
+                                <input
+                                    type="text"
+                                    id="phone"
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="+214 8456 8459 23"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className="xl:col-span-6">
-                                <label htmlFor="inputValueEmail" className="inline-block mb-2 text-base font-medium">Email</label>
-                                <input type="email" id="inputValueEmail" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter your email address" value={shop?.email} />
+                                <label htmlFor="email" className="inline-block mb-2 text-base font-medium">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="Enter your email address"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className="xl:col-span-6">
-                                <label htmlFor="inputValueAddress" className="inline-block mb-2 text-base font-medium">Address</label>
-                                <input type="text" id="inputValueAddress" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter your email address" value={shop?.address} />
+                                <label htmlFor="address" className="inline-block mb-2 text-base font-medium">Address</label>
+                                <input
+                                    type="text"
+                                    id="address"
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    placeholder="Enter your address"
+                                    value={formData.address}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className="xl:col-span-4">
-                                <label htmlFor="inputValueDistrict" className="inline-block mb-2 text-base font-medium">District</label>
-                                <Select                                    
-                                    className="border-slate-300 focus:outline-none focus:border-custom-500"
-                                    id="choices-single-no-sorting"
-                                    name="choices-single-no-sorting"
-                                    data-choices data-choices-sorting-false
-                                    options={cityOptions}
-                                    isSearchable={true} />
-                            </div>
-                            <div className="xl:col-span-4">
-                                <label htmlFor="inputValueProvince" className="inline-block mb-2 text-base font-medium">Province</label>
+                                <label htmlFor="district" className="inline-block mb-2 text-base font-medium">District</label>
                                 <Select
                                     className="border-slate-300 focus:outline-none focus:border-custom-500"
                                     id="choices-single-no-sorting"
                                     name="choices-single-no-sorting"
-                                    data-choices data-choices-sorting-false
+                                    data-choices
+                                    data-choices-sorting-false
                                     options={cityOptions}
-                                    isSearchable={true} />
+                                    isSearchable={true}
+                                />
                             </div>
                             <div className="xl:col-span-4">
-                                <label htmlFor="inputValueCity" className="inline-block mb-2 text-base font-medium">City</label>
+                                <label htmlFor="province" className="inline-block mb-2 text-base font-medium">Province</label>
+                                <Select
+                                    className="border-slate-300 focus:outline-none focus:border-custom-500"
+                                    id="choices-single-no-sorting"
+                                    name="choices-single-no-sorting"
+                                    data-choices
+                                    data-choices-sorting-false
+                                    options={cityOptions}
+                                    isSearchable={true}
+                                />
+                            </div>
+                            <div className="xl:col-span-4">
+                                <label htmlFor="city" className="inline-block mb-2 text-base font-medium">City</label>
                                 <Select
                                     id="choices-single-no-sorting"
                                     name="choices-single-no-sorting"
-                                    data-choices data-choices-sorting-false
+                                    data-choices
+                                    data-choices-sorting-false
                                     options={countryOptions}
-                                    isSearchable={true} />
+                                    isSearchable={true}
+                                />
                             </div>
                         </div>
                         <div className="flex justify-end mt-6 gap-x-4">
@@ -115,7 +171,7 @@ export const ProfileInfo = () => {
                         </div>
                     </form>
                 </div>
-            </div >
-        </React.Fragment >
+            </div>
+        </React.Fragment>
     );
-}
+};
