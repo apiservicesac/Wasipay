@@ -2,6 +2,7 @@ import { LoginView } from "@/Auth/views/login";
 import { LogoutView } from "@/Auth/views/logout";
 import { RegisterView } from "@/Auth/views/register";
 import { RegisterWizardView } from "@/Auth/views/register-wizard-view";
+import { ResetPasswordView } from "@/Auth/views/reset-password";
 import AdminView from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
 import { CreateProductView } from "@/admin/views/products/create";
@@ -19,6 +20,7 @@ const publicRoutes: Array<RouteObject> = [
     { path: "/register", component: RegisterView },
     { path: "/logout", component: LogoutView },
     { path: "/register-wizard", component: RegisterWizardView },
+    { path: "/reset-password", component: ResetPasswordView },
 ]
 
 const authRoutes: Array<RouteObject> = [
