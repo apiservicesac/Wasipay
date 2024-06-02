@@ -16,24 +16,23 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
     const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = HelperCart()
 
     return (
-        <div className={`grid grid-cols-1 mt-5 md:grid-cols-2 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
+        <div className={`grid grid-cols-1 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
 
             {(products || []).map((item: ProductCartEntity) => (
                 <div key={item?.product?._id} className="card md:group-[.gridView]:flex relative">
                     <div className="relative group-[.gridView]:static p-5 group-[.gridView]:p-2">
                         <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">
-                            {/* <img src={item?.product?.file![0].url} alt="" className="group-[.gridView]:h-16" /> */}
-                            <Swiper className="pagination-slider"
+                            <Swiper className="pagination-slider group-[.gridView]:w-24"
                                 navigation={{
                                     nextEl: '.swiper-button-next',
                                     prevEl: '.swiper-button-prev',
                                 }}
                                 modules={[Pagination, Navigation]}>
                                 {item?.product?.file!.map((file) => (
-                                    <SwiperSlide key={file.url}><img src={file.url} alt="" /></SwiperSlide>
+                                    <SwiperSlide key={file.url}><img src={file.url} className="" /></SwiperSlide>
                                 ))}
-                                <div className="swiper-button-next after:hidden text-custom-500"><ChevronRight className='text-white' /></div>
-                                <div className="swiper-button-prev after:hidden text-custom-500"><ChevronLeft className='text-white' /></div>
+                                <div className="swiper-button-next after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronRight className='text-white' /></div>
+                                <div className="swiper-button-prev after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronLeft className='text-white' /></div>
                             </Swiper>
                         </div>
                     </div>
