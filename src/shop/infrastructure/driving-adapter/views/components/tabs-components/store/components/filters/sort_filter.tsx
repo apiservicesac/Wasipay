@@ -1,8 +1,15 @@
+import Drawer from "@/common/components/Drawer";
 import { Dropdown } from "@/common/components/Dropdown";
-import { ChevronDown, Filter, LayoutGrid, List } from "lucide-react";
+import { ChevronDown, Filter, LayoutGrid, List, X } from "lucide-react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { FilterDrawer } from "./filter_drawer";
 
 export const SortFilterComponent = ({ list, setList } : { list: boolean, setList: any}) => {
+
+    const [drawerFilter, setDrawerFilter] = React.useState<boolean>(false);
+    const drawerEndToggle = () => setDrawerFilter(!drawerFilter);
+
     return (
         <div className="flex flex-wrap items-center gap-2">                        
             <div className="flex gap-2 shrink-0">
@@ -27,12 +34,12 @@ export const SortFilterComponent = ({ list, setList } : { list: boolean, setList
                     </Dropdown.Content>
                 </Dropdown>
 
-                <button type="button" className={`2xl:hidden flex items-center justify-center size-[37.5px] p-0 bg-white text-custom-500 btn border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100`}><Filter className="size-4" /></button>
-
+                <button type="button" onClick={drawerEndToggle} className={`2xl:hidden flex items-center justify-center size-[37.5px] p-0 bg-white text-custom-500 btn border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100`}><Filter className="size-4" /></button>
+                <FilterDrawer drawerEndToggle={drawerEndToggle} drawerFilter={drawerFilter} />
                 <button type="button" id="listView" className={`flex items-center justify-center size-[37.5px] p-0 text-sky-500 btn bg-sky-100 hover:text-white hover:bg-sky-600 focus:text-white focus:bg-sky-600 [&.active]:text-white [&.active]:bg-sky-600 dark:bg-sky-500/20 dark:text-sky-400 dark:hover:bg-sky-500 dark:hover:text-white dark:focus:bg-sky-500 dark:focus:text-white dark:[&.active]:bg-sky-500 dark:[&.active]:text-white dark:ring-sky-400/20 ${!list && "active"}`} onClick={() => setList(false)}><List className="size-4" /></button>
                 <button type="button" id="gridView" className={`flex items-center justify-center size-[37.5px] p-0 text-sky-500 btn bg-sky-100 hover:text-white hover:bg-sky-600 focus:text-white focus:bg-sky-600 [&.active]:text-white [&.active]:bg-sky-600 dark:bg-sky-500/20 dark:text-sky-400 dark:hover:bg-sky-500 dark:hover:text-white dark:focus:bg-sky-500 dark:focus:text-white dark:[&.active]:bg-sky-500 dark:[&.active]:text-white dark:ring-sky-400/20 ${list && "active"}`} onClick={() => setList(true)}><LayoutGrid className="size-4" /></button>
 
-            </div>
+            </div>            
         </div>
     );
 }
