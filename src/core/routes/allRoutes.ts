@@ -4,6 +4,7 @@ import { LogoutView } from "@/Auth/views/logout";
 import { RegisterView } from "@/Auth/views/register";
 import { RegisterWizardView } from "@/Auth/views/register-wizard-view";
 import { ResetPasswordView } from "@/Auth/views/reset-password";
+import { VerifyEmailView } from "@/Auth/views/verify-email";
 import AdminView from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
 import { CreateProductView } from "@/admin/views/products/create";
@@ -23,6 +24,7 @@ const publicRoutes: Array<RouteObject> = [
     { path: "/register-wizard", component: RegisterWizardView },
     { path: "/reset-password", component: ResetPasswordView },
     { path: "/create-new-password", component: CreatePasswordView },    
+    { path: "/verify-email", component: VerifyEmailView },    
 ]
 
 const authRoutes: Array<RouteObject> = [
