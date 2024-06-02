@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronUp, Search, Star } from "lucide-react";
+import { Search } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const FilterComponent = () => {

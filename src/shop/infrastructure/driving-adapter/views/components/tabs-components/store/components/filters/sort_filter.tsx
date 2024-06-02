@@ -1,6 +1,5 @@
-import Drawer from "@/common/components/Drawer";
 import { Dropdown } from "@/common/components/Dropdown";
-import { ChevronDown, Filter, LayoutGrid, List, X } from "lucide-react";
+import { ChevronDown, Filter, LayoutGrid, List } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import { FilterDrawer } from "./filter_drawer";
