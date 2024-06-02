@@ -1,3 +1,4 @@
+import { CreatePasswordView } from "@/Auth/views/create-password";
 import { LoginView } from "@/Auth/views/login";
 import { LogoutView } from "@/Auth/views/logout";
 import { RegisterView } from "@/Auth/views/register";
@@ -21,6 +22,7 @@ const publicRoutes: Array<RouteObject> = [
     { path: "/logout", component: LogoutView },
     { path: "/register-wizard", component: RegisterWizardView },
     { path: "/reset-password", component: ResetPasswordView },
+    { path: "/create-new-password", component: CreatePasswordView },    
 ]
 
 const authRoutes: Array<RouteObject> = [
