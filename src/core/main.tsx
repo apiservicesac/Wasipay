@@ -6,14 +6,17 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { Providers } from '@/core/redux/provider'
 import App from './App';
+import { ReactQueryProvider } from './react-query';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Providers>
-      <BrowserRouter basename={'/'}>
-        <App />
-      </BrowserRouter>
-    </Providers>
+    <ReactQueryProvider>
+      <Providers>
+        <BrowserRouter basename={'/'}>
+          <App />
+        </BrowserRouter>
+      </Providers>
+    </ReactQueryProvider>
   </React.StrictMode>,
 )
