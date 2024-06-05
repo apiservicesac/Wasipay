@@ -1,18 +1,17 @@
 import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
-import { useAppSelector } from "@/core/redux/hooks";
-import { HelperCart } from '../../../../../../../../../common/components/cart/helper';
 import { ProductCartEntity } from '@/shop/domain/entities';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import { useQueryClient } from '@tanstack/react-query';
+import { HelperCart } from '@/common/components/cart/helper';
 
 export const ProductsComponent = ({ list }: { list: boolean }) => {
+    const queryClient =  useQueryClient()
 
-    const products = useAppSelector((state) => state.productReducer.products)
+    const products : ProductCartEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     
+
     const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = HelperCart()
 
     return (

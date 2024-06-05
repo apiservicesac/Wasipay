@@ -1,14 +1,14 @@
 import React from 'react';
 import { BadgeCheck, MapPin, UserCircle } from 'lucide-react';
-import { useAppSelector } from '@/core/redux/hooks';
 import Skeleton from 'react-loading-skeleton';
 import { UseQueryResult } from '@tanstack/react-query';
-import { ShopEntity } from '@/shop/domain/entities';
+import { ProductCartEntity, ShopEntity } from '@/shop/domain/entities';
 
-const ShopProfileInfo = ({ className, query_shop_profile }: { className: string, query_shop_profile: UseQueryResult<ShopEntity>}) => {
-    
-    const products = useAppSelector((state) => state.productReducer.products);
-    
+const ShopProfileInfo = (
+    { className, query_shop_profile, query_product_list } : 
+    { className: string, query_shop_profile: UseQueryResult<ShopEntity>, query_product_list: UseQueryResult<ProductCartEntity[]>}
+) => {
+        
     return (
         <React.Fragment>
             <div className={className}>
@@ -33,11 +33,11 @@ const ShopProfileInfo = ({ className, query_shop_profile }: { className: string,
                         </div>
                         <ul className='flex flex-wrap gap-3 mt-4 text-center items-center justify-center divide-x divide-slate-200 dark:divide-zink-500'>
                             <li className='px-5'>
-                                <h5>{products?.length}+</h5>
+                                <h5>{query_product_list.isLoading ? <Skeleton /> : query_product_list.data!.length}+</h5>
                                 <p className='text-slate-500 dark:text-zink-200'>Sales</p>
                             </li>
                             <li className='px-5'>
-                                <h5>{products?.length}+</h5>
+                                <h5>{query_product_list.isLoading ? <Skeleton /> : query_product_list.data!.length}+</h5>
                                 <p className='text-slate-500 dark:text-zink-200'>Products</p>
                             </li>
                         </ul>
