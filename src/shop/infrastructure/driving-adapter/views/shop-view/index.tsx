@@ -7,11 +7,11 @@ import { Store } from "../components/tabs-components/store";
 import { LayoutPublic } from "@/common/layout_2";
 import { ProfileInfo } from "../components/tabs-components/profile-info";
 import { Integration } from "../components/tabs-components/integration";
-import { ShopHelper } from "../../helper/ShopHelper";
+import { ShopProfileHelper } from "../../helper";
 
 const ShopView = () => {
 
-    const shop_helper = ShopHelper()
+    const shop_helper = ShopProfileHelper()
 
     return (
         <LayoutPublic>

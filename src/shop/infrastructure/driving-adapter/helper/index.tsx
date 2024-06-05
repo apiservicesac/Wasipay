@@ -1,5 +1,5 @@
-import { ShopHelper } from "./ShopHelper";
+import { ShopProfileHelper } from "./ShopProfileHelper";
 
-export default {
-    ShopHelper
+export {
+    ShopProfileHelper
 }

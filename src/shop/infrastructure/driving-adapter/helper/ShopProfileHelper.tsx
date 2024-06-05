@@ -3,7 +3,7 @@ import { ImplementationAxios as AxiosShop } from "@/shop/infrastructure/implemen
 import { GetByIdUseCase as ShopUseCaseGetById } from '@/shop/application/use_cases/shop'
 import { useQuery } from "@tanstack/react-query";
 
-export const ShopHelper = () => {
+export const ShopProfileHelper = () => {
 
     const shop_id = `${import.meta.env.VITE_SHOP_ID}`
   
