@@ -1,14 +1,7 @@
-import { ProductEntity } from "./Product";
-
-export interface ProductCartEntity {
-    product?: ProductEntity;
-    quantity?: number;
-    total_price?: number;
-    in_cart?: boolean;
-}
+import { ProductItemEntity } from "./Product";
 
 export interface CartEntity {
-    products?: ProductCartEntity[];
+    products?: ProductItemEntity[];
     subtotal_price?: number;
     total_tax?: number;
     total_price?: number;

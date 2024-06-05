@@ -1,10 +1,10 @@
-import { ProductEntity } from './Product'
+import { ProductEntity, ProductItemEntity } from './Product'
 import { ShopEntity } from './Shop'
-import { CartEntity, ProductCartEntity } from './Cart'
+import { CartEntity } from './Cart'
 
 export type {
     ProductEntity,
     ShopEntity,
     CartEntity, 
-    ProductCartEntity,
+    ProductItemEntity,
 }

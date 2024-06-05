@@ -18,3 +18,10 @@ export interface ProductEntity {
     createdAt?: Date;
     updatedAt?: Date;
 }
+
+export interface ProductItemEntity {
+    product?: ProductEntity;
+    quantity?: number;
+    total_price?: number;
+    in_cart?: boolean;
+}

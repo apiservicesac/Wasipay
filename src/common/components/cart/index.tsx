@@ -3,12 +3,15 @@ import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/core/redux/hooks";
 import Drawer from "@/common/components/Drawer";
-import { ProductCartEntity } from "@/shop/domain/entities";
+import { ProductItemEntity } from "@/shop/domain/entities";
 import { ProductItem } from "./components/Product";
+import { useQueryClient } from "@tanstack/react-query";
 
 const CartComponent = ({ show, handleDrawer }: any) => {
 
-    const cart_products = useAppSelector((state) => state.productReducer.products)
+    const queryClient =  useQueryClient()
+
+    const cart_products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
     const cart_price = useAppSelector((state) => state.cartReducer)
 
@@ -35,7 +38,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                     <div className="h-[calc(100vh_-_370px)] p-4 overflow-y-auto product-list">
                         <div className="flex flex-col gap-4">
                             {
-                                (filter_product_cart || [])?.map((item: ProductCartEntity) => (
+                                (filter_product_cart || [])?.map((item: ProductItemEntity) => (
                                     <ProductItem item={item} key={item.product?._id}/>
                                 ))
                             }

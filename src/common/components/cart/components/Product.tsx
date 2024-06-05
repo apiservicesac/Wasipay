@@ -1,8 +1,8 @@
-import { ProductCartEntity } from "@/shop/domain/entities";
+import { ProductItemEntity } from "@/shop/domain/entities";
 import { Minus, Plus, Trash } from "lucide-react";
 import { HelperCart } from "../helper";
 
-export const ProductItem = ({ item }:{ item:ProductCartEntity }) => {
+export const ProductItem = ({ item }:{ item:ProductItemEntity }) => {
 
     const { removeProductCart, decreaseProductQuantity, increaseProductQuantity } = HelperCart()
 

@@ -11,7 +11,7 @@ export const ShopProfileHelper = () => {
     const shopRepository = new AxiosShop()
     const shopUseCase = new ShopUseCaseGetById(shopRepository) 
     
-    const query_shop_profile = useQuery<any>({ queryKey: ['shop_profile'], queryFn: () => shopUseCase.run(shop_id) })
+    const query_shop_profile = useQuery<any>({ queryKey: ['shop_profile'], queryFn: () => shopUseCase.run(shop_id), refetchOnMount: false })
 
     return {
         query_shop_profile

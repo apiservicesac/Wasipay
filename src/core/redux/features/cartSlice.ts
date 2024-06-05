@@ -1,4 +1,4 @@
-import { CartEntity, ProductCartEntity } from "@/shop/domain/entities";
+import { CartEntity, ProductItemEntity } from "@/shop/domain/entities";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: CartEntity = {
@@ -12,7 +12,7 @@ export const cart_slice = createSlice({
   name: "cart_slice",
   initialState,
   reducers: {
-    addProductCartStore: (state, action: PayloadAction<ProductCartEntity[]>) => {
+    addProductCartStore: (state, action: PayloadAction<ProductItemEntity[]>) => {
       state.products = action.payload
     },
     setTotalPriceCart: (state, action: PayloadAction<number>) => {

@@ -2,11 +2,11 @@ import React from 'react';
 import { BadgeCheck, MapPin, UserCircle } from 'lucide-react';
 import Skeleton from 'react-loading-skeleton';
 import { UseQueryResult } from '@tanstack/react-query';
-import { ProductCartEntity, ShopEntity } from '@/shop/domain/entities';
+import { ProductItemEntity, ShopEntity } from '@/shop/domain/entities';
 
 const ShopProfileInfo = (
     { className, query_shop_profile, query_product_list } : 
-    { className: string, query_shop_profile: UseQueryResult<ShopEntity>, query_product_list: UseQueryResult<ProductCartEntity[]>}
+    { className: string, query_shop_profile: UseQueryResult<ShopEntity>, query_product_list: UseQueryResult<ProductItemEntity[]>}
 ) => {
         
     return (

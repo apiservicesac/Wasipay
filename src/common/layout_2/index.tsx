@@ -1,14 +1,15 @@
 import React from "react";
-import { useAppSelector } from "@/core/redux/hooks";
 import { HeaderLayout } from "./header";
 import CartComponent from "../components/cart";
 import { WhatsAppIcon } from "../components/wsp_icon";
+import { ProductItemEntity } from "@/shop/domain/entities";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const LayoutPublic = ({ children }: any) => {
 
-    document.title = "Web";
+    const queryClient =  useQueryClient()
 
-    const cart_products = useAppSelector((state) => state.productReducer.products)
+    const cart_products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
 
     const filder_product_cart = cart_products?.filter((product) => product.in_cart === true)
 

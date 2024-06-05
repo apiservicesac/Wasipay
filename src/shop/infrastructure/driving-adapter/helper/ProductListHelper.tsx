@@ -12,8 +12,7 @@ export const ProductListHelper = () => {
     const productRepository = new AxiosProduct()
     const productUseCase = new ProductUseCaseGetAll(productRepository)   
   
-    const query_product_list = useQuery<any>({ queryKey: ['query_product_list'], queryFn: () => productUseCase.run(shop_id) })
-
+    const query_product_list = useQuery<any>({ queryKey: ['query_product_list'], queryFn: () => productUseCase.run(shop_id), refetchOnMount: false })
   
     return {
         query_product_list

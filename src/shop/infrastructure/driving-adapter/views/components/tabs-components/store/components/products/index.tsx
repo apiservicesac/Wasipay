@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
-import { ProductCartEntity } from '@/shop/domain/entities';
+import { ProductItemEntity } from '@/shop/domain/entities';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useQueryClient } from '@tanstack/react-query';
@@ -9,7 +9,7 @@ import { HelperCart } from '@/common/components/cart/helper';
 export const ProductsComponent = ({ list }: { list: boolean }) => {
     const queryClient =  useQueryClient()
 
-    const products : ProductCartEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
+    const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     
 
     const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = HelperCart()
@@ -17,7 +17,7 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
     return (
         <div className={`grid grid-cols-1 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
 
-            {(products || []).map((item: ProductCartEntity) => (
+            {(products || []).map((item: ProductItemEntity) => (
                 <div key={item?.product?._id} className="card md:group-[.gridView]:flex relative">
                     <div className="relative group-[.gridView]:static p-5 group-[.gridView]:p-2">
                         <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">
