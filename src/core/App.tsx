@@ -1,6 +1,6 @@
 import { useAppDispatch } from "@/core/redux/hooks";
 import RouteIndex from "./routes";
-import React from "react";
+
 import { ImplementationAxios as AxiosShop } from "@/shop/infrastructure/implementation/axios/shop";
 import { ImplementationAxios as AxiosProduct } from "@/shop/infrastructure/implementation/axios/product";
 
@@ -9,48 +9,34 @@ import { GetAllUseCase as ProductUseCaseGetAll } from '@/shop/application/use_ca
 
 import { setShopProfile } from "@/shop/infrastructure/driving-adapter/redux/shopSlice";
 import { setProducts } from "@/shop/infrastructure/driving-adapter/redux/productSlice";
-import { ProductCartEntity } from "@/shop/domain/entities";
+import { useQuery } from "@tanstack/react-query";
 
-const LoadedData = async (dispatch:any) => {
+function App() {
 
+  const dispatch = useAppDispatch()
   const shop_id = `${import.meta.env.VITE_SHOP_ID}`
 
   
   // Loaded Data Shop Profile  
   const shopRepository = new AxiosShop()
   const shopUseCase = new ShopUseCaseGetById(shopRepository) 
-  const shop_response = await shopUseCase.run(shop_id)
-  dispatch(setShopProfile(shop_response!))
 
-    // Loaded Data Product Profile  
-    const productRepository = new AxiosProduct()
-    const productUseCase = new ProductUseCaseGetAll(productRepository) 
-    const product_response = await productUseCase.run(shop_id)
+  // Loaded Data Product Profile  
+  const productRepository = new AxiosProduct()
+  const productUseCase = new ProductUseCaseGetAll(productRepository)   
 
-    const new_list_product = product_response?.map((product) => {
-      const product_cart_entity : ProductCartEntity = {
-        product: product,
-        quantity: 0,
-        total_price: 0,
-        in_cart: false
-      }
-      return product_cart_entity
-    })
-    dispatch(setProducts(new_list_product!))
+  const query_shop_profile = useQuery({ queryKey: ['shop_profile'], queryFn: () => shopUseCase.run(shop_id) })
+  const query_product_list = useQuery({ queryKey: ['query_product_list'], queryFn: () => productUseCase.run(shop_id) })
 
-}
 
-function App() {
-
-  const dispatch = useAppDispatch();
-
-  React.useEffect(() => {
-    LoadedData(dispatch)
-  }, []);
+  if(query_shop_profile.isSuccess && query_product_list.isSuccess) {
+    dispatch(setShopProfile(query_shop_profile.data!))
+    dispatch(setProducts(query_product_list.data!))
+  }
 
   return (
     <RouteIndex />
-  );
+  );  
 }
 
 export default App;
