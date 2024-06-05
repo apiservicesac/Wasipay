@@ -1,4 +1,5 @@
 import '@/assets/scss/themes.scss';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -11,12 +12,13 @@ import { ReactQueryProvider } from './react-query';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ReactQueryProvider>
-      <Providers>
+    <Providers>
+      <ReactQueryProvider>
+
         <BrowserRouter basename={'/'}>
           <App />
         </BrowserRouter>
-      </Providers>
-    </ReactQueryProvider>
+      </ReactQueryProvider>
+    </Providers>    
   </React.StrictMode>,
 )
