@@ -1,6 +1,7 @@
 import React from "react";
 import Select from 'react-select';
-import { useAppSelector } from "@/core/redux/hooks";
+import { useQueryClient } from "@tanstack/react-query";
+import { ShopEntity } from "@/shop/domain/entities";
 
 interface Option { label: string; value: string; isDisabled?: boolean };
 
@@ -49,7 +50,10 @@ const countryOptions: Option[] = [
 
 
 export const ProfileInfo = () => {
-    const shop = useAppSelector((state) => state.shopReducer.profile);
+    const queryClient =  useQueryClient()
+
+    const shop : ShopEntity | undefined = queryClient.getQueryData(['shop_profile'])
+
     const [formData, setFormData] = React.useState({
         name: shop?.name || "",
         description: shop?.description || "",

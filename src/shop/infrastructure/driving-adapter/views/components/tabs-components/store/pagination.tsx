@@ -1,10 +1,11 @@
-import { useAppSelector } from "@/core/redux/hooks";
+import { ProductItemEntity } from "@/shop/domain/entities";
+import { useQueryClient } from "@tanstack/react-query";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const PaginationComponent = () => {
-
-    const products = useAppSelector((state) => state.productReducer.products)
+    const queryClient = useQueryClient()
+    const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
 
     return (
         <div className="flex flex-col items-center mb-5 md:flex-row">

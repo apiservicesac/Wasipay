@@ -1,14 +1,17 @@
 import React from "react";
 
 import { Cable } from "lucide-react";
-import { useAppSelector } from "@/core/redux/hooks";
+import { useQueryClient } from "@tanstack/react-query";
+import { ShopEntity } from "@/shop/domain/entities";
 
 interface LogoData {icon: string, style: string  }
 interface CardData { id: number; logo: LogoData; title: string; user_name: string }
 
 export const Integration = () => {
 
-    const shop = useAppSelector((state) => state.shopReducer.profile);
+    const queryClient =  useQueryClient()
+
+    const shop : ShopEntity | undefined = queryClient.getQueryData(['shop_profile'])
 
     const cardData: CardData[] = [
         {
