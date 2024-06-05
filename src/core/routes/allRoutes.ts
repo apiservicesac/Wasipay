@@ -1,10 +1,10 @@
-import { CreatePasswordView } from "@/Auth/views/create-password";
-import { LoginView } from "@/Auth/views/login";
-import { LogoutView } from "@/Auth/views/logout";
-import { RegisterView } from "@/Auth/views/register";
-import { RegisterWizardView } from "@/Auth/views/register-wizard-view";
-import { ResetPasswordView } from "@/Auth/views/reset-password";
-import { VerifyEmailView } from "@/Auth/views/verify-email";
+import { CreatePasswordView } from "@/Auth/infrastructure/driving-adapter/views/create-password";
+import { LoginView } from "@/Auth/infrastructure/driving-adapter/views/login";
+import { LogoutView } from "@/Auth/infrastructure/driving-adapter/views/logout";
+import { RegisterView } from "@/Auth/infrastructure/driving-adapter/views/register";
+import { RegisterWizardView } from "@/Auth/infrastructure/driving-adapter/views/register-wizard-view";
+import { ResetPasswordView } from "@/Auth/infrastructure/driving-adapter/views/reset-password";
+import { VerifyEmailView } from "@/Auth/infrastructure/driving-adapter/views/verify-email";
 import AdminView from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
 import { CreateProductView } from "@/admin/views/products/create";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Mail } from "lucide-react";
-import AuthIcon from "@/Auth/components/AuthIcon";
+import AuthIcon from "@/Auth/infrastructure/driving-adapter/components/AuthIcon";
 
 import { Link, useNavigate } from "react-router-dom";
 

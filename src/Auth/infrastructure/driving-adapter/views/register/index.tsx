@@ -1,5 +1,5 @@
 import React from "react";
-import AuthIcon from "@/Auth/components/AuthIcon";
+import AuthIcon from "@/Auth/infrastructure/driving-adapter/components/AuthIcon";
 import { Link } from "react-router-dom";
 
 // Formik validation
