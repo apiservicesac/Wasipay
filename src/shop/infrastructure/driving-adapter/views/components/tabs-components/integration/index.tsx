@@ -3,6 +3,7 @@ import React from "react";
 import { Cable } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { ShopEntity } from "@/shop/domain/entities";
+import { Link } from "react-router-dom";
 
 interface LogoData {icon: string, style: string  }
 interface CardData { id: number; logo: LogoData; title: string; user_name: string }
@@ -67,9 +68,9 @@ export const Integration = () => {
                                         </div>
                                     </div>
                                     <div className="shrink-0">
-                                        <button type="button" className="px-2 py-1.5 text-xs bg-white border-dashed text-custom-500 btn border-custom-500 hover:text-custom-500 hover:bg-custom-50 hover:border-custom-600 focus:text-custom-600 focus:bg-custom-50 focus:border-custom-600 active:text-custom-600 active:bg-custom-50 active:border-custom-600 dark:bg-zink-700 dark:ring-custom-400/20 dark:hover:bg-custom-800/20 dark:focus:bg-custom-800/20 dark:active:bg-custom-800/20">
+                                        <Link to={item.user_name} target="_blank" type="button" className="px-2 py-1.5 text-xs bg-white border-dashed text-custom-500 btn border-custom-500 hover:text-custom-500 hover:bg-custom-50 hover:border-custom-600 focus:text-custom-600 focus:bg-custom-50 focus:border-custom-600 active:text-custom-600 active:bg-custom-50 active:border-custom-600 dark:bg-zink-700 dark:ring-custom-400/20 dark:hover:bg-custom-800/20 dark:focus:bg-custom-800/20 dark:active:bg-custom-800/20">
                                             <Cable className="inline-block size-3 ltr:mr-1 rtl:ml-1"></Cable>
-                                            View Profile</button>
+                                            View Profile</Link>
                                     </div>
                                 </div>
 
