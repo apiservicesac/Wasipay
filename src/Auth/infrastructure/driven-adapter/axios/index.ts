@@ -12,15 +12,14 @@ class UserAdapter {
     });
   }
 
-  async login(user_email: string, password: string): Promise<CustomReponse<UserResponse<UserEntity>> | null> {
+  async login(email: string, password: string): Promise<CustomReponse<UserResponse<UserEntity>> | null> {
     try {
       const response : CustomReponse<UserResponse<UserEntity>> = await this._axios.post(`/user/login`, {
-        user_email, password
+        email, password
       });
       return response;
-    } catch (error) {
-      console.error('Error al iniciar sessión:', error);
-      throw error;
+    } catch (error) {      
+      return null
     }
   }
 

@@ -1,5 +1,6 @@
 import { UserEntity as Entity, UserResponse } from "@/Auth/domain/entities"
 import { UserRepository as Repository } from "@/Auth/domain/repositories"
+import { CustomReponse } from "@/shared/entities/Response"
 import { AuthenticateException } from "@/shared/exceptions"
 
 export class LoginUseCase {
@@ -12,16 +13,12 @@ export class LoginUseCase {
         this._repository = repository
     }
 
-    async run(user_email: string, password: string): Promise<UserResponse<Entity>> {
+    async run(email: string, password: string): Promise<CustomReponse<UserResponse<Entity>>> {
 
-        const user_response : UserResponse<Entity>  | null = await this._repository.login(user_email, password)
+        const response : CustomReponse<UserResponse<Entity>>  | null = await this._repository.login(email, password)
 
-        if (!user_response) throw new AuthenticateException()
+        if (response?.code !== 200) throw new AuthenticateException()
 
-        return {
-            user: user_response.user,
-            access_token: user_response.access_token,
-            refresh_token: user_response.refresh_token,
-        }
+        return response
     }
 }

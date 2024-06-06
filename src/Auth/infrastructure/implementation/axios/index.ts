@@ -5,8 +5,8 @@ import { CustomReponse } from "@/shared/entities/Response";
 
 class ImplementationAxios implements Repository {
 
-    async login(user_email: string, password: string): Promise<CustomReponse<UserResponse<UserEntity>> | null> {
-        return await Axios.login(user_email, password);        
+    async login(email: string, password: string): Promise<CustomReponse<UserResponse<UserEntity>> | null> {
+        return await Axios.login(email, password);        
     }
     
     async save (_data: Entity): Promise<CustomReponse<Entity> | null> {

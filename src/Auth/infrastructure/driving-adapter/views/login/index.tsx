@@ -2,14 +2,14 @@ import React from "react";
 import { Mail } from "lucide-react";
 import AuthIcon from "@/Auth/infrastructure/driving-adapter/components/AuthIcon";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { LoginHelper } from "./helper";
 
 export const LoginView = () => {
 
-    document.title = "Sign In | Tailwick - React Admin & Dashboard Template";
+    const helper = LoginHelper()
 
-    const navigate = useNavigate()
-
+    
     React.useEffect(() => {
         const bodyElement = document.body;
 
@@ -36,19 +36,39 @@ export const LoginView = () => {
                             <p className="text-slate-500 dark:text-zink-200">Sign in to continue to RedShop.</p>
                         </div>
 
-                        <form action="/" className="mt-10" id="signInForm">
+                        <form className="mt-10" id="signInForm" onSubmit={helper.handleSubmit}>
                             <div className="hidden px-4 py-3 mb-3 text-sm text-green-500 border border-green-200 rounded-md bg-green-50 dark:bg-green-400/20 dark:border-green-500/50" id="successAlert">
                                 You have <b>successfully</b> signed in.
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="username" className="inline-block mb-2 text-base font-medium">UserName / Email</label>
-                                <input type="text" id="username" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter username or email" />
-                                <div id="username-error" className="hidden mt-1 text-sm text-red-500">Please enter a valid email address.</div>
+                                <label htmlFor="username" className="inline-block mb-2 text-base font-medium">Email</label>
+                                <input 
+                                    onChange={helper.validation.handleChange}
+                                    onBlur={helper.validation.handleBlur}
+                                    value={helper.validation.values.email || ""}
+                                    type="text" 
+                                    id="email" 
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" 
+                                    placeholder="Enter email" 
+                                />
+                                {helper.validation.touched.email && helper.validation.errors.email ? (
+                                    <div id="email-error" className="mt-1 text-sm text-red-500">{helper.validation.errors.email}</div>
+                                ) : null}
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="password" className="inline-block mb-2 text-base font-medium">Password</label>
-                                <input type="password" id="password" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Enter password" />
-                                <div id="password-error" className="hidden mt-1 text-sm text-red-500">Password must be at least 8 characters long and contain both letters and numbers.</div>
+                                <input 
+                                    onChange={helper.validation.handleChange}
+                                    onBlur={helper.validation.handleBlur}
+                                    value={helper.validation.values.password || ""}
+                                    type="password" 
+                                    id="password" 
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" 
+                                    placeholder="Enter password" 
+                                />
+                                {helper.validation.touched.password && helper.validation.errors.password ? (
+                                    <div id="password-error" className="mt-1 text-sm text-red-500">{helper.validation.errors.password}</div>
+                                ) : null}
                             </div>
                             <div>
                                 <div className="flex items-center gap-2">
@@ -58,7 +78,7 @@ export const LoginView = () => {
                                 <div id="remember-error" className="hidden mt-1 text-sm text-red-500">Please check the "Remember me" before submitting the form.</div>
                             </div>
                             <div className="mt-10">
-                                <button onClick={() => navigate('/')} type="submit" className="w-full text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Sign In</button>
+                                <button type="submit" className="w-full text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">Sign In</button>
                             </div>
 
                             <div className="relative text-center my-9 before:absolute before:top-3 before:left-0 before:right-0 before:border-t before:border-t-slate-200 dark:before:border-t-zink-500">
