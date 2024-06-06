@@ -1,9 +1,13 @@
 import RouteIndex from "./routes";
+import { Toaster } from 'sonner'
 
 function App() {
 
   return (
-    <RouteIndex />
+    <>
+      <Toaster position="top-right"/>
+      <RouteIndex />
+    </>
   );  
 }
 
