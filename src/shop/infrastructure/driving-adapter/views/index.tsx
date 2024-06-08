@@ -1,13 +1,13 @@
 import React from "react";
-import ShopProfileInfo from "../components/profile";
+import ShopProfileInfo from "./components/profile";
 import Tab from "@/common/components/Tab/Tab";
 import { Nav } from "@/common/components/Tab/Nav";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
-import { Store } from "../components/tabs-components/store";
+import { Store } from "./components/tabs-components/store";
 import { LayoutPublic } from "@/common/layout_2";
-import { ProfileInfo } from "../components/tabs-components/profile-info";
-import { Integration } from "../components/tabs-components/integration";
-import { ProductListHelper, ShopProfileHelper } from "../../helper";
+import { ProfileInfo } from "./components/tabs-components/profile-info";
+import { Integration } from "./components/tabs-components/integration";
+import { ProductListHelper, ShopProfileHelper } from "../helper";
 
 const ShopView = () => {
 
