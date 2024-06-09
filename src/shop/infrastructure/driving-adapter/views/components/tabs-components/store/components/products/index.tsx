@@ -15,7 +15,7 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
     const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = HelperCart()
 
     return (
-        <div className={`grid grid-cols-2 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 2xl:grid-cols-6 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
+        <div className={`grid grid-cols-2 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 2xl:grid-cols-5 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
 
             {(products || []).map((item: ProductItemEntity) => (
                 <div key={item?.product?.id} className="card md:group-[.gridView]:flex relative">
