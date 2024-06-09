@@ -39,7 +39,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                         <div className="flex flex-col gap-4">
                             {
                                 (filter_product_cart || [])?.map((item: ProductItemEntity) => (
-                                    <ProductItem item={item} key={item.product?._id}/>
+                                    <ProductItem item={item} key={item.product?.id}/>
                                 ))
                             }
                         </div>
