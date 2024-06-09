@@ -62,9 +62,9 @@ const ShopProfileInfo = (
                             <a href={query_shop_profile.isLoading ? "#" : query_shop_profile.data!.social_media?.facebook} target='_blank' className='text-lg flex items-center justify-center transition-all duration-200 ease-linear rounded size-9 text-sky-500 bg-sky-100 hover:bg-sky-200'>
                                 <i className='ri-facebook-fill'></i>
                             </a>                            
-                            <a href={query_shop_profile.isLoading ? "#" : query_shop_profile.data!.social_media?.youtube} target='_blank' className='text-lg flex items-center justify-center text-red-500 transition-all duration-200 ease-linear bg-red-100 rounded size-9 hover:bg-red-200'>
+                            {/* <a href={query_shop_profile.isLoading ? "#" : query_shop_profile.data!.social_media?.youtube} target='_blank' className='text-lg flex items-center justify-center text-red-500 transition-all duration-200 ease-linear bg-red-100 rounded size-9 hover:bg-red-200'>
                                 <i className='ri-youtube-line'></i>
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                    

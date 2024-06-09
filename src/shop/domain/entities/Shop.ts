@@ -12,7 +12,7 @@ export interface ShopEntity {
         facebook?: string;
         tiktok?: string;
         instagram?: string;
-        youtube?: string;
+        // youtube?: string;
         whatsapp?: string;
     };
     createdAt?: Date;
