@@ -28,7 +28,7 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
                                 }}
                                 modules={[Pagination, Navigation]}>
                                 {item?.product?.images!.map((image) => (
-                                    <SwiperSlide key={image.url} className='flex items-center place-content-center'><img src={image.url} className="" /></SwiperSlide>
+                                    <SwiperSlide key={image.id} className='flex items-center place-content-center'><img src={image.url} className="" /></SwiperSlide>
                                 ))}
                                 <div className="swiper-button-next after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronRight className='text-white' /></div>
                                 <div className="swiper-button-prev after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronLeft className='text-white' /></div>
