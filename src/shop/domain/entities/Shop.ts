@@ -5,7 +5,6 @@ export interface ShopEntity {
     address?: string;
     city?: string;
     country?: string;
-    postal_code?: string;
     email?: string;
     phone?: string;
     image?: any;

@@ -1,7 +1,6 @@
 import React from "react";
 import Select from 'react-select';
-import { useQueryClient } from "@tanstack/react-query";
-import { ShopEntity } from "@/shop/domain/entities";
+import { ShopProfileTabHelper } from "./helper";
 
 interface Option { label: string; value: string; isDisabled?: boolean };
 
@@ -50,25 +49,12 @@ const countryOptions: Option[] = [
 
 
 export const ProfileInfo = () => {
-    const queryClient =  useQueryClient()
+    
+    const helper = ShopProfileTabHelper()
 
-    const shop : ShopEntity | undefined = queryClient.getQueryData(['shop_profile'])
-
-    const [formData, setFormData] = React.useState({
-        name: shop?.name || "",
-        description: shop?.description || "",
-        phone: shop?.phone || "",
-        email: shop?.email || "",
-        address: shop?.address || "",
-    });
-
-    const handleChange = (e:any) => {
-        const { id, value } = e.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [id]: value,
-        }));
-    };
+    React.useEffect(() => {
+        helper.UpdateStateFormData()
+    }, [])
 
     return (
         <React.Fragment>
@@ -85,8 +71,8 @@ export const ProfileInfo = () => {
                                     id="name"
                                     className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="Enter your value"
-                                    value={formData.name}
-                                    onChange={handleChange}
+                                    value={helper.formData.name}
+                                    onChange={helper.handleChange}
                                 />
                             </div>
                             <div className="xl:col-span-6">
@@ -96,8 +82,8 @@ export const ProfileInfo = () => {
                                     id="description"
                                     className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="Enter your value"
-                                    value={formData.description}
-                                    onChange={handleChange}
+                                    value={helper.formData.description}
+                                    onChange={helper.handleChange}
                                 />
                             </div>
                             <div className="xl:col-span-6">
@@ -107,8 +93,8 @@ export const ProfileInfo = () => {
                                     id="phone"
                                     className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="+214 8456 8459 23"
-                                    value={formData.phone}
-                                    onChange={handleChange}
+                                    value={helper.formData.phone}
+                                    onChange={helper.handleChange}
                                 />
                             </div>
                             <div className="xl:col-span-6">
@@ -118,8 +104,8 @@ export const ProfileInfo = () => {
                                     id="email"
                                     className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="Enter your email address"
-                                    value={formData.email}
-                                    onChange={handleChange}
+                                    value={helper.formData.email}
+                                    onChange={helper.handleChange}
                                 />
                             </div>
                             <div className="xl:col-span-6">
@@ -129,10 +115,21 @@ export const ProfileInfo = () => {
                                     id="address"
                                     className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                                     placeholder="Enter your address"
-                                    value={formData.address}
-                                    onChange={handleChange}
+                                    value={helper.formData.address}
+                                    onChange={helper.handleChange}
                                 />
                             </div>
+                            <div className="xl:col-span-6">
+                                <label htmlFor="city" className="inline-block mb-2 text-base font-medium">City</label>
+                                <input
+                                    type="city"
+                                    id="city"
+                                    className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
+                                    disabled={true}
+                                    value={helper.formData.city}
+                                    onChange={helper.handleChange}
+                                />
+                            </div>                        
                             <div className="xl:col-span-4">
                                 <label htmlFor="district" className="inline-block mb-2 text-base font-medium">District</label>
                                 <Select
