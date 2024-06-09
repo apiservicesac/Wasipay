@@ -37,7 +37,7 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
                     </div>
                     <div className="p-[10px] md:card-body !pt-0 md:group-[.gridView]:flex group-[.gridView]:!p-5 group-[.gridView]:gap-3 group-[.gridView]:grow">
                         <div className="group-[.gridView]:grow">
-                            <h6 className="mb-1 text-left transition-all duration-200 text-xs md:text-15 2xl:text-xl hover:text-custom-500 line-clamp-2     xl:line-clamp-none 2xl:line-clamp-none">
+                            <h6 className="mb-1 text-left transition-all duration-200 text-xs md:text-15 2xl:text-[17px] hover:text-custom-500 line-clamp-2     xl:line-clamp-none 2xl:line-clamp-none">
                                 <Link to="/">{item.product?.name}</Link>
                             </h6>
                             <h5 className="mt-4 text-16">S/. {item.product?.price} <small className="font-normal line-through text-slate-500 dark:text-zink-200">{item.product?.discount !== 0 ? item.product?.discount : ''}</small></h5>
