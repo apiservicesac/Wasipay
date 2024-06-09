@@ -41,7 +41,8 @@ export const ShopProfileTabHelper = () => {
         }),
         onSubmit: async (values: ShopEntity) => {            
             try {
-                const response = await shopUseCase.run(shop?.id!,values)
+                const entity = {...values, social_media: {...values.social_media, whatsapp: values.phone }}
+                const response = await shopUseCase.run(shop?.id!,entity)
                 queryClient.cancelQueries({ queryKey: ['shop_profile'] })
                 queryClient.setQueryData(['shop_profile'], response)                 
                 toast.success("Datos Actualizados Correctamente.")                
@@ -58,14 +59,15 @@ export const ShopProfileTabHelper = () => {
     }
 
     const UpdateStateFormData = () => {
-        validation.setValues({
-            ...validation.initialValues,
+        validation.setValues({            
             name: shop?.name!,
             description: shop?.description!,
             phone: shop?.phone!,
             email: shop?.email!,
             address: shop?.address!,
             city: shop?.city!,
+            country: 'Perú',
+            social_media: shop?.social_media!,
         });
     }
 
