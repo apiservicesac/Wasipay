@@ -40,10 +40,12 @@ export const IntegrationTabHelper = () => {
                                 acc[item.id] = item.user_name;
                                 return acc;
                             }, {} as { [key: string]: string });                    
-                            const response = await shopUseCase.run(shop?.id!, 'social_media', mappedData)
-                            console.log(response)
+
+                            const response = await shopUseCase.run(shop?.id!, 'social_media', mappedData)                            
+
                             queryClient.cancelQueries({ queryKey: ['shop_profile'] })
                             queryClient.setQueryData(['shop_profile'], response)                 
+                            
                             toast.success("Datos Actualizados Correctamente.")
                         }catch(e) {
                             toast.success("Error al actualizar.")
