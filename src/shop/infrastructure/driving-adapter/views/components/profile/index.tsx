@@ -15,7 +15,7 @@ const ShopProfileInfo = (
                 <div className='grid grid-cols-1 place-items-center'>
                     <div className='lg:col-span-2 2xl:col-span-1 inline-block'>
                         <div className='relative inline-block size-20 rounded-full shadow-md bg-slate-100 profile-user xl:size-28'>
-                            <img src={query_shop_profile.isLoading ? '#' : query_shop_profile.data!.file.url} alt='' className='object-cover border-0 rounded-full img-thumbnail user-profile-image' />
+                            <img src={query_shop_profile.isLoading ? '#' : query_shop_profile.data!.image.url} alt='' className='object-cover border-0 rounded-full img-thumbnail user-profile-image' />
                         </div>
                     </div>
                     <div className='lg:col-span-10 2xl:col-span-9 text-center'>

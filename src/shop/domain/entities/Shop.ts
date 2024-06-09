@@ -1,15 +1,14 @@
 export interface ShopEntity {
-    _id?: string;
+    id?: string;
     name?: string;
     description?: string;
-    image_id?: string;    
     address?: string;
     city?: string;
     country?: string;
     postal_code?: string;
     email?: string;
     phone?: string;
-    file?: any;
+    image?: any;
     social_media?: {
         facebook?: string;
         tiktok?: string;

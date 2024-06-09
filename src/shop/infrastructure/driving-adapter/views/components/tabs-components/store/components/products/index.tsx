@@ -18,7 +18,7 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
         <div className={`grid grid-cols-1 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
 
             {(products || []).map((item: ProductItemEntity) => (
-                <div key={item?.product?._id} className="card md:group-[.gridView]:flex relative">
+                <div key={item?.product?.id} className="card md:group-[.gridView]:flex relative">
                     <div className="relative group-[.gridView]:static p-5 group-[.gridView]:p-2">
                         <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">
                             <Swiper className="pagination-slider group-[.gridView]:w-24"
@@ -27,8 +27,8 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
                                     prevEl: '.swiper-button-prev',
                                 }}
                                 modules={[Pagination, Navigation]}>
-                                {item?.product?.file!.map((file) => (
-                                    <SwiperSlide key={file.url}><img src={file.url} className="" /></SwiperSlide>
+                                {item?.product?.images!.map((image) => (
+                                    <SwiperSlide key={image.url}><img src={image.url} className="" /></SwiperSlide>
                                 ))}
                                 <div className="swiper-button-next after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronRight className='text-white' /></div>
                                 <div className="swiper-button-prev after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronLeft className='text-white' /></div>
@@ -45,11 +45,11 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
                             {item.in_cart ? (
                                 <div className="flex items-center justify-between gap-3 w-full">
                                     <div className="inline-flex text-center input-step">
-                                        <button onClick={() => decreaseProductQuantity(item.product!._id!)} type="button" className="border size-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 rounded-l transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50">
+                                        <button onClick={() => decreaseProductQuantity(item.product!.id!)} type="button" className="border size-9 leading-[15px] minus bg-white dark:bg-zink-700 dark:border-zink-500 rounded-l transition-all duration-200 ease-linear border-slate-200 text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50">
                                             <Minus className="inline-block size-4"></Minus>
                                         </button>
                                         <input type="number" className="w-12 text-center h-9 border-y product-quantity dark:bg-zink-700 focus:shadow-none dark:border-zink-500" value={item.quantity} min="0" max="100" readOnly />
-                                        <button onClick={() => increaseProductQuantity(item.product!._id!)} type="button" className="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 rounded-r size-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50">
+                                        <button onClick={() => increaseProductQuantity(item.product!.id!)} type="button" className="transition-all duration-200 ease-linear bg-white border dark:bg-zink-700 dark:border-zink-500 rounded-r size-9 border-slate-200 plus text-slate-500 dark:text-zink-200 hover:bg-custom-500 dark:hover:bg-custom-500 hover:text-custom-50 dark:hover:text-custom-50 hover:border-custom-500 dark:hover:border-custom-500 focus:bg-custom-500 dark:focus:bg-custom-500 focus:border-custom-500 dark:focus:border-custom-500 focus:text-custom-50 dark:focus:text-custom-50">
                                             <Plus className="inline-block size-4"></Plus>
                                         </button>
                                     </div>

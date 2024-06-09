@@ -14,7 +14,7 @@ export const HelperCart = () => {
 
     const addProductCart = (newProduct: ProductItemEntity) => {
         const updatedProducts = [...products!]?.map((p: ProductItemEntity) => {
-            if (p.product?._id === newProduct?.product!._id) {
+            if (p.product?.id === newProduct?.product!.id) {
                 const updatedProduct = { ...p };
                 updatedProduct.in_cart = true;
                 updatedProduct.quantity! ++;
@@ -30,10 +30,10 @@ export const HelperCart = () => {
     };
     
     const removeProductCart = (product_id: string) => {
-        const updatedProducts = [...products!]?.find((p: ProductItemEntity) => p.product?._id === product_id)
+        const updatedProducts = [...products!]?.find((p: ProductItemEntity) => p.product?.id === product_id)
         if(updatedProducts){
             const updatedProducts = [...products!]?.map((p: ProductItemEntity) => {
-                if (p.product?._id === product_id) {
+                if (p.product?.id === product_id) {
                     const updatedProduct = { ...p };
                     dispatch(setTotalPriceCart(total_cart_price! - updatedProduct.total_price!))
                     updatedProduct.in_cart = false;
@@ -50,7 +50,7 @@ export const HelperCart = () => {
     
     const decreaseProductQuantity = (product_id: string) => {  
         const updatedProducts = [...products!]?.map((p: ProductItemEntity) => {
-            if (p.product?._id === product_id && p.quantity !== 0) {
+            if (p.product?.id === product_id && p.quantity !== 0) {
                 const updatedProduct = { ...p };
                 updatedProduct.quantity! --;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
@@ -70,7 +70,7 @@ export const HelperCart = () => {
         const allProducts = [...products!];    
 
         const updatedProducts = allProducts?.map((p: ProductItemEntity) => {
-            if (p.product?._id === product_id) {
+            if (p.product?.id === product_id) {
                 const updatedProduct = { ...p };
                 updatedProduct.quantity! ++;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;

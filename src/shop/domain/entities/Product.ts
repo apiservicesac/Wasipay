@@ -1,7 +1,7 @@
 import { ProductState, ProductType, ProductVisibility } from "../enums";
 
 export interface ProductEntity {
-    _id?: string;
+    id?: string;
     name?: string;  
     description?: string;
     price?: number;
@@ -12,7 +12,7 @@ export interface ProductEntity {
     product_category?: string;
     product_type?: ProductType;
     shop?: string;
-    file?: any[];
+    images?: any[];
     status?: ProductState;
     visibility?: ProductVisibility;
     createdAt?: Date;
