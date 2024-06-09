@@ -37,7 +37,16 @@ class ImplementationAxios implements Repository {
         }catch {
             return null
         }
-    }  
+    }
+    
+    async update_image(shop_id : string, formData: FormData): Promise<Entity | null> {        
+        try{
+            const { data } : { data: Entity } = await Axios.update_image(shop_id, formData);
+            return data
+        }catch {
+            return null
+        }
+    }
 
     async delete (id: string) : Promise<void | null > {
         try {

@@ -62,6 +62,20 @@ class ShopAdapter {
     }
   }
 
+  async update_image(id: string, formData: FormData): Promise<CustomReponse<Entity>> {
+    try {
+      const response : CustomReponse<Entity> = await this._axios.post(`/shop/update-image/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      return response;
+    } catch (error) {
+      console.error('Error al crear la aplicación:', error);
+      throw error;
+    }
+  }
+
   async delete(id: string): Promise<CustomReponse<null>> {
     try {
       const response : CustomReponse<null> = await this._axios.delete(`/shop/delete/${id}`);
