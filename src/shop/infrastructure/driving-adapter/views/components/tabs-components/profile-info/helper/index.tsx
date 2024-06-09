@@ -40,11 +40,12 @@ export const ShopProfileTabHelper = () => {
             city: Yup.string().required("Please Enter Your City"),
         }),
         onSubmit: async (values: ShopEntity) => {            
-            try {
-                const entity = {...values, social_media: {...values.social_media, whatsapp: values.phone }}
-                const response = await shopUseCase.run(shop?.id!,entity)
+            try {                                
+                const response = await shopUseCase.run(shop?.id!, values)
+                
                 queryClient.cancelQueries({ queryKey: ['shop_profile'] })
                 queryClient.setQueryData(['shop_profile'], response)                 
+
                 toast.success("Datos Actualizados Correctamente.")                
             }catch(e:any) {
                 toast.error("Error al actualizar.")
