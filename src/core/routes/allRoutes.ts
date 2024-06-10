@@ -7,7 +7,7 @@ import { ResetPasswordView } from "@/Auth/infrastructure/driving-adapter/views/r
 import { VerifyEmailView } from "@/Auth/infrastructure/driving-adapter/views/verify-email";
 import AdminView from "@/admin/views";
 import { ProductsView } from "@/admin/views/products";
-import { CreateProductView } from "@/admin/views/products/create";
+import { CreateProductView } from "@/admin/views/products/create-wizard-product";
 import ShopView from "@/shop/infrastructure/driving-adapter/views";
 
 interface RouteObject {
