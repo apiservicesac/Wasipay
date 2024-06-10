@@ -20,7 +20,7 @@ export const Helpers = () => {
     const columns = React.useMemo(() => [
         {
             header: "Product Code",
-            accessorKey: "productCode",
+            accessorKey: "code_product",
             enableColumnFilter: false,
             cell: (cell: any) => (
                 <Link to="#" className="transition-all duration-150 ease-linear product_code text-custom-500 hover:text-custom-600">{cell.getValue()}</Link>
@@ -28,22 +28,22 @@ export const Helpers = () => {
         },
         {
             header: "Product Name",
-            accessorKey: "productName",
+            accessorKey: "name",
             enableColumnFilter: false,
             enableSorting: true,
             cell: (cell: any) => (
                 <Link to="/apps-ecommerce-product-overview" className="flex items-center gap-2">
-                    <img src={cell.row.original.img} alt="Product images" className="h-6" />
-                    <h6 className="product_name">{cell.getValue()}</h6>
+                    <img src={cell.row.original.images[0].url} alt="Product images" className="h-6" />
+                    <h6 className="name">{cell.getValue()}</h6>
                 </Link>
             ),
         },
         {
             header: "Category",
-            accessorKey: "category",
+            accessorKey: "product_category",
             enableColumnFilter: false,
             cell: (cell: any) => (
-                <span className="category px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-slate-100 border-slate-200 text-slate-500 dark:bg-slate-500/20 dark:border-slate-500/20 dark:text-zink-200">{cell.getValue()}</span>
+                <span className="product_category px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-slate-100 border-slate-200 text-slate-500 dark:bg-slate-500/20 dark:border-slate-500/20 dark:text-zink-200">{cell.getValue()}</span>
             ),
         },
         {
@@ -54,7 +54,7 @@ export const Helpers = () => {
         },
         {
             header: "Stock",
-            accessorKey: "stock",
+            accessorKey: "quantity",
             enableColumnFilter: false,
             enableSorting: true,
         },
