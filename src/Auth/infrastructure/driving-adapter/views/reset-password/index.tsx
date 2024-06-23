@@ -30,7 +30,7 @@ export const ResetPasswordView = () => {
 
                         <div className="mt-8 text-center">
                             <h4 className="mb-2 text-custom-500 dark:text-custom-500">Forgot Password?</h4>
-                            <p className="mb-8 text-slate-500 dark:text-zink-200">Reset your RedShop password</p>
+                            <p className="mb-8 text-slate-500 dark:text-zink-200">Reset your Wasipay password</p>
                         </div>
 
                         <div className="px-4 py-3 mb-6 text-sm text-yellow-500 border border-transparent rounded-md bg-yellow-50 dark:bg-yellow-400/20">

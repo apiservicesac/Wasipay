@@ -33,7 +33,7 @@ export const LoginView = () => {
 
                         <div className="mt-8 text-center">
                             <h4 className="mb-1 text-custom-500 dark:text-custom-500">Welcome Back !</h4>
-                            <p className="text-slate-500 dark:text-zink-200">Sign in to continue to RedShop.</p>
+                            <p className="text-slate-500 dark:text-zink-200">Sign in to continue to .</p>
                         </div>
 
                         <form className="mt-10" id="signInForm" onSubmit={helper.handleSubmit}>

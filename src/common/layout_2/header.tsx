@@ -26,7 +26,7 @@ export const HeaderLayout = ({ cart_products, handleDrawer } : { cart_products :
                     <User2 className="inline-block size-5 stroke-1 fill-slate-100 group-data-[topbar=dark]:fill-topbar-item-bg-hover-dark group-data-[topbar=brand]:fill-topbar-item-bg-hover-brand"/>
                 </Dropdown.Trigger>
                 <Dropdown.Content placement="right-end" className="absolute z-50 p-4 text-left bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[14rem] dark:bg-zink-600" aria-labelledby="dropdownMenuButton">
-                    <h6 className="mb-2 text-sm font-normal text-slate-500 dark:text-zink-300">Bienvenido a RedShop</h6>
+                    <h6 className="mb-2 text-sm font-normal text-slate-500 dark:text-zink-300">Bienvenido a Wasipay</h6>
                     <ul>
                         <li>
                             <Link className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
