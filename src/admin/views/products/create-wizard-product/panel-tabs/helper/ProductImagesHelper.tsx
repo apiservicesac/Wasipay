@@ -1,4 +1,6 @@
 import { useTabContext } from "@/common/components/Tab/TabContext";
+import { UseLocalContext } from "@/core/context/UseLocalContext";
+import { ProductEntity } from "@/shop/domain/entities";
 import React from "react";
 
 
@@ -6,6 +8,7 @@ export const ProductImagesHelper = () => {
 
     const { changeTab } = useTabContext();
 
+    const { productCreate, setStateProduct } = UseLocalContext()
     const [selectedFiles, setSelectedFiles] = React.useState<any>([])
 
     const handleAcceptedFiles = (files: any) => {
@@ -30,10 +33,15 @@ export const ProductImagesHelper = () => {
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
     }
 
-
-
-
-    const nextPage = async () => {
+    const nextPage = () => {        
+        const newProduct : ProductEntity = {
+            ...productCreate,
+            images: selectedFiles,
+            // Types of property 'publish_date_time' are incompatible.
+            // Assert type to Date
+            publish_date_time: productCreate?.publish_date_time as Date,            
+        }
+        setStateProduct(newProduct)
         changeTab("completed")
     }
 

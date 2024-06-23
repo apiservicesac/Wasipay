@@ -1,4 +1,8 @@
+import { enumToOptions } from "@/admin/views/utils/enumOptions";
 import { useTabContext } from "@/common/components/Tab/TabContext";
+import { UseLocalContext } from "@/core/context/UseLocalContext";
+import { ProductEntity } from "@/shop/domain/entities";
+import { ProductState, ProductTax, ProductVisibility } from "@/shop/domain/enums";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
@@ -7,23 +11,11 @@ export const ProductDetailsHelper = () => {
 
     const { changeTab } = useTabContext();
 
-    const taxAplicableOptions = [
-        { value: 'INCLUDE_PRICE', label: 'Included in Price' },
-        { value: 'NOT_INCLUDE_PRICE', label: 'Not Included in Price' },
-    ]
+    const { productCreate, setStateProduct } = UseLocalContext()
 
-    const statusProductOptions = [
-        { value: 'AVAILABLE', label: 'Available' },
-        { value: 'SOLD_OUT', label: 'Sold out' },
-        { value: 'OUT_OF_STOCK', label: 'out of stock' },
-    ]
-
-    const visibilityProductOptions = [
-        { value: 'DRAFT', label: 'Draft' },
-        { value: 'PUBLISHED', label: 'Published' },        
-        { value: 'SCHEDULED', label: 'Scheduled' },
-        { value: 'HIDDEN', label: 'Hidden' },        
-    ]
+    const statusProductOptions = enumToOptions(ProductState);
+    const visibilityProductOptions = enumToOptions(ProductVisibility);
+    const taxAplicableOptions = enumToOptions(ProductTax);
 
     const validation :any = useFormik({
         initialValues: {            
@@ -32,7 +24,7 @@ export const ProductDetailsHelper = () => {
             brand: "",
             price: 0,
             discount: 0,
-            tax: "INCLUDE_PRICE",
+            product_tax: "INCLUDE_PRICE",
             publish_date_time: new Date(),
             status: "AVAILABLE",
             visibility: "DRAFT",
@@ -52,19 +44,23 @@ export const ProductDetailsHelper = () => {
             discount: Yup.number()
                 .integer("A discount can't include a decimal point")
                 .required('A discount is required'),
-            tax: Yup.string().required("Tax is required"),            
+            product_tax: Yup.string().required("Tax is required"),            
             publish_date_time: Yup.string().required("publish_date_time is required"),            
             status: Yup.string().required("Status is required"),            
             visibility: Yup.string().required("Visibility is required"),            
             tags: Yup.string().required("Tags is required"),          
         }),
-        onSubmit: (values: any) => {
-            console.log(values);
+        onSubmit: (values: any) => {            
+            const newProduct : ProductEntity = {
+                ...productCreate,
+                ...values,
+            }
+            setStateProduct(newProduct)
         },
     });
 
     const handleTaxAplicableOptionsChange = (selectedOption: any) => {
-        validation.setFieldValue('tax', selectedOption ? selectedOption.value : '');
+        validation.setFieldValue('product_tax', selectedOption ? selectedOption.value : '');
     };
 
     const handleStatusProductOptionsChange = (selectedOption: any) => {

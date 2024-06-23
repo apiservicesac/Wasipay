@@ -103,20 +103,20 @@ export const ProductDetails = () => {
                         }
                     </div>
                     <div>
-                        <label htmlFor="tax" className="inline-block mb-2 text-base font-medium">TAX Applicable</label>
+                        <label htmlFor="product_tax" className="inline-block mb-2 text-base font-medium">TAX Applicable</label>
                         <Select
                             className="border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                             options={helper.taxAplicableOptions}
                             isSearchable={false}
-                            name="tax"
-                            value={helper.taxAplicableOptions.find(option => option.value === helper.validation.values.tax)}
+                            name="product_tax"
+                            value={helper.taxAplicableOptions.find(option => option.value === helper.validation.values.product_tax)}
                             onChange={helper.handleTaxAplicableOptionsChange}
                             onBlur={helper.validation.handleBlur}
-                            id="tax"
+                            id="product_tax"
                         />                        
                         {
-                            helper.validation.touched.tax && helper.validation.errors.tax ?
-                                <div id="tax" className="text-red-500">{helper.validation.errors.tax}</div>
+                            helper.validation.touched.product_tax && helper.validation.errors.product_tax ?
+                                <div id="product_tax" className="text-red-500">{helper.validation.errors.product_tax}</div>
                                 : null
                         }
                     </div>

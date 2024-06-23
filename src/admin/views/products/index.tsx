@@ -12,7 +12,7 @@ export const ProductsView = () => {
     const queryClient = useQueryClient()
     const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     const { columns } = Helpers()
-    console.log(products)
+    
     return (
         <>
             <ActionCard />

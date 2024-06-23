@@ -20,7 +20,7 @@ export const Helpers = () => {
     const columns = React.useMemo(() => [
         {
             header: "Product Code",
-            accessorKey: "code_product",
+            accessorKey: "product_code",
             enableColumnFilter: false,
             cell: (cell: any) => (
                 <Link to="#" className="transition-all duration-150 ease-linear product_code text-custom-500 hover:text-custom-600">{cell.getValue()}</Link>

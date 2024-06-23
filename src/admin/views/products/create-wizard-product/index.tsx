@@ -6,7 +6,7 @@ import { Nav } from "@/common/components/Tab/Nav";
 import { ProductInfo } from "./panel-tabs/ProductInfo";
 import { ProductImages } from "./panel-tabs/ProductImages";
 import { ProductDetails } from "./panel-tabs/ProductDetails";
-import { Completed } from "./panel-tabs/Completed";
+import { ProductCompleted } from "./panel-tabs/ProductCompleted";
 
 export const CreateProductView = () => {
     return (
@@ -57,7 +57,7 @@ export const CreateProductView = () => {
                                         <ProductImages />
                                     </Tab.Pane>
                                     <Tab.Pane eventKey="completed">
-                                        <Completed />
+                                        <ProductCompleted />
                                     </Tab.Pane>
                                 </Tab.Content>
 

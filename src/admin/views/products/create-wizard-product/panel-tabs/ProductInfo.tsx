@@ -30,19 +30,20 @@ export const ProductInfo = () => {
                         }
                     </div>
                     <div>
-                        <label htmlFor="code_product" className="inline-block mb-2 text-base font-medium">Product Code <span className="text-red-500">*</span></label>
+                        <label htmlFor="product_code" className="inline-block mb-2 text-base font-medium">Product Code <span className="text-red-500">*</span></label>
                         <input
                             type="text"
-                            id="code_product"
+                            disabled
+                            id="product_code"
                             className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"
                             placeholder="Product Code"
-                            value={helper.validation.values.code_product}
+                            value={helper.validation.values.product_code}
                             onChange={helper.validation.handleChange}
                             onBlur={helper.validation.handleBlur}
                         />
                         {
-                            helper.validation.touched.code_product && helper.validation.errors.code_product ?
-                                <div id="code_product" className="text-red-500">{helper.validation.errors.code_product}</div>
+                            helper.validation.touched.product_code && helper.validation.errors.product_code ?
+                                <div id="product_code" className="text-red-500">{helper.validation.errors.product_code}</div>
                                 : null
                         }
                     </div>                    
