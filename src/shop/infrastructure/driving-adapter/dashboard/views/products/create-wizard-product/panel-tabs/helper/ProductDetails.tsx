@@ -1,4 +1,4 @@
-import { enumToOptions } from "@/admin/views/utils/enumOptions";
+import { enumToOptions } from "@/shop/infrastructure/driving-adapter/dashboard/views/utils/enumOptions";
 import { useTabContext } from "@/common/components/Tab/TabContext";
 import { UseLocalContext } from "@/core/context/UseLocalContext";
 import { ProductEntity } from "@/shop/domain/entities";

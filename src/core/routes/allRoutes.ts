@@ -5,10 +5,10 @@ import { RegisterView } from "@/Auth/infrastructure/driving-adapter/views/regist
 import { RegisterWizardView } from "@/Auth/infrastructure/driving-adapter/views/register-wizard-view";
 import { ResetPasswordView } from "@/Auth/infrastructure/driving-adapter/views/reset-password";
 import { VerifyEmailView } from "@/Auth/infrastructure/driving-adapter/views/verify-email";
-import AdminView from "@/admin/views";
-import { ProductsView } from "@/admin/views/products";
-import { CreateProductView } from "@/admin/views/products/create-wizard-product";
-import ShopView from "@/shop/infrastructure/driving-adapter/views";
+import AdminView from "@/shop/infrastructure/driving-adapter/dashboard/views";
+import { ProductsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products";
+import { CreateProductView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products/create-wizard-product";
+import ShopView from "@/shop/infrastructure/driving-adapter/public/views";
 
 interface RouteObject {
     path: string;
