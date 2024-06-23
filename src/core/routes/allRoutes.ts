@@ -8,7 +8,7 @@ import { VerifyEmailView } from "@/Auth/infrastructure/driving-adapter/views/ver
 import AdminView from "@/shop/infrastructure/driving-adapter/dashboard/views";
 import { ProductsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products";
 import { CreateProductView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products/create-wizard-product";
-import ShopView from "@/shop/infrastructure/driving-adapter/public/views";
+import ShopView from "@/shop/infrastructure/driving-adapter/public/views/home";
 
 interface RouteObject {
     path: string;

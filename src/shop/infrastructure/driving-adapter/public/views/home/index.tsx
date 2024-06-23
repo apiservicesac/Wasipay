@@ -7,7 +7,7 @@ import { Store } from "./components/tabs-components/store";
 import { LayoutPublic } from "@/common/layout_2";
 import { ProfileInfo } from "./components/tabs-components/profile-info";
 import { Integration } from "./components/tabs-components/integration";
-import { ProductListHelper, ShopProfileHelper } from "../helper";
+import { ProductListHelper, ShopProfileHelper } from "./helper";
 
 const ShopView = () => {
 
