@@ -11,17 +11,19 @@ import { BrowserRouter } from 'react-router-dom';
 import { Providers } from '@/core/redux/provider'
 import App from './App';
 import { ReactQueryProvider } from './react-query';
+import { UseLocalContextProvider } from './context/UseLocalContext';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Providers>
-      <ReactQueryProvider>
-
-        <BrowserRouter basename={'/'}>
-          <App />
-        </BrowserRouter>
-      </ReactQueryProvider>
-    </Providers>    
+    <UseLocalContextProvider>
+      <Providers>
+        <ReactQueryProvider>
+          <BrowserRouter basename={'/'}>
+            <App />
+          </BrowserRouter>
+        </ReactQueryProvider>
+      </Providers>    
+    </UseLocalContextProvider>
   </React.StrictMode>,
 )
