@@ -11,7 +11,13 @@ export enum ProductState {
 }
 
 export enum ProductVisibility {
+    DRAFT = 'DRAFT',
     PUBLISHED = 'PUBLISHED',
     SCHEDULED = 'SCHEDULED',
     HIDDEN = 'HIDDEN',
+}
+
+export enum ProductTax {
+    DRAFT = 'INCLUDE_PRICE',
+    PUBLISHED = 'NOT_INCLUDE_PRICE',
 }
