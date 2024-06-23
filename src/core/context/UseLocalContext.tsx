@@ -1,20 +1,26 @@
-import { createContext, useContext, useState } from "react";
+import { ProductEntity } from "@/shop/domain/entities";
+import { createContext, useContext, useState, ReactNode } from "react";
 
-const LocalStateContext = createContext({});
-
-export const UseLocalContextProvider = ({ children }: {children: any}) => {
-    const [stateText, setStateText] = useState(null)
-    return (
-        <LocalStateContext.Provider
-            value={{
-                stateText, setStateText
-            }}
-        >
-            {children}
-        </LocalStateContext.Provider>
-  )
+interface LocalStateContextType {
+    productCreate: ProductEntity | null;
+    setStateProduct: (product: ProductEntity | null) => void;
 }
 
-export const UseLocalContext = () => {
-    return useContext(LocalStateContext);
-  };
+const LocalStateContext = createContext<LocalStateContextType | undefined>(undefined);
+
+export const UseLocalContextProvider = ({ children }: {children: ReactNode}) => {
+    const [productCreate, setStateProduct] = useState<ProductEntity | null>(null);
+    return (
+        <LocalStateContext.Provider value={{ productCreate, setStateProduct }}>
+            {children}
+        </LocalStateContext.Provider>
+    );
+};
+
+export const UseLocalContext = (): LocalStateContextType => {
+    const context = useContext(LocalStateContext);
+    if (context === undefined) {
+        throw new Error("UseLocalContext must be used within a UseLocalContextProvider");
+    }
+    return context;
+};
