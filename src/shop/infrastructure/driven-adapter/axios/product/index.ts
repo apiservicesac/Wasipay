@@ -32,6 +32,16 @@ class ProductAdapter {
     }
   }
 
+  async getNextCode(shop_id: string): Promise<CustomReponse<string>> {
+    try {
+      const response : CustomReponse<string> = await this._axios.get(`/product/get-next-code/${shop_id}`);
+      return response;
+    } catch (error) {
+      console.error('Error al obtener la aplicación por ID:', error);
+      throw error;
+    }
+  }
+
   async create(shop_id: string, data: Entity): Promise<CustomReponse<Entity>> {
     try {
       const response : CustomReponse<Entity> = await this._axios.post(`/product/create/${shop_id}`, data);
@@ -55,6 +65,21 @@ class ProductAdapter {
   async update_field(id: string, data: any): Promise<CustomReponse<Entity>> {
     try {
       const response : CustomReponse<Entity> = await this._axios.patch(`/product/update-field/${id}`, data);
+      return response;
+    } catch (error) {
+      console.error('Error al crear la aplicación:', error);
+      throw error;
+    }
+  }
+
+
+  async update_images(id: string, formData: FormData): Promise<CustomReponse<Entity>> {
+    try {
+      const response : CustomReponse<Entity> = await this._axios.post(`/product/update-images/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return response;
     } catch (error) {
       console.error('Error al crear la aplicación:', error);

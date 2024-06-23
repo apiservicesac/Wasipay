@@ -39,6 +39,15 @@ class ImplementationAxios implements Repository {
         }
     }  
 
+    async update_images(id : string, formData: FormData): Promise<Entity | null> {        
+        try{
+            const { data } : { data: Entity } = await Axios.update_images(id, formData);
+            return data
+        }catch {
+            return null
+        }
+    }
+
     async delete (id: string) : Promise<void | null > {
         try {
             await Axios.delete(id)
@@ -49,6 +58,14 @@ class ImplementationAxios implements Repository {
 
     async getById(id: string): Promise<Entity | null> {
         const { data } : { data: Entity } = await Axios.getById(id);
+    
+        if (!data) return null;
+    
+        return data
+    }
+    
+    async getNextCode(shop_id: string): Promise<string | null> {
+        const { data }: { data: string } = await Axios.getNextCode(shop_id);
     
         if (!data) return null;
     

@@ -3,7 +3,7 @@ import { ProductState, ProductTax, ProductType, ProductVisibility } from "../enu
 export interface ProductEntity {
     id?: string;
     name?: string;
-    code_product?: string; 
+    product_code?: string; 
     description?: string;
     price?: number;
     discount?: number;
