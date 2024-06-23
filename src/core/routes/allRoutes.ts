@@ -8,6 +8,7 @@ import { VerifyEmailView } from "@/Auth/infrastructure/driving-adapter/views/ver
 import AdminView from "@/shop/infrastructure/driving-adapter/dashboard/views";
 import { ProductsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products";
 import { CreateProductView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products/create-wizard-product";
+import { CheckouView } from "@/shop/infrastructure/driving-adapter/public/views/checkout";
 import ShopView from "@/shop/infrastructure/driving-adapter/public/views/home";
 
 interface RouteObject {
@@ -18,6 +19,7 @@ interface RouteObject {
 
 const publicRoutes: Array<RouteObject> = [
     { path: "/", component: ShopView },
+    { path: "/checkout", component: CheckouView },
     { path: "/login", component: LoginView },
     { path: "/register", component: RegisterView },
     { path: "/logout", component: LogoutView },

@@ -14,7 +14,6 @@ const ShopView = () => {
     const shop_helper = ShopProfileHelper()
     const product_list_helper = ProductListHelper()
 
-
     return (
         <LayoutPublic>
             <React.Fragment>
