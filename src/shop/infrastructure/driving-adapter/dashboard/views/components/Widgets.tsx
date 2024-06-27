@@ -17,7 +17,7 @@ const Widgets = () => {
                     <p className="text-slate-500 dark:text-zink-200">Total Revenue</p>
                 </div>
             </div>
-            <div className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer order-2 2xl:order-3">
+            <Link to={'/dashboard/order'} className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer order-2 2xl:order-3">
                 <div className="text-center card-body">
                     <div className="flex items-center justify-center mx-auto text-purple-500 bg-purple-100 rounded-full size-14 dark:bg-purple-500/20">                        
                         <Truck />
@@ -25,7 +25,7 @@ const Widgets = () => {
                     <h5 className="mt-4 mb-2"><CountUp end={13461} className="counter-value" /></h5>
                     <p className="text-slate-500 dark:text-zink-200">Total Orders</p>
                 </div>
-            </div>
+            </Link>
             <Link to={'/dashboard/product'} className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer order-2 2xl:order-3">
                 <div className="text-center card-body">
                     <div className="flex items-center justify-center mx-auto text-green-500 bg-green-100 rounded-full size-14 dark:bg-green-500/20">
