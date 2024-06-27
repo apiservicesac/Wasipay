@@ -2,7 +2,6 @@ import BreadCrumb from "@/common/BreadCrumb";
 import WelcomeWidget from "./components/WelcomeWidget";
 import React from "react";
 import Widgets from "./components/Widgets";
-import TopSellingProducts from "./components/TopSellingProducts";
 import ProductsOrders from "./components/ProductsOrders";
 import OrderStatistics from "./components/OrderStatistics";
 
