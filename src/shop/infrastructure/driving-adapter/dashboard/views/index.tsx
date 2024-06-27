@@ -4,6 +4,7 @@ import React from "react";
 import Widgets from "./components/Widgets";
 import TopSellingProducts from "./components/TopSellingProducts";
 import ProductsOrders from "./components/ProductsOrders";
+import OrderStatistics from "./components/OrderStatistics";
 
 const AdminView = () => {
     return (
@@ -11,7 +12,7 @@ const AdminView = () => {
             <BreadCrumb title='Ecommerce' pageTitle='Dashboards' />
             <div className="grid grid-cols-12 gap-x-5">
                 <WelcomeWidget />
-                <TopSellingProducts />
+                <OrderStatistics />
                 <Widgets />
                 <ProductsOrders />
             </div>
