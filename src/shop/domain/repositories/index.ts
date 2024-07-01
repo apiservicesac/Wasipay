@@ -1,13 +1,13 @@
 import { ProductRepository } from './Product'
 import { ShopRepository } from './Shop'
 import { AddressRepository } from './Address'
-import { OrderEntity } from '../entities'
-import { OrderLineEntity } from '../entities'
+import { OrderRepository } from './Order'
+import { OrderLineRepository } from './OrderLine'
 
 export type {
     ProductRepository,
     ShopRepository,
     AddressRepository,
-    OrderEntity,
-    OrderLineEntity,
+    OrderRepository,
+    OrderLineRepository,
 }
