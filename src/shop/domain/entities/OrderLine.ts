@@ -1,7 +1,7 @@
 import { ProductEntity } from "./Product";
 
 export interface OrderLineEntity {
-    _id?: string;
+    id?: string;
     order_id?: string;
     product_id?: string | ProductEntity;
     quantity?: number;

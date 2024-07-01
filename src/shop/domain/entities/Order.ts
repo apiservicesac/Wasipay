@@ -3,7 +3,7 @@ import { AddressEntity } from "./Address";
 import { OrderLineEntity } from "./OrderLine";
 
 export interface OrderEntity {
-    _id?: string;
+    id?: string;
     order_code?: string;
     shop_id?: string;
     customer_id?: string;
