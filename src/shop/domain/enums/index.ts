@@ -21,3 +21,11 @@ export enum ProductTax {
     DRAFT = 'INCLUDE_PRICE',
     PUBLISHED = 'NOT_INCLUDE_PRICE',
 }
+
+export enum OrderStatus {
+    PENDING = 'PENDING',
+    PROCESSING = 'PROCESSING',
+    SHIPPED = 'SHIPPED',
+    DELIVERED = 'DELIVERED',
+    CANCELLED = 'CANCELLED'
+}
