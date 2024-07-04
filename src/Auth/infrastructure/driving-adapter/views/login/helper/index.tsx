@@ -8,11 +8,13 @@ import { ImplementationAxios as AxiosUser } from "@/Auth/infrastructure/implemen
 import { LoginUseCase } from "@/Auth/application/use_cases";
 import { UserEntity } from "@/Auth/domain/entities";
 import { toast } from "sonner";
+import { UseLocalContext } from "@/core/context/UseLocalContext";
 
 export const LoginHelper  = () => {
 
     
     const navigate = useNavigate()
+    const { setStateUser } = UseLocalContext()
 
         
     // Loaded Data Product  
@@ -33,6 +35,7 @@ export const LoginHelper  = () => {
         onSubmit: async (values: UserEntity) => {
             try {
                 const response = await userUseCase.run(values.email!, values.password!)
+                setStateUser(response.data?.user!)
                 toast.success(response.message)
                 navigate('/')
             }catch(e:any) {
