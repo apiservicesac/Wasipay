@@ -1,3 +1,4 @@
+import { AddressEntity, ShopEntity } from "@/shop/domain/entities";
 import { UserRole } from "../enums";
 
 export interface UserEntity {
@@ -6,10 +7,11 @@ export interface UserEntity {
     last_name?: string;
     phone_number?: string;
     email?: string;
-    login_date?: Date;
     password?: string;
     role?: UserRole;
-    shop_id?: string;
+    shop?: ShopEntity;
+    address?: AddressEntity;
     createdAt?: Date;
     updatedAt?: Date;
+
 }

@@ -33,7 +33,7 @@ export const LoginHelper  = () => {
         onSubmit: async (values: UserEntity) => {
             try {
                 const response = await userUseCase.run(values.email!, values.password!)
-                toast.error(response.message)
+                toast.success(response.message)
                 navigate('/')
             }catch(e:any) {
                 toast.error(e.message)
