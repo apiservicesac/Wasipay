@@ -26,7 +26,7 @@ export const LayoutBasic = ({ children }: any) => {
                 </Link>
             </div>
 
-            <Dropdown className="relative flex items-center h-header">
+            {/* <Dropdown className="relative flex items-center h-header">
                 <Dropdown.Trigger type="button" className="inline-flex relative justify-center items-center p-0 text-topbar-item transition-all size-[37.5px] duration-200 ease-linear bg-topbar rounded-md btn hover:bg-topbar-item-bg-hover hover:text-topbar-item-hover group-data-[topbar=dark]:bg-topbar-dark group-data-[topbar=dark]:hover:bg-topbar-item-bg-hover-dark group-data-[topbar=dark]:hover:text-topbar-item-hover-dark group-data-[topbar=brand]:bg-topbar-brand group-data-[topbar=brand]:hover:bg-topbar-item-bg-hover-brand group-data-[topbar=brand]:hover:text-topbar-item-hover-brand group-data-[topbar=dark]:dark:bg-zink-700 group-data-[topbar=dark]:dark:hover:bg-zink-600 group-data-[topbar=brand]:text-topbar-item-brand group-data-[topbar=dark]:dark:hover:text-zink-50 group-data-[topbar=dark]:dark:text-zink-200 group-data-[topbar=dark]:text-topbar-item-dark" data-bs-toggle="dropdown">
                     <User2 className="inline-block size-5 stroke-1 fill-slate-100 group-data-[topbar=dark]:fill-topbar-item-bg-hover-dark group-data-[topbar=brand]:fill-topbar-item-bg-hover-brand"/>
                 </Dropdown.Trigger>
@@ -39,7 +39,7 @@ export const LayoutBasic = ({ children }: any) => {
                         </li>
                     </ul>
                 </Dropdown.Content>
-            </Dropdown>
+            </Dropdown> */}
             
         </Header>
         <div className='relative min-h-screen group-data-[sidebar-size=sm]:min-h-sm'>
