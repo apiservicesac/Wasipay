@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { authRoutes, publicRoutes } from './allRoutes';
 import LayoutAuth from '@/common/layout_1';
+import AuthProtected from './AuthProtected';
 
 const RouteIndex = () => {
   return (
@@ -15,18 +16,20 @@ const RouteIndex = () => {
                 <route.component />
             }
           />
-        ))} 
-        {authRoutes.map((route: any, idx: number) => (
-          <Route
-            key={idx}
-            path={route.path}
-            element={
+      ))} 
+      {authRoutes.map((route: any, idx: number) => (
+        <Route
+          key={idx}
+          path={route.path}
+          element={
+            <AuthProtected>
               <LayoutAuth>
                 <route.component />
               </LayoutAuth>
-            }
-          />
-        ))}        
+            </AuthProtected>      
+          }
+        />
+      ))}        
       </Routes>
     </React.Fragment>
   );
