@@ -5,10 +5,14 @@ import { useQueryClient } from "@tanstack/react-query"
 import { useFormik } from "formik"
 import * as Yup from "yup";
 import { ImplementationAxios as AxiosOrder } from "@/shop/infrastructure/implementation/axios/order";
-import { GetNextCodeUseCase } from "@/shop/application/use_cases/order";
+import { ImplementationAxios as AxiosAddress } from "@/shop/infrastructure/implementation/axios/address";
+
+import { CreateUseCase as CreateOrder, GetNextCodeUseCase as GetNextCodeOrder} from "@/shop/application/use_cases/order";
+import { CreateUseCase as CreateAddress } from "@/shop/application/use_cases/address"
+import { UseLocalContext } from "@/core/context/UseLocalContext"
 
 export const CheckoutHelper = () => {
-    const shop_id = `${import.meta.env.VITE_SHOP_ID}`
+    const { stateUser } = UseLocalContext()
 
     const queryClient =  useQueryClient()
     const cart_products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
@@ -22,14 +26,10 @@ export const CheckoutHelper = () => {
             last_name:  "",
             phone_number:  "",
             email:  "",
-            customer_id:  "123456789",
             street: "",
             city: "",
             state: "",
-            postal_code: "123456789",
-            coordinates: {
-                latitude:  0, longitude: 0
-            },
+            postal_code: "",
             country: "Peru",
         },
         validationSchema: Yup.object().shape({            
@@ -37,12 +37,10 @@ export const CheckoutHelper = () => {
             last_name: Yup.string().required("Last Name is required."), 
             phone_number: Yup.string().required("Phone Number is required."), 
             email: Yup.string().required("Address is required."), 
-            // customer_id: Yup.string(),
             street: Yup.string().required("Street is required."), 
             city: Yup.string().required("City is required."), 
             state: Yup.string().required("State is required."), 
             postal_code: Yup.string(),            
-            // coordinates: Yup.string(),
             country: Yup.string().required("Status is required"),
         }),
         onSubmit: () => {            
@@ -61,40 +59,56 @@ export const CheckoutHelper = () => {
 
     const createOrder = async () => {
         
+        const shop_id = `${import.meta.env.VITE_SHOP_ID}`
 
-        const newAddress : AddressEntity = {                    
-            ...validation.values,
-        }
+        const address_id = await createAddress()!
 
         const orderLines : OrderLineEntity[] = filter_product_cart?.map((line) => {
             return {
                 product_id: line.product?.id,
                 quantity: line.quantity,
                 unit_price: line.product?.price,
-                total_price: line.total_price
-                
+                total_price: line.total_price                
             } as OrderLineEntity
         })!
         
+        console.log(stateUser)
         const orderRepository = new AxiosOrder()
-        const getNextCode = new GetNextCodeUseCase(orderRepository)   
+        const getNextCode = new GetNextCodeOrder(orderRepository)   
         const order_code = await getNextCode.run(shop_id)
         const newOrder: OrderEntity = {
             order_code,
             shop_id: shop_id,
-            customer_id: "",
+            customer_id: stateUser?.id,
             order_date: new Date(),
             status: OrderStatus.PENDING,
             total_amount: cart_price.total_price,
-            shipping_address: newAddress,
-            billing_address: newAddress,
+            shipping_address: address_id ? address_id as string : undefined,
+            billing_address: address_id ? address_id as string : undefined,
             order_lines: orderLines
 
         }
 
-        console.log(newOrder)
+        const createOrder = new CreateOrder(orderRepository)
+        const response = await createOrder.run(newOrder)
+        console.log(response)
 
     }
+
+    const createAddress = async () : Promise<string | null> =>  {
+        try {
+            const addressRepository = new AxiosAddress()
+            const createAddress = new CreateAddress(addressRepository);
+            const newAddress : AddressEntity = {                    
+                ...validation.values,
+            }
+            const address = await createAddress.run(newAddress);
+            return address.id!
+        }
+        catch {
+            return null
+        }
+    }    
 
     return {
         filter_product_cart,
