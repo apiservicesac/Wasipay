@@ -20,14 +20,14 @@ interface RouteObject {
 
 const publicRoutes: Array<RouteObject> = [
     { path: "/", component: ShopView },
-    { path: "/checkout", component: CheckouView },
+    // { path: "/checkout", component: CheckouView },
     { path: "/login", component: LoginView },
-    { path: "/register", component: RegisterView },
+    // { path: "/register", component: RegisterView },
     { path: "/logout", component: LogoutView },
-    { path: "/register-wizard", component: RegisterWizardView },
-    { path: "/reset-password", component: ResetPasswordView },
-    { path: "/create-new-password", component: CreatePasswordView },    
-    { path: "/verify-email", component: VerifyEmailView },    
+    // { path: "/register-wizard", component: RegisterWizardView },
+    // { path: "/reset-password", component: ResetPasswordView },
+    // { path: "/create-new-password", component: CreatePasswordView },    
+    // { path: "/verify-email", component: VerifyEmailView },    
 ]
 
 const authRoutes: Array<RouteObject> = [
