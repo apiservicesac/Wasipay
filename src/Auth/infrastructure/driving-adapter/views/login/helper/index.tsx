@@ -9,6 +9,7 @@ import { LoginUseCase } from "@/Auth/application/use_cases";
 import { UserEntity } from "@/Auth/domain/entities";
 import { toast } from "sonner";
 import { UseLocalContext } from "@/core/context/UseLocalContext";
+import { TokenService } from "@/shared/services/token";
 
 export const LoginHelper  = () => {
 
@@ -36,6 +37,8 @@ export const LoginHelper  = () => {
             try {
                 const response = await userUseCase.run(values.email!, values.password!)
                 setStateUser(response.data?.user!)
+                const tokenService = new TokenService()
+                tokenService.setTokens(response.data?.access_token!, response.data?.refresh_token!)
                 toast.success(response.message)
                 navigate('/')
             }catch(e:any) {
