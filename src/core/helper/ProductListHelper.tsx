@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 export const ProductListHelper = () => {
 
     const shop_id = `${import.meta.env.VITE_SHOP_ID}`
-  
     
     // Loaded Data Product  
     const productRepository = new AxiosProduct()

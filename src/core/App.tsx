@@ -1,7 +1,27 @@
+import React from "react";
+import { ProductListHelper, ShopProfileHelper, UserProfileHelper } from "./helper";
 import RouteIndex from "./routes";
 import { Toaster } from 'sonner'
 
 function App() {
+  const [userLoaded, setUserLoaded] = React.useState<boolean>(true);
+
+  const user_helper = UserProfileHelper();
+  ShopProfileHelper()
+  ProductListHelper()
+
+  React.useEffect(() => {            
+    user_helper.getUserProfileData()
+    .then(() => {
+      setUserLoaded(false);
+    }).catch(() => {
+      setUserLoaded(false);
+    })
+  }, [])
+
+  if (userLoaded) {
+    return <div></div>;
+  }
 
   return (
     <>
