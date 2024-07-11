@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductListHelper, ShopProfileHelper, UserProfileHelper } from "./helper";
+import { OrderListHelper, ProductListHelper, ShopProfileHelper, UserProfileHelper } from "./helper";
 import RouteIndex from "./routes";
 import { Toaster } from 'sonner'
 
@@ -9,6 +9,7 @@ function App() {
   const { getUserProfileData } = UserProfileHelper();
   ShopProfileHelper()
   ProductListHelper()
+  OrderListHelper()
 
   React.useEffect(() => {            
     getUserProfileData()

@@ -5,13 +5,16 @@ import { Dropdown } from '@/common/components/Dropdown';
 import TableContainer from '@/common/TableContainer';
 import { ProductOrdersData } from '../data/ProductOrdersData';
 import filterDataBySearch from '@/shop/infrastructure/driving-adapter/dashboard/views/utils/filterDataBySearch';
+import { OrderRepository } from '@/shop/domain/repositories';
+import { useQueryClient } from '@tanstack/react-query';
 
 
 const ProductsOrders = () => {
+    const queryClient =  useQueryClient()
+    const orders : OrderRepository[] | undefined = queryClient.getQueryData(['query_order_list'])
 
-    const [data, setData] = useState(ProductOrdersData);
+    const [data, setData] = useState(orders);
 
-    // Search Data
     const filterSearchData = (e: any) => {
         const search = e.target.value;
         const keysToSearch = ['orderId', 'customerName', 'location', 'orderDate', 'payments', 'quantity', 'status'];
@@ -21,36 +24,36 @@ const ProductsOrders = () => {
     const columns = useMemo(() => [
         {
             header: "#",
-            accessorKey: "id",
+            accessorKey: "",
             enableColumnFilter: false,
             enableSorting: true,
         },
         {
             header: "Order Id",
-            accessorKey: "orderId",
+            accessorKey: "order_code",
             enableColumnFilter: false,
             enableSorting: true,
             cell: (cell: any) => (
                 <>
-                    <Link to="/apps-ecommerce-order-overview">{cell.row.original.orderId}</Link>
+                    <Link to="#" className='text-custom-500'>#{cell.row.original.order_code}</Link>
                 </>
             ),
         },
         {
             header: "Customer Name",
-            accessorKey: "customerName",
+            accessorKey: "customer.first_name",
             enableColumnFilter: false,
             enableSorting: true,
         },
         {
             header: "Location",
-            accessorKey: "location",
+            accessorKey: "billing_address.city",
             enableColumnFilter: false,
             enableSorting: true,
         },
         {
             header: "Order Date",
-            accessorKey: "orderDate",
+            accessorKey: "order_date",
             enableColumnFilter: false,
             enableSorting: true,
         },
@@ -61,20 +64,8 @@ const ProductsOrders = () => {
             enableSorting: true,
         },
         {
-            header: "Quantity",
-            accessorKey: "quantity",
-            enableColumnFilter: false,
-            enableSorting: true,
-        },
-        {
-            header: "Price",
-            accessorKey: "price",
-            enableColumnFilter: false,
-            enableSorting: true,
-        },
-        {
             header: "Total Amount",
-            accessorKey: "totalAmount",
+            accessorKey: "total_amount",
             enableColumnFilter: false,
             enableSorting: true,
         },

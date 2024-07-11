@@ -15,6 +15,7 @@ export const CheckoutHelper = () => {
     const { stateUser } = UseLocalContext()
 
     const queryClient =  useQueryClient()
+    const orders : OrderEntity[] | undefined = queryClient.getQueryData(['query_order_list'])
     const cart_products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
     const cart_price = useAppSelector((state) => state.cartReducer)
@@ -71,8 +72,7 @@ export const CheckoutHelper = () => {
                 total_price: line.total_price                
             } as OrderLineEntity
         })!
-        
-        console.log(stateUser)
+                
         const orderRepository = new AxiosOrder()
         const getNextCode = new GetNextCodeOrder(orderRepository)   
         const order_code = await getNextCode.run(shop_id)
@@ -86,13 +86,12 @@ export const CheckoutHelper = () => {
             shipping_address: address_id ? address_id as string : undefined,
             billing_address: address_id ? address_id as string : undefined,
             order_lines: orderLines
-
         }
 
         const createOrder = new CreateOrder(orderRepository)
         const response = await createOrder.run(newOrder)
-        console.log(response)
-
+        queryClient.cancelQueries({ queryKey: ['query_order_list'] })
+        queryClient.setQueryData(['query_order_list'], [response, ...orders!])   
     }
 
     const createAddress = async () : Promise<string | null> =>  {
