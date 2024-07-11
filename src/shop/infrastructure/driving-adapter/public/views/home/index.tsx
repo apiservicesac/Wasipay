@@ -9,11 +9,17 @@ import { ProfileInfo } from "./components/tabs-components/profile-info";
 import { Integration } from "./components/tabs-components/integration";
 import { ProductListHelper, ShopProfileHelper } from "./helper";
 import Authorization from "@/common/security/Authorization";
+import { UserProfileHelper } from "./helper/UserProfileHelper";
 
 const ShopView = () => {
-
+    
+    const user_helper = UserProfileHelper()
     const shop_helper = ShopProfileHelper()
     const product_list_helper = ProductListHelper()
+
+    React.useEffect(() => {        
+        user_helper.getUserProfileData()
+    }, [])
 
     return (
         <LayoutPublic>
