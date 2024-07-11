@@ -5,16 +5,14 @@ import { UserRole } from "@/Auth/domain/enums";
 
 const AuthProtected: React.FC<any> = ({ children }) => {
 
-  const { stateUser } = UseLocalContext();
-  console.log(stateUser)
-  const isLoggedIn = !!stateUser;
+  const { stateUser } = UseLocalContext();  
   const isAdmin = stateUser && stateUser.role === UserRole.ADMIN;
 
-  if (!isLoggedIn && !isAdmin) {
-    return <Navigate to={{ pathname: "/" }} />;  
+  if (isAdmin) {
+    return <React.Fragment>{children}</React.Fragment>;
   }
 
-  return <React.Fragment>{children}</React.Fragment>;
+  return <Navigate to={{ pathname: "/" }} />;
 };
 
 export default AuthProtected;
