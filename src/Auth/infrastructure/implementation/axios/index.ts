@@ -54,9 +54,13 @@ class ImplementationAxios implements Repository {
         }
     }
 
-    async getById(id: string, accessToken: string): Promise<Entity | null> {
-        const response: CustomReponse<Entity>  = await Axios.getById(id, accessToken);
-        return response.data as Entity 
+    async getById(id: string, accessToken: string): Promise<Entity | null> {    
+        try {
+            const response: CustomReponse<Entity>  = await Axios.getById(id, accessToken);
+            return response.data as Entity 
+        }catch (e) {
+            return null
+        }
     }
     
 }
