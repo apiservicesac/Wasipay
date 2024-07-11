@@ -5,7 +5,7 @@ import React from 'react';
 
 interface AuthorizationProps {
     children?: React.ReactNode;
-    admin?: boolean;
+    onlyAdmin?: boolean;
 }
 
 export const LoggedIn: React.FC<AuthorizationProps> = ({ children }) => {
@@ -16,10 +16,10 @@ export const LoggedOut: React.FC<AuthorizationProps> = ({ children }) => {
     return <>{children}</>;
 };
 
-const Authorization: React.FC<AuthorizationProps> = ({ children }) => {
+const Authorization: React.FC<AuthorizationProps> = ({ children, onlyAdmin=false }) => {
     const { stateUser } = UseLocalContext(); // Assuming UseLocalContext is correctly imported
     const isLoggedIn = !!stateUser;
-    const isAdmin = stateUser && stateUser.role === UserRole.ADMIN;
+    const isAdmin = onlyAdmin && stateUser && stateUser.role === UserRole.ADMIN;
 
     // Check for LoggedIn and LoggedOut components
     let childrenLoggedIn: React.ReactNode | undefined;
@@ -43,7 +43,7 @@ const Authorization: React.FC<AuthorizationProps> = ({ children }) => {
         return isLoggedIn ? <>{childrenLoggedIn}</> : <>{childrenLoggedOut}</>;
     }
 
-    return isLoggedIn ? <>{children}</> : null;
+    return null;
 };
 
 export default Authorization;

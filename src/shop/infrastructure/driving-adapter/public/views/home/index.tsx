@@ -24,7 +24,7 @@ const ShopView = () => {
                         <div className="card-body !px-2.5 !py-0">
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
                                 <NavItemCustom label="Store" eventKey={'store-tab'}/>  
-                                <Authorization admin={true}>
+                                <Authorization onlyAdmin={true}>
                                     <NavItemCustom label="Profile" eventKey="profile-tab" />  
                                     <NavItemCustom label="Integration" eventKey="integration-tab" />  
                                 </Authorization> 
@@ -35,7 +35,7 @@ const ShopView = () => {
                         <Tab.Pane eventKey="store-tab" id="store-tab">                            
                             <Store />
                         </Tab.Pane>
-                        <Authorization admin={true}>
+                        <Authorization onlyAdmin={true}>
                             <Tab.Pane eventKey="profile-tab" id="profile-tab">                            
                                 <ProfileInfo />
                             </Tab.Pane>
