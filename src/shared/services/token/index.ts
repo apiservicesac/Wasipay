@@ -1,22 +1,24 @@
-import jwt from 'jsonwebtoken';
+import { jwtDecode } from "jwt-decode";
+
+interface DecodedToken {
+    exp: number;
+    [key: string]: any;
+}
 
 export class TokenService {
-    private readonly secretKey: string;
     private readonly accessTokenKey: string = 'accessToken';
     private readonly refreshTokenKey: string = 'refreshToken';
 
-    constructor() {
-        this.secretKey = process.env.VITE_JWT_SECRET_KEY || 'jwt_secret_key';
-
-    }
-
-    private verifyToken(token: string): { expired: boolean, decoded: any | null } {
+    async verifyToken(token: string): Promise<{ expired: boolean, decoded: any | null }> {
         try {
-        const decoded = jwt.verify(token, this.secretKey, { algorithms: ['HS256'] }) as { [key: string]: any };
-        const { role, type } = decoded;
-        return { expired: false, decoded: { role, type } };
+            const decodedToken = jwtDecode<DecodedToken>(token);
+            const currentTime = Date.now() / 1000;
+            if (decodedToken.exp < currentTime) {
+                return { expired: true, decoded: null };
+            }
+            return { expired: false, decoded: decodedToken };
         } catch (error) {
-        return { expired: true, decoded: null };
+            return { expired: true, decoded: null };
         }
     }
 
@@ -25,20 +27,20 @@ export class TokenService {
         localStorage.setItem(this.refreshTokenKey, refreshToken);
     }
 
-    private getAccessToken(): { expired: boolean, decoded: any | null } {
+    public getAccessToken(): string | null{
         const accessToken = localStorage.getItem(this.accessTokenKey);
         if (!accessToken) {
-        return { expired: true, decoded: null };
+            return null
         }
-        return this.verifyToken(accessToken);
+        return accessToken
     }
 
-    private getRefreshToken(): { expired: boolean, decoded: any | null } {
+    public getRefreshToken(): string | null {
         const refreshToken = localStorage.getItem(this.refreshTokenKey);
         if (!refreshToken) {
-        return { expired: true, decoded: null };
+            return null
         }
-        return this.verifyToken(refreshToken);
+        return refreshToken
     }
 
     public updateAccessTokens(newAccessToken: string, newRefreshToken: string): void {
@@ -52,17 +54,22 @@ export class TokenService {
         localStorage.removeItem(this.refreshTokenKey);
     }
 
-    public getTokens(): { expired: boolean, decoded: any | null } {
-        const accessTokenStatus = this.getAccessToken();
-        if (!accessTokenStatus.expired) {
+    public async checkAccessToken(): Promise<{ expired: boolean, decoded: any | null }> {
+        const accessTokenStatus = await this.verifyToken(this.getAccessToken()!);
+        if (accessTokenStatus.expired) {
+            return { expired: true, decoded: null };
+        }
         return accessTokenStatus;
+    }
+
+    public async checkTokens(): Promise<{ expired: boolean, decoded: any | null }> {
+        const accessTokenStatus = await this.verifyToken(this.getAccessToken()!);
+        const refreshTokenStatus = await this.verifyToken(this.getRefreshToken()!);
+
+        if (accessTokenStatus.expired && refreshTokenStatus.expired) {
+            return { expired: true, decoded: null };
         }
 
-        const refreshTokenStatus = this.getRefreshToken();
-        if (!refreshTokenStatus.expired) {
-        return refreshTokenStatus;
-        }
-
-        return { expired: true, decoded: null };
+        return accessTokenStatus;
     }
 }
