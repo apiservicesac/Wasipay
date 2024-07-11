@@ -12,9 +12,9 @@ export class UpdateUseCase {
         this._repository = repository
     }
 
-    async run(id: string, data: Entity): Promise<Entity> {
+    async run(id: string, data: Entity, accessToken: string): Promise<Entity> {
        
-        const entity: Entity | null = await this._repository.update(id, data)
+        const entity: Entity | null = await this._repository.update(id, data, accessToken)
 
         if(entity === null) throw new UpdateEntityException()
         

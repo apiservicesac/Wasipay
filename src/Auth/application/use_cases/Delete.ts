@@ -11,9 +11,9 @@ export class DeleteUseCase {
         this._repository = repository
     }
 
-    async run(id: string): Promise<void | null > {
+    async run(id: string, accessToken: string): Promise<void | null > {
        
-        const deleted = await this._repository.delete(id)
+        const deleted = await this._repository.delete(id, accessToken)
 
         if(deleted === null) throw new DeleteEntityException()
 

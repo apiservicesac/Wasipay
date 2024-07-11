@@ -1,7 +1,7 @@
 import { UserEntity } from "./User"
-import { UserResponse } from "./Response"
+import { AuthResponse } from "./Response"
 
 export type {
     UserEntity,
-    UserResponse
+    AuthResponse
 }

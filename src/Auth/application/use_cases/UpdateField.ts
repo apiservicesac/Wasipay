@@ -12,9 +12,9 @@ export class UpdateFieldUseCase {
         this._repository = repository
     }
 
-    async run(id : string, field : string, value : any): Promise<Entity> {
+    async run(id : string, field : string, value : any, accessToken: string): Promise<Entity> {
        
-        const entity: Entity | null = await this._repository.update_field(id, field, value)
+        const entity: Entity | null = await this._repository.update_field(id, field, value, accessToken)
 
         if(entity === null) throw new UpdateEntityException()
         

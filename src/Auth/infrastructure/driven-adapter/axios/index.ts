@@ -1,4 +1,4 @@
-import { UserEntity as Entity, UserEntity, UserResponse } from '@/Auth/domain/entities';
+import { UserEntity as Entity, AuthResponse } from '@/Auth/domain/entities';
 import { CustomReponse } from '@/shared/entities/Response';
 import { AxiosConfig } from '@/shared/services/axios';
 
@@ -12,20 +12,25 @@ class UserAdapter {
     });
   }
 
-  async login(email: string, password: string): Promise<CustomReponse<UserResponse<UserEntity>> | null> {
+  async login(email: string, password: string): Promise<CustomReponse<AuthResponse>> {
     try {
-      const response : CustomReponse<UserResponse<UserEntity>> = await this._axios.post(`/user/login`, {
+      const response : CustomReponse<AuthResponse> = await this._axios.post(`/user/login`, {
         email, password
       });
       return response;
     } catch (error) {      
-      return null
+      console.error('Error al Inciar Seesion:', error);
+      throw error;
     }
   }
 
-  async getById(id: string): Promise<CustomReponse<Entity>> {
+  async getById(id: string, accessToken: string): Promise<CustomReponse<Entity>> {
     try {
-      const response : CustomReponse<Entity> = await this._axios.get(`/user/get-by-id/${id}`);
+      const response : CustomReponse<Entity> = await this._axios.get(`/user/get-by-id/${id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       return response;
     } catch (error) {
       console.error('Error al obtener usuario por ID:', error);
@@ -33,9 +38,13 @@ class UserAdapter {
     }
   }
 
-  async create(data: Entity): Promise<CustomReponse<Entity>> {
+  async create(data: Entity, accessToken: string): Promise<CustomReponse<Entity>> {
     try {
-      const response : CustomReponse<Entity> = await this._axios.post(`/user/create`, data);
+      const response : CustomReponse<Entity> = await this._axios.post(`/user/create`, data, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       return response;
     } catch (error) {
       console.error('Error al crear usuario:', error);
@@ -43,9 +52,13 @@ class UserAdapter {
     }
   }
 
-  async update(id: string, data: Entity): Promise<CustomReponse<Entity>> {
+  async update(id: string, data: Entity, accessToken: string): Promise<CustomReponse<Entity>> {
     try {
-      const response : CustomReponse<Entity> = await this._axios.put(`/user/update/${id}`, data);
+      const response : CustomReponse<Entity> = await this._axios.put(`/user/update/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       return response;
     } catch (error) {
       console.error('Error al actualizar usuario:', error);
@@ -53,9 +66,13 @@ class UserAdapter {
     }
   }
 
-  async update_field(id: string, data: any): Promise<CustomReponse<Entity>> {
+  async update_field(id: string, data: any, accessToken: string): Promise<CustomReponse<Entity>> {
     try {
-      const response : CustomReponse<Entity> = await this._axios.patch(`/user/update-field/${id}`, data);
+      const response : CustomReponse<Entity> = await this._axios.patch(`/user/update-field/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       return response;
     } catch (error) {
       console.error('Error al actualizar usuario:', error);
@@ -63,9 +80,13 @@ class UserAdapter {
     }
   }
 
-  async delete(id: string): Promise<CustomReponse<null>> {
+  async delete(id: string, accessToken: string): Promise<CustomReponse<null>> {
     try {
-      const response : CustomReponse<null> = await this._axios.delete(`/user/delete/${id}`);
+      const response : CustomReponse<null> = await this._axios.delete(`/user/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       return response;
     } catch (error) {
       console.error('Error al eliminar usuario:', error);

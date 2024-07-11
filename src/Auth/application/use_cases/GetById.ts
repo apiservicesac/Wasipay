@@ -1,7 +1,6 @@
 import { NotFoundEntityException } from "@/shared/exceptions"
 import { UserEntity as Entity } from "@/Auth/domain/entities"
 import { UserRepository as Repository } from "@/Auth/domain/repositories"
-import { CustomReponse } from "@/shared/entities/Response"
 
 export class GetByIdUseCase {
 
@@ -13,13 +12,13 @@ export class GetByIdUseCase {
         this._repository = repository
     }
 
-    async run(id: string): Promise<Entity | null > {
+    async run(id: string, accessToken: string): Promise<Entity | null > {
         
-        const reponse : CustomReponse<Entity| null> = await this._repository.getById(id)
+        const reponse : Entity| null = await this._repository.getById(id, accessToken)
 
         if(reponse === null) throw new NotFoundEntityException()
 
-        return reponse.data as Entity
+        return reponse as Entity
         
     }
 }

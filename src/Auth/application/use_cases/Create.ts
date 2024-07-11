@@ -12,9 +12,9 @@ export class CreateUseCase {
         this._repository = repository
     }
 
-    async run(data: Entity): Promise<Entity> {        
+    async run(data: Entity, accessToken: string): Promise<Entity> {        
 
-        const entity: Entity | null = await this._repository.save(data)
+        const entity: Entity | null = await this._repository.save(data, accessToken)
 
         if(entity === null) throw new CreateEntityException()
 
