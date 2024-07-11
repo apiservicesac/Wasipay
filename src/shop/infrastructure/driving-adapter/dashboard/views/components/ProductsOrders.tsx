@@ -76,15 +76,15 @@ const ProductsOrders = () => {
             enableSorting: true,
             cell: (cell: any) => (
                 <>
-                    {cell.row.original.status === "Delivered" ? (
+                    {cell.row.original.status === "DELIVERED" ? (
                         <span className="delivery_status px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-green-100 border-green-200 text-green-500 dark:bg-green-500/20 dark:border-green-500/20">
                             {cell.row.original.status}
                         </span>
-                    ) : cell.row.original.status === "Shipping" ? (
+                    ) : cell.row.original.status === "SHIPPED" ? (
                         <span className="delivery_status px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-purple-100 border-purple-200 text-purple-500 dark:bg-purple-500/20 dark:border-purple-500/20">
                             {cell.row.original.status}
                         </span>
-                    ) : cell.row.original.status === "New" ? (
+                    ) : cell.row.original.status === "NEW" ? (
                         <span className="delivery_status px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-sky-100 border-sky-200 text-sky-500 dark:bg-sky-500/20 dark:border-sky-500/20">
                             {cell.row.original.status}
                         </span>
