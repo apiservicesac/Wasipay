@@ -6,6 +6,7 @@ import Drawer from "@/common/components/Drawer";
 import { ProductItemEntity } from "@/shop/domain/entities";
 import { ProductItem } from "./components/Product";
 import { useQueryClient } from "@tanstack/react-query";
+import Authorization, { LoggedIn, LoggedOut } from "@/common/security/Authorization";
 
 const CartComponent = ({ show, handleDrawer }: any) => {
 
@@ -71,8 +72,15 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                         <div className="flex items-center justify-between gap-3">
                             
                             <Link to="/" onClick={handleDrawer} className="w-full text-white btn bg-slate-500 border-slate-500 hover:text-white hover:bg-slate-600 hover:border-slate-600 focus:text-white focus:bg-slate-600 focus:border-slate-600 focus:ring focus:ring-slate-100 active:text-white active:bg-slate-600 active:border-slate-600 active:ring active:ring-slate-100 dark:ring-slate-400/10">Continue Shopping</Link>
-
-                            <Link to="/checkout" className="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20">Checkout</Link>
+                            
+                            <Authorization>
+                                <LoggedIn>
+                                    <Link to="/checkout" className="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20">Checkout</Link>                                    
+                                </LoggedIn>
+                                <LoggedOut>
+                                    <Link to="/login" className="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20">Checkout</Link>                                    
+                                </LoggedOut>
+                            </Authorization>
 
                         </div>
                     </div>
