@@ -9,10 +9,13 @@ import { LoginUseCase } from "@/Auth/application/use_cases";
 import { UserEntity } from "@/Auth/domain/entities";
 import { toast } from "sonner";
 import { TokenService } from "@/shared/services/token";
+import { UserProfileHelper } from "@/core/helper";
 
 export const LoginHelper  = () => {
 
     const navigate = useNavigate()
+    const { getUserProfileData } = UserProfileHelper();
+
         
     // Loaded Data Product  
     const userRepository = new AxiosUser()
@@ -33,7 +36,8 @@ export const LoginHelper  = () => {
             try {
                 const response = await userUseCase.run(values.email!, values.password!)
                 const tokenService = new TokenService()
-                tokenService.setTokens(response?.access_token!, response?.refresh_token!)                
+                tokenService.setTokens(response?.access_token!, response?.refresh_token!)               
+                getUserProfileData()
                 navigate('/')
             }catch(e:any) {
                 toast.error("Error de Credenciales")
@@ -43,7 +47,7 @@ export const LoginHelper  = () => {
 
     const handleSubmit = (event: any) => {
         event.preventDefault();
-        validation.handleSubmit()
+        validation.handleSubmit()      
         return false;
     }
 

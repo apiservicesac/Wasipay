@@ -6,12 +6,12 @@ import { Toaster } from 'sonner'
 function App() {
   const [userLoaded, setUserLoaded] = React.useState<boolean>(true);
 
-  const user_helper = UserProfileHelper();
+  const { getUserProfileData } = UserProfileHelper();
   ShopProfileHelper()
   ProductListHelper()
 
   React.useEffect(() => {            
-    user_helper.getUserProfileData()
+    getUserProfileData()
     .then(() => {
       setUserLoaded(false);
     }).catch(() => {

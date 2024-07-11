@@ -5,9 +5,8 @@ import { TokenService } from "@/shared/services/token";
 import { UseLocalContext } from "@/core/context/UseLocalContext";
 
 export const UserProfileHelper = () => {
-    const { setStateUser } = UseLocalContext(); // Assuming UseLocalContext is correctly imported
+    const { setStateUser } = UseLocalContext();
 
-    // Loaded Data User Profile  
     const userRepository = new AxiosUser()
     const userUseCase = new UserUseCaseGetById(userRepository) 
 
