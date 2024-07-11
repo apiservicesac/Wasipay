@@ -4,7 +4,7 @@ import { ImplementationAxios as AxiosShop } from "@/shop/infrastructure/implemen
 import { UpdateImageUseCase } from "@/shop/application/use_cases/shop";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { ProductItemEntity, ShopEntity } from "@/shop/domain/entities";
+import { OrderEntity, ProductItemEntity, ShopEntity } from "@/shop/domain/entities";
 
 export const ProfileInfoHelper = () => {
 
@@ -15,6 +15,7 @@ export const ProfileInfoHelper = () => {
 
     const query_shop_profile : ShopEntity | undefined = queryClient.getQueryData(['shop_profile'])    
     const query_product_list : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
+    const query_orders_list : OrderEntity[] | undefined = queryClient.getQueryData(['query_order_list'])
 
     
     const handleImageChange = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -39,5 +40,6 @@ export const ProfileInfoHelper = () => {
         handleImageChange,
         query_shop_profile,
         query_product_list,
+        query_orders_list,
     }
 }

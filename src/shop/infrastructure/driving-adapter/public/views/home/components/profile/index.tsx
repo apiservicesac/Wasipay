@@ -67,8 +67,8 @@ const ShopProfileInfo = ({ className }: { className: string }) => {
                         <ul className='flex flex-wrap gap-3 mt-4 text-center items-center justify-center divide-x divide-slate-200 dark:divide-zink-500'>
                             <li className='px-5'>
                                 <h5>
-                                    {helper.query_product_list ? (
-                                        helper.query_product_list.length
+                                    {helper.query_orders_list ? (
+                                        helper.query_orders_list.length
                                     ) : (
                                         <Skeleton />
                                     )}
