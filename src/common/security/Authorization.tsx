@@ -1,5 +1,5 @@
 import { UserRole } from '@/Auth/domain/enums';
-import { TokenService } from '@/shared/services/token';
+import { UseLocalContext } from '@/core/context/UseLocalContext';
 import React from 'react';
 
 
@@ -15,12 +15,10 @@ export const LoggedIn: React.FC<AuthorizationProps> = ({ children }) => {
 export const LoggedOut: React.FC<AuthorizationProps> = ({ children }) => {
     return <>{children}</>;
 };
-
 const Authorization: React.FC<AuthorizationProps> = ({ children, onlyAdmin=false }) => {
-    const tokenService = new TokenService()
-    const sessionToken = tokenService.getTokens();
-
-    const isAdmin = onlyAdmin && !sessionToken.expired && sessionToken.decoded.role === UserRole.ADMIN;
+    const { stateUser } = UseLocalContext(); // Assuming UseLocalContext is correctly imported
+    const isLoggedIn = !!stateUser;
+    const isAdmin = onlyAdmin && stateUser && stateUser.role === UserRole.ADMIN;
 
     // Check for LoggedIn and LoggedOut components
     let childrenLoggedIn: React.ReactNode | undefined;
@@ -41,7 +39,7 @@ const Authorization: React.FC<AuthorizationProps> = ({ children, onlyAdmin=false
     }
 
     if (childrenLoggedIn !== undefined && childrenLoggedOut !== undefined) {
-        return !sessionToken.expired ? <>{childrenLoggedIn}</> : <>{childrenLoggedOut}</>;
+        return isLoggedIn ? <>{childrenLoggedIn}</> : <>{childrenLoggedOut}</>;
     }
 
     return null;
