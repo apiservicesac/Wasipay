@@ -14,7 +14,6 @@ const AuthProtected: React.FC<any> = ({ children }) => {
     return <Navigate to={{ pathname: "/" }} />;  
   }
 
-
   return <React.Fragment>{children}</React.Fragment>;
 };
 
