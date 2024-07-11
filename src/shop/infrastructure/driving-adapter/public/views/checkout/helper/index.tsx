@@ -79,7 +79,7 @@ export const CheckoutHelper = () => {
         const newOrder: OrderEntity = {
             order_code,
             shop_id: shop_id,
-            customer_id: stateUser?.id,
+            customer: stateUser?.id,
             order_date: new Date(),
             status: OrderStatus.PENDING,
             total_amount: cart_price.total_price,

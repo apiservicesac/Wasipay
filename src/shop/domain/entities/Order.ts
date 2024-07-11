@@ -6,7 +6,7 @@ export interface OrderEntity {
     id?: string;
     order_code?: string;
     shop_id?: string;
-    customer_id?: string;
+    customer?: string;
     order_date?: Date;
     status?: OrderStatus;
     total_amount?: number;
