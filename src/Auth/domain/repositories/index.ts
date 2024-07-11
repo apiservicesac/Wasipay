@@ -1,5 +1,5 @@
 import { UserRepository } from './User'
 
-export {
+export type {
     UserRepository
 }

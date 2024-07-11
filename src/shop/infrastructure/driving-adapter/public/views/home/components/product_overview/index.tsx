@@ -3,15 +3,13 @@ import React from "react";
 
 // Icon
 import { ShoppingCart } from 'lucide-react';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BreadCrumb from "@/common/BreadCrumb";
 import { LayoutPublic } from "@/common/layout_2";
 
 
 const ProductOverView = () => {
     
-    const { id } = useParams()
-
     return (
         <LayoutPublic>
             <React.Fragment>

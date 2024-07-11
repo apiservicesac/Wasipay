@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "../Header";
-import { LogOut, StoreIcon, User2 } from 'lucide-react';
-import { Dropdown } from '@/common/components/Dropdown';
+import { StoreIcon } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 export const LayoutBasic = ({ children }: any) => {
