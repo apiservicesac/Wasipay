@@ -4,7 +4,7 @@ import { MoreHorizontal, Search, Eye, FileEdit, Trash2 } from 'lucide-react';
 import { Dropdown } from '@/common/components/Dropdown';
 import TableContainer from '@/common/TableContainer';
 import { ProductOrdersData } from '../data/ProductOrdersData';
-import filterDataBySearch from '@/utils/filterDataBySearch';
+import filterDataBySearch from '@/shop/infrastructure/driving-adapter/dashboard/views/utils/filterDataBySearch';
 
 
 const ProductsOrders = () => {
