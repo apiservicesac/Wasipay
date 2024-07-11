@@ -4,7 +4,7 @@ import { ProductItemEntity } from '@/shop/domain/entities';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useQueryClient } from '@tanstack/react-query';
-import { HelperCart } from '@/common/components/cart/helper';
+import { CartHelper } from '@/common/components/cart/helper';
 
 export const ProductsComponent = ({ list }: { list: boolean }) => {
     const queryClient =  useQueryClient()
@@ -12,7 +12,7 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
     const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     
 
-    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = HelperCart()
+    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
 
     return (
         <div className={`grid grid-cols-2 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 2xl:grid-cols-5 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">

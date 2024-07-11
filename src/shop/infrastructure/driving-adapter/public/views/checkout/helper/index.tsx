@@ -10,16 +10,18 @@ import { ImplementationAxios as AxiosAddress } from "@/shop/infrastructure/imple
 import { CreateUseCase as CreateOrder, GetNextCodeUseCase as GetNextCodeOrder} from "@/shop/application/use_cases/order";
 import { CreateUseCase as CreateAddress } from "@/shop/application/use_cases/address"
 import { UseLocalContext } from "@/core/context/UseLocalContext"
+import { CartHelper } from "@/common/components/cart/helper"
+import { useNavigate } from "react-router-dom"
 
 export const CheckoutHelper = () => {
     const { stateUser } = UseLocalContext()
-
+    const { resetProductsCart } = CartHelper()
     const queryClient =  useQueryClient()
     const orders : OrderEntity[] | undefined = queryClient.getQueryData(['query_order_list'])
     const cart_products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
     const cart_price = useAppSelector((state) => state.cartReducer)
-
+    const navigate = useNavigate()
 
     const validation :any = useFormik({
         initialValues: {            
@@ -91,7 +93,9 @@ export const CheckoutHelper = () => {
         const createOrder = new CreateOrder(orderRepository)
         const response = await createOrder.run(newOrder)
         queryClient.cancelQueries({ queryKey: ['query_order_list'] })
-        queryClient.setQueryData(['query_order_list'], [response, ...orders!])   
+        queryClient.setQueryData(['query_order_list'], [response, ...orders!]) 
+        resetProductsCart()
+        navigate("/")
     }
 
     const createAddress = async () : Promise<string | null> =>  {

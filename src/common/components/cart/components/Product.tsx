@@ -1,10 +1,10 @@
 import { ProductItemEntity } from "@/shop/domain/entities";
 import { Minus, Plus, Trash } from "lucide-react";
-import { HelperCart } from "../helper";
+import { CartHelper } from "../helper";
 
 export const ProductItem = ({ item }:{ item:ProductItemEntity }) => {
 
-    const { removeProductCart, decreaseProductQuantity, increaseProductQuantity } = HelperCart()
+    const { removeProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
 
     return (
         <div className="flex gap-2 product" id={`product${item.product!.id}`}>

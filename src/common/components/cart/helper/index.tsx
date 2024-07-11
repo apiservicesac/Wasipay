@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/core/redux/hooks"
 import { ProductItemEntity } from "@/shop/domain/entities";
 import { useQueryClient } from "@tanstack/react-query";
 
-export const HelperCart = () => {
+export const CartHelper = () => {
     const queryClient =  useQueryClient()
 
     const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
@@ -27,6 +27,18 @@ export const HelperCart = () => {
 
         queryClient.cancelQueries({ queryKey: ['query_product_list'] })
         queryClient.setQueryData(['query_product_list'], updatedProducts)              
+    };
+
+    const resetProductsCart = () => {  
+        const updatedProducts = [...products!]?.map((p: ProductItemEntity) => {
+            const updatedProduct = { ...p };
+            updatedProduct.quantity = 0
+            updatedProduct.total_price = 0;
+            updatedProduct.in_cart = false;             
+            return updatedProduct;
+        })
+        queryClient.cancelQueries({ queryKey: ['query_product_list'] })
+        queryClient.setQueryData(['query_product_list'], updatedProducts) 
     };
     
     const removeProductCart = (product_id: string) => {
@@ -89,5 +101,6 @@ export const HelperCart = () => {
         removeProductCart,
         increaseProductQuantity,
         decreaseProductQuantity,
+        resetProductsCart,
     }
 }
