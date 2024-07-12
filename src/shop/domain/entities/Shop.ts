@@ -1,3 +1,5 @@
+import { PaymentMethodEntity } from "./PaymentMethod";
+
 export interface ShopEntity {
     id?: string;
     name?: string;
@@ -8,6 +10,7 @@ export interface ShopEntity {
     email?: string;
     phone?: string;
     image?: any;
+    payment_method?: string[] | PaymentMethodEntity[];
     social_media?: {
         facebook?: string;
         tiktok?: string;
