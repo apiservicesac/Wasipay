@@ -59,7 +59,7 @@ const ProductsOrders = () => {
         },
         {
             header: "Payments",
-            accessorKey: "payments",
+            accessorKey: "payment.payment_method.name",
             enableColumnFilter: false,
             enableSorting: true,
         },
