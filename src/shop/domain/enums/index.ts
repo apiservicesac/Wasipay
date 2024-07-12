@@ -23,8 +23,9 @@ export enum ProductTax {
 }
 
 export enum OrderStatus {
-    PENDING = 'PENDING',
+    PENDING = 'PENDING',    
     PROCESSING = 'PROCESSING',
+    NEW = 'NEW',
     SHIPPED = 'SHIPPED',
     DELIVERED = 'DELIVERED',
     CANCELLED = 'CANCELLED'
