@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/core/redux/hooks"
-import { AddressEntity, OrderEntity, OrderLineEntity, ProductItemEntity } from "@/shop/domain/entities"
+import { AddressEntity, OrderEntity, OrderLineEntity, ProductItemEntity, ShopEntity } from "@/shop/domain/entities"
 import { OrderStatus } from "@/shop/domain/enums"
 import { useQueryClient } from "@tanstack/react-query"
 import { useFormik } from "formik"
@@ -12,11 +12,17 @@ import { CreateUseCase as CreateAddress } from "@/shop/application/use_cases/add
 import { UseLocalContext } from "@/core/context/UseLocalContext"
 import { CartHelper } from "@/common/components/cart/helper"
 import { useNavigate } from "react-router-dom"
+import { OrderPaymentEntity } from "@/shop/domain/entities/OrderPayment"
+import React from "react"
 
 export const CheckoutHelper = () => {
     const { stateUser } = UseLocalContext()
     const { resetProductsCart } = CartHelper()
+
+    const [paymentMethod, setPaymentMethod] = React.useState<string | null >(null)
+
     const queryClient =  useQueryClient()
+    const shop_profile : ShopEntity | undefined = queryClient.getQueryData(['shop_profile'])
     const orders : OrderEntity[] | undefined = queryClient.getQueryData(['query_order_list'])
     const cart_products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
     const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
@@ -74,6 +80,11 @@ export const CheckoutHelper = () => {
                 total_price: line.total_price                
             } as OrderLineEntity
         })!
+
+        const orderPayment : OrderPaymentEntity = {
+            image: null,
+            payment_method: paymentMethod!
+        }
                 
         const orderRepository = new AxiosOrder()
         const getNextCode = new GetNextCodeOrder(orderRepository)   
@@ -87,7 +98,8 @@ export const CheckoutHelper = () => {
             total_amount: cart_price.total_price,
             shipping_address: address_id ? address_id as string : undefined,
             billing_address: address_id ? address_id as string : undefined,
-            order_lines: orderLines
+            order_lines: orderLines,
+            payment: orderPayment,
         }
 
         const createOrder = new CreateOrder(orderRepository)
@@ -118,5 +130,7 @@ export const CheckoutHelper = () => {
         cart_price,
         validation,
         onHandleSubmitOrder,
+        shop_profile,
+        setPaymentMethod,
     }
 }

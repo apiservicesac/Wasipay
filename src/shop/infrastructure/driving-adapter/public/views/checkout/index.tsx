@@ -9,6 +9,7 @@ import { LayoutPublic } from '@/common/layout_2';
 import { CheckoutHelper } from './helper';
 import { ShippingInformation } from './components/ShippingInformation';
 import { OrderSummary } from './components/OrderSummary';
+import { PaymentMethodEntity } from '@/shop/domain/entities/PaymentMethod';
 
 export const CheckouView = () => {
 
@@ -36,6 +37,35 @@ export const CheckouView = () => {
                         </div>
 
                         <ShippingInformation helper={helper} />
+
+
+                        <div className="card">
+                            <div className="card-body">
+                                <h6 className="mb-4 text-15">Payment Method</h6>
+
+                                <div className="grid grid-cols-1 gap-5 xl:grid-cols-2">
+
+                                    {helper.shop_profile && helper.shop_profile.payment_method?.map((item:PaymentMethodEntity) => (
+                                        <div className="flex items-center gap-3" key={item.id}>
+                                            <input onChange={(e) => helper.setPaymentMethod(e.target.value)} id={item.id} className="size-4 border rounded-full appearance-none cursor-pointer bg-slate-100 border-slate-200 dark:bg-zink-600 dark:border-zink-500 checked:bg-purple-500 checked:border-purple-500 dark:checked:bg-purple-500 dark:checked:border-purple-500 checked:disabled:bg-purple-400 checked:disabled:border-purple-400 peer" type="radio" name="payment_method" value={item.id} />
+                                            <label htmlFor={item.id} className="flex flex-col gap-4 p-5 border rounded-md cursor-pointer md:flex-row border-slate-200 dark:border-zink-500 peer-checked:border-purple-500 dark:peer-checked:border-purple-700 grow">
+                                                <span className="shrink-0">
+                                                    {/* <img src={delivery1} alt="" className="h-12" /> */}
+                                                </span>
+                                                <span className="grow">
+                                                    <span className="block mb-1 font-semibold text-15">{item.name}</span>
+                                                    <span className="text-slate-500 dark:text-zink-200">{item.description}</span>
+                                                </span>
+                                                <span className="shrink-0">
+                                                    <span className="block text-lg font-semibold">S/.{helper.cart_price.total_price!.toFixed(2)}</span>
+                                                </span>
+                                            </label>
+                                        </div>       
+                                        ))
+                                    }                                                                 
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>
                     <div className="xl:col-span-4">
