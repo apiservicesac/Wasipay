@@ -6,10 +6,13 @@ import { ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import BreadCrumb from "@/common/BreadCrumb";
 import { LayoutPublic } from "@/common/layout_2";
+import { ProductOverViewHelper } from "./helper";
+import { formatCurrency, formatDiscountPrice } from "@/common/utils/format";
 
 
 const ProductOverView = () => {
-    
+    const helper = ProductOverViewHelper()
+
     return (
         <LayoutPublic>
             <React.Fragment>
@@ -54,22 +57,26 @@ const ProductOverView = () => {
                 </div>
                 <div className="xl:col-span-8">
                     <div className="card">
-                        <div className="card-body">                            
-                            <span className="px-2.5 py-0.5 text-xs inline-block font-medium rounded border bg-sky-100 border-sky-100 text-sky-500 dark:bg-sky-400/20 dark:border-transparent"> New Arrivals</span>
-                            <h5 className="mt-3 mb-1">Smartees Printed Men Round Neck Pink</h5>
+                        <div className="card-body">                                                        
+                            <h5 className="mt-3 mb-1">{helper.product?.product?.name}</h5>
                             <ul className="flex flex-wrap items-center gap-4 mb-5 text-slate-500 dark:text-zink-200">
                                 <li>Published: <span className="font-medium">20 Oct, 2023</span></li>
                             </ul>                            
 
                             <div className="mb-4">
-                                <p className="mb-1 text-green-500">Special Price</p>
-                                <h4>$487.32 <small className="font-normal line-through align-middle text-slate-500 dark:text-zink-200">$599.99</small> <small className="text-green-500 align-middle">20% Off</small></h4>
+                                <p className="mb-1 text-green-500">{helper.product?.product?.discount !== 0 ? 'Special' : ''}Price</p>
+
+                                {helper.product?.product?.discount !== 0 ? (
+                                    <h4>{formatDiscountPrice(helper.product?.product!)} <small className="font-normal line-through align-middle text-slate-500 dark:text-zink-200">{formatCurrency.format(helper.product?.product?.price!)}</small> <small className="text-green-500 align-middle">{helper.product?.product?.discount}% Off</small></h4>
+                                ) : (
+                                    <h4>{formatCurrency.format(helper.product?.product?.price!)}</h4>
+                                )}
+                                
                             </div>                            
 
                             <div className="mt-5">
                                 <h6 className="mb-3 text-15">Product Description:</h6>
-                                <p className="mb-2 text-slate-500 dark:text-zink-200">Latest <b>Trends</b> in Fashion Clothing. Currently, the latest clothing trends for women on FabAlley include playful check print, breezy floral motif, bold red hue, cool denim fabric, quirky polka dot and romantic ruffles.</p>
-                                <p className="text-slate-500 dark:text-zink-200"><b>Avoid shapeless and baggy clothing</b>. Stay away from pieces with extra fabric at the hips or bust to keep your look proportionate. Avoid wearing ruffles or pleats around your waist or hips. Be sure to wear supportive undergarments that fit you well!</p>
+                                <p className="mb-2 text-slate-500 dark:text-zink-200">{helper.product?.product?.description}</p>                                
                             </div>
                         </div>
                     </div>
