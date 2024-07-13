@@ -14,6 +14,7 @@ import { CartHelper } from "@/common/components/cart/helper"
 import { useNavigate } from "react-router-dom"
 import { OrderPaymentEntity } from "@/shop/domain/entities/OrderPayment"
 import React from "react"
+import { toast } from "sonner"
 
 export const CheckoutHelper = () => {
     const { stateUser } = UseLocalContext()
@@ -53,16 +54,22 @@ export const CheckoutHelper = () => {
             country: Yup.string().required("Status is required"),
         }),
         onSubmit: () => {            
-            
+            console.log(validation.errors)
         },
     });
 
     const onHandleSubmitOrder = async (event: any) => {
         event.preventDefault();        
         await validation.handleSubmit(event);
-        if(Object.keys(validation.errors).length === 0){
-            await createOrder();
-        }    
+        if(Object.keys(await validation.validateForm()).length === 0){            
+            if(paymentMethod !== null){
+                await createOrder();
+            }else {
+                toast.error("Debe seleccionar un metodo de pago.")                
+            }        
+        }else {
+            toast.error("Debe rellenar todo el formulario correctament.")
+        }
     }
 
 
