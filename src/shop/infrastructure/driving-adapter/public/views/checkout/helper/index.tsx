@@ -54,7 +54,6 @@ export const CheckoutHelper = () => {
             country: Yup.string().required("Status is required"),
         }),
         onSubmit: () => {            
-            console.log(validation.errors)
         },
     });
 
