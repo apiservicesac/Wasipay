@@ -1,6 +1,7 @@
 import { ProductItemEntity } from "@/shop/domain/entities";
 import { Minus, Plus, Trash } from "lucide-react";
 import { CartHelper } from "../helper";
+import { formatCurrency } from "@/common/utils/format";
 
 export const ProductItem = ({ item }:{ item:ProductItemEntity }) => {
 
@@ -24,7 +25,7 @@ export const ProductItem = ({ item }:{ item:ProductItemEntity }) => {
                 </a>
                 
                 <div className="flex items-center mb-3">
-                    <h5 className="text-base product-price"> S/. <span>{item.product!.price}</span></h5>                
+                    <h5 className="text-base product-price"><span>{formatCurrency.format(item.product!.price!)}</span></h5>                
                 </div>
 
                 <div className="flex items-center justify-between gap-3">
@@ -37,7 +38,7 @@ export const ProductItem = ({ item }:{ item:ProductItemEntity }) => {
                             <Plus className="inline-block size-4"></Plus>
                         </button>
                     </div>
-                    <h6 className="product-line-price text-[17px]">S/. {item!.total_price}</h6>
+                    <h6 className="product-line-price text-[17px]">{formatCurrency.format(item!.total_price!)}</h6>
                 </div>
 
             </div>

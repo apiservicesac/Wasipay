@@ -10,6 +10,7 @@ import { CheckoutHelper } from './helper';
 import { ShippingInformation } from './components/ShippingInformation';
 import { OrderSummary } from './components/OrderSummary';
 import { PaymentMethodEntity } from '@/shop/domain/entities/PaymentMethod';
+import { formatCurrency } from '@/common/utils/format';
 
 export const CheckouView = () => {
 
@@ -57,7 +58,7 @@ export const CheckouView = () => {
                                                     <span className="text-slate-500 dark:text-zink-200">{item.description}</span>
                                                 </span>
                                                 <span className="shrink-0">
-                                                    <span className="block text-lg font-semibold">S/.{helper.cart_price.total_price!.toFixed(2)}</span>
+                                                    <span className="block text-lg font-semibold">{formatCurrency.format(helper.cart_price.total_price!)}</span>
                                                 </span>
                                             </label>
                                         </div>       

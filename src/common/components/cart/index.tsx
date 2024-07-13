@@ -7,6 +7,7 @@ import { ProductItemEntity } from "@/shop/domain/entities";
 import { ProductItem } from "./components/Product";
 import { useQueryClient } from "@tanstack/react-query";
 import Authorization, { LoggedIn, LoggedOut } from "@/common/security/Authorization";
+import { formatCurrency } from "@/common/utils/format";
 
 const CartComponent = ({ show, handleDrawer }: any) => {
 
@@ -52,7 +53,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                             <tbody className="table-total">
                                 <tr>
                                     <td className="py-2">Sub Total :</td>
-                                    <td className="text-right cart-subtotal">S/. {cart_price.subtotal_price!.toFixed(2)}</td>
+                                    <td className="text-right cart-subtotal">{formatCurrency.format(cart_price.subtotal_price!)}</td>
                                 </tr>
                                 {/* <tr>
                                     <td className="py-2">Shipping Charge :</td>
@@ -60,11 +61,11 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                                 </tr> */}
                                 <tr>
                                     <td className="py-2">Estimated Tax (18.0%) : </td>
-                                    <td className="text-right cart-tax">S/. {cart_price.total_tax!.toFixed(2)}</td>
+                                    <td className="text-right cart-tax">{formatCurrency.format(cart_price.total_tax!)}</td>
                                 </tr>
                                 <tr className="font-semibold">
                                     <td className="py-2">Total : </td>
-                                    <td className="text-right cart-total">S/.{cart_price.total_price!.toFixed(2)}</td>
+                                    <td className="text-right cart-total">{formatCurrency.format(cart_price.total_price!)}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -3,6 +3,7 @@ import React from "react";
 
 // Image
 import { ProductCompletedHelper } from "./helper/ProductCompleted";
+import { formatCurrency } from "@/common/utils/format";
 
 export const ProductCompleted = () => {
 
@@ -20,7 +21,7 @@ export const ProductCompleted = () => {
                                 <img src={helper?.productCreate?.images?.[0]?.preview || ""} alt="" className="block mx-auto h-36" />                            
                             </div>
                             <div className="mt-3">
-                                <h5 className="mb-2">S/. {helper?.productCreate?.price} <small className="font-normal line-through">{helper?.productCreate?.price}</small></h5>
+                                <h5 className="mb-2">{formatCurrency.format(helper?.productCreate?.price!)} <small className="font-normal line-through">{formatCurrency.format(helper?.productCreate?.price!)}</small></h5>
                                 <h6 className="mb-1 text-15">{helper?.productCreate?.name}</h6>
                                 <p className="text-slate-500 dark:text-zink-200">{helper?.productCreate?.product_category}</p>
                             </div>

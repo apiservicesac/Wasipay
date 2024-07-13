@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useQueryClient } from '@tanstack/react-query';
 import { CartHelper } from '@/common/components/cart/helper';
+import { formatCurrency, formatDiscountPrice } from '@/common/utils/format';
 
 export const ProductsComponent = ({ list }: { list: boolean }) => {
     const queryClient =  useQueryClient()
@@ -38,9 +39,13 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
                     <div className="p-3 md:card-body !pt-0 md:group-[.gridView]:flex group-[.gridView]:!p-5 group-[.gridView]:gap-3 group-[.gridView]:grow">
                         <div className="group-[.gridView]:grow">
                             <h6 className="mb-1 text-left transition-all duration-200 text-xs md:text-15 hover:text-custom-500 line-clamp-2     xl:line-clamp-none 2xl:line-clamp-none">
-                                <Link to="/">{item.product?.name}</Link>
+                                <Link to={`/product/${item?.product?.id}`}>{item.product?.name}</Link>
                             </h6>                            
-                            <h5 className="mt-4 text-16">S/. {item.product?.price} <small className="font-normal line-through text-slate-500 dark:text-zink-200">{item.product?.discount !== 0 ? item.product?.discount : ''}</small></h5>
+                            <h5 className="mt-4 text-16">{formatDiscountPrice(item.product!)}
+                                {item.product?.discount! !== 0 && (
+                                    <small className="ml-2 font-normal line-through text-slate-500 dark:text-zink-200">{formatCurrency.format(item.product?.price!)}</small>
+                                )}                                
+                            </h5>
                         </div>
 
                         <div className="flex items-center gap-2 mt-4 group-[.gridView]:mt-0 group-[.gridView]:self-end">

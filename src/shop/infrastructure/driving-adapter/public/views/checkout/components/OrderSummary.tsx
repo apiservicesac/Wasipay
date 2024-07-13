@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/common/utils/format";
 import { ProductItemEntity } from "@/shop/domain/entities";
 import { MoveRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -24,11 +25,11 @@ export const OrderSummary = ({ helper }:{ helper: any }) => {
                                                             </div>
                                                             <div className="grow">
                                                                 <h6 className="mb-1 text-15"><Link to="/apps-ecommerce-product-overview" className="transition-all duration-300 ease-linear hover:text-custom-500">{item.product?.name}</Link></h6>
-                                                                <p className="text-slate-500 dark:text-zink-200">S/.{item.product?.price} x {item.quantity}</p>
+                                                                <p className="text-slate-500 dark:text-zink-200">{formatCurrency.format(item.product?.price!)} x {item.quantity}</p>
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td className="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500 ltr:text-right rtl:text-left">S/.{item.total_price}</td>
+                                                    <td className="px-3.5 py-4 border-b border-dashed first:pl-0 last:pr-0 border-slate-200 dark:border-zink-500 ltr:text-right rtl:text-left">{formatCurrency.format(item.total_price!)}</td>
                                                 </tr>
                                             ))
                                         }
@@ -37,19 +38,19 @@ export const OrderSummary = ({ helper }:{ helper: any }) => {
                                             <td className="px-3.5 pt-4 pb-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
                                                 Sub Total
                                             </td>
-                                            <td className="px-3.5 pt-4 pb-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">S/. {helper.cart_price.subtotal_price!.toFixed(2)}</td>
+                                            <td className="px-3.5 pt-4 pb-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">{formatCurrency.format(helper.cart_price.subtotal_price!)}</td>
                                         </tr>
                                         <tr>
                                             <td className="px-3.5 py-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
                                                 Estimated Tax (18%)
                                             </td>
-                                            <td className="px-3.5 py-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">S/. {helper.cart_price.total_tax!.toFixed(2)}</td>
+                                            <td className="px-3.5 py-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">{formatCurrency.format(helper.cart_price.total_tax!)}</td>
                                         </tr>
                                         <tr className="font-semibold">
                                             <td className="px-3.5 pt-3 first:pl-0 last:pr-0 text-slate-500 dark:text-zink-200">
                                                 Total Amount (PEN)
                                             </td>
-                                            <td className="px-3.5 pt-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">S/.{helper.cart_price.total_price!.toFixed(2)}</td>
+                                            <td className="px-3.5 pt-3 first:pl-0 last:pr-0 ltr:text-right rtl:text-left">{formatCurrency.format(helper.cart_price.total_price!)}</td>
                                         </tr>
                                     </tbody>
                                 </table>
