@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^41.0.0",
+    "@ckeditor/ckeditor5-editor-balloon": "^41.0.0",
+    "@ckeditor/ckeditor5-react": "^6.2.0",
     "@headlessui/react": "^1.7.19",
     "@reduxjs/toolkit": "^2.2.3",
     "@tanstack/match-sorter-utils": "^8.11.7",

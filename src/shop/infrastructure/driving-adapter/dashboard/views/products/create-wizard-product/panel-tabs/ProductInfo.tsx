@@ -2,8 +2,10 @@ import React from "react";
 import { MoveRight } from "lucide-react";
 import Select from 'react-select';
 import { ProductInfoHelper } from "./helper/ProductInfoHelper";
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';;
 
-export const ProductInfo = () => {
+export const ProductInfo = () => {   
 
     const helper = ProductInfoHelper()
 
@@ -88,19 +90,16 @@ export const ProductInfo = () => {
                 </div>                
                 <div className="grid grid-cols-1">
                     <label htmlFor="description" className="inline-block mb-2 text-base font-medium">Description</label>    
-                    <textarea 
-                        id="description"  
-                        className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200"                             
-                        placeholder="Enter Description"
-                        name="description"
-                        value={helper.validation.values.description}
-                        onChange={helper.validation.handleChange}
-                        onBlur={helper.validation.handleBlur}
-                        rows={5} />
+                    <CKEditor
+                        editor={ClassicEditor}
+                        data={helper.validation.values.description}
+                        onChange={helper.handleEditorDescriptionChange}
+                        onBlur={() => helper.validation.handleBlur({ target: { name: 'description' } })}
+                    />
                     {
-                        helper.validation.touched.description && helper.validation.errors.description ?
+                        helper.validation.touched.description && helper.validation.errors.description ? (
                             <div id="description" className="text-red-500">{helper.validation.errors.description}</div>
-                            : null
+                        ) : null
                     }
                 </div>                
                 <div className="flex justify-end gap-2 mt-5">                    

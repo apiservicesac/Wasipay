@@ -69,6 +69,11 @@ export const ProductInfoHelper = () => {
         }
     }
 
+    const handleEditorDescriptionChange = (event: any, editor: any) => {
+        const data = editor.getData();
+        validation.setFieldValue('description', data);
+    };
+
     const getNextCodeProduct = async () => {
         const shop_id = `${import.meta.env.VITE_SHOP_ID}`
 
@@ -87,5 +92,6 @@ export const ProductInfoHelper = () => {
         onHandleSubmitForm,
         productCategoryOptions, productTypeOptions,
         handleProductCategoryChange, handleProductTypeChange,
+        handleEditorDescriptionChange,
     }
 }
