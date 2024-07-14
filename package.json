@@ -20,6 +20,7 @@
     "@tanstack/react-table": "^8.11.7",
     "axios": "^1.6.8",
     "formik": "^2.4.6",
+    "html-react-parser": "^5.1.10",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.372.0",
     "moment": "^2.30.1",

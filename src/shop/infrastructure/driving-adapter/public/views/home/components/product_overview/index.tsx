@@ -9,13 +9,18 @@ import { LayoutPublic } from "@/common/layout_2";
 import { ProductOverViewHelper } from "./helper";
 import { formatCurrency, formatDiscountPrice } from "@/common/utils/format";
 import { CartHelper } from "@/common/components/cart/helper";
+import parse from 'html-react-parser';
 
 const ProductOverView = () => {
     const helper = ProductOverViewHelper()
 
     const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
 
+    function createMarkup(description: string) {
+        return {__html: description};
+    }
 
+      
     return (
         <LayoutPublic>
             <React.Fragment>
@@ -98,7 +103,9 @@ const ProductOverView = () => {
 
                             <div className="mt-5">
                                 <h6 className="mb-3 text-15">Product Description:</h6>
-                                <p className="mb-2 text-slate-500 dark:text-zink-200">{helper.product?.product?.description}</p>                                
+                                <p className="mb-2 text-slate-500 dark:text-zink-200">                                    
+                                    {parse(helper.product?.product?.description!)}
+                                </p>
                             </div>
                         </div>
                     </div>
