@@ -2,7 +2,7 @@ import React from "react";
 
 
 // Icon
-import { Minus, Plus, ShoppingCart } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import BreadCrumb from "@/common/BreadCrumb";
 import { LayoutPublic } from "@/common/layout_2";
@@ -10,15 +10,13 @@ import { ProductOverViewHelper } from "./helper";
 import { formatCurrency, formatDiscountPrice } from "@/common/utils/format";
 import { CartHelper } from "@/common/components/cart/helper";
 import parse from 'html-react-parser';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from 'swiper/modules';
 
 const ProductOverView = () => {
     const helper = ProductOverViewHelper()
 
     const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
-
-    function createMarkup(description: string) {
-        return {__html: description};
-    }
 
       
     return (
@@ -31,24 +29,24 @@ const ProductOverView = () => {
                     <div className="sticky top-[calc(theme('spacing.header')_*_1.3)] mb-5">
                         <div className="card">
                             <div className="card-body">
-                                <div className="grid grid-cols-1 gap-5 md:grid-cols-12">
-                                    <div className="rounded-md md:col-span-8 md:row-span-2 bg-slate-100 dark:bg-zink-600">
-                                        {/* <img src={overview01} alt="" /> */}
-                                    </div>
-                                    <div className="rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                        {/* <img src={overview02} alt="" /> */}
-                                    </div>
-                                    <div className="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                        {/* <img src={productImg01} alt="" /> */}
-                                    </div>
-                                    <div className="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                        {/* <img src={productImg09} alt="" /> */}
-                                    </div>
-                                    <div className="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                        {/* <img src={productImg12} alt="" /> */}
-                                    </div>
-                                    <div className="p-4 rounded-md md:col-span-4 bg-slate-100 dark:bg-zink-600">
-                                        {/* <img src={productImg13} alt="" /> */}
+                                <div className="relative group-[.gridView]:static p-3 md:p-5 group-[.gridView]:p-2">
+                                    <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">
+                                        <Swiper className="pagination-slider group-[.gridView]:w-24"
+                                            navigation={{
+                                                nextEl: '.swiper-button-next',
+                                                prevEl: '.swiper-button-prev',
+                                            }}
+                                            modules={[Pagination, Navigation]}>
+                                            {helper.product?.product?.images!.map((image) => (
+                                                <SwiperSlide key={image.id} className='flex justify-center items-center'>
+                                                    <div className="w-full h-full flex justify-center items-center">
+                                                        <img src={image.url} className="object-contain max-h-full max-w-full" />
+                                                    </div>
+                                                </SwiperSlide>
+                                            ))}
+                                            <div className="swiper-button-next after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronRight className='text-black' /></div>
+                                            <div className="swiper-button-prev after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronLeft className='text-black' /></div>
+                                        </Swiper>
                                     </div>
                                 </div>
 

@@ -1,8 +1,6 @@
-import { ChevronLeft, ChevronRight, Minus, Plus, ShoppingCart } from 'lucide-react';
+import { Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { ProductItemEntity } from '@/shop/domain/entities';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
 import { useQueryClient } from '@tanstack/react-query';
 import { CartHelper } from '@/common/components/cart/helper';
 import { formatCurrency, formatDiscountPrice } from '@/common/utils/format';
@@ -22,23 +20,12 @@ export const ProductsComponent = ({ list }: { list: boolean }) => {
                 <div key={item?.product?.id} className="card md:group-[.gridView]:flex relative">
                     <div className="relative group-[.gridView]:static p-3 md:p-5 group-[.gridView]:p-2">
                         <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">
-                            <Swiper className="pagination-slider group-[.gridView]:w-24"
-                                navigation={{
-                                    nextEl: '.swiper-button-next',
-                                    prevEl: '.swiper-button-prev',
-                                }}
-                                modules={[Pagination, Navigation]}>
-                                {item?.product?.images!.map((image) => (
-                                    <SwiperSlide key={image.id} className='flex items-center place-content-center'><img src={image.url} className="" /></SwiperSlide>
-                                ))}
-                                <div className="swiper-button-next after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronRight className='text-white' /></div>
-                                <div className="swiper-button-prev after:hidden text-custom-500 group-[.gridView]:hidden flex"><ChevronLeft className='text-white' /></div>
-                            </Swiper>
+                            <img src={item?.product?.images && item?.product?.images.length !== 0 ? item?.product?.images[0].url : ''} alt="" className="group-[.gridView]:h-16" />
                         </div>
                     </div>
                     <div className="p-3 md:card-body !pt-0 md:group-[.gridView]:flex group-[.gridView]:!p-5 group-[.gridView]:gap-3 group-[.gridView]:grow">
                         <div className="group-[.gridView]:grow">
-                            <h6 className="mb-1 text-left transition-all duration-200 text-xs md:text-15 hover:text-custom-500 line-clamp-2     xl:line-clamp-none 2xl:line-clamp-none">
+                            <h6 className="mb-1 text-left transition-all duration-200 text-xs md:text-15 hover:text-custom-500 line-clamp-1  xl:line-clamp-2 2xl:line-clamp-1">
                                 <Link to={`/product/${item?.product?.id}`}>{item.product?.name}</Link>
                             </h6>                            
                             <h5 className="mt-4 text-16">{formatDiscountPrice(item.product!)}
