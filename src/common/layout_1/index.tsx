@@ -3,6 +3,7 @@ import Header from "../Header";
 import { LogOut, StoreIcon, User2 } from 'lucide-react';
 import { Dropdown } from '@/common/components/Dropdown';
 import { Link } from "react-router-dom";
+import { CommonHelper } from "../helper";
 
 const LayoutAuth = ({ children }: any) => {
 
@@ -16,6 +17,9 @@ const LayoutAuth = ({ children }: any) => {
           document.body.classList.remove('text-base', 'bg-body-bg', 'text-body', 'font-public', 'dark:text-zink-100', 'dark:bg-zink-800', 'group-data-[skin=bordered]:bg-body-bordered', 'group-data-[skin=bordered]:dark:bg-zink-700');
         };
     }, []);
+
+    const { logoutSessionAuth } = CommonHelper()
+
 
     return (        
         <div className="group-data-[sidebar-size=sm]:min-h-sm group-data-[sidebar-size=sm]:relative">
@@ -38,8 +42,8 @@ const LayoutAuth = ({ children }: any) => {
                             to={"/profile"}><User2 className="inline-block size-4"></User2> Profile</Link>
                         </li>
                         <li className="pt-2 mt-2 border-t border-slate-200 dark:border-zink-500">
-                            <Link className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
-                            to={"/logout"}><LogOut className="inline-block size-4"></LogOut> Sign Out</Link>
+                            <button onClick={logoutSessionAuth} type="button" className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
+                            ><LogOut className="inline-block size-4"></LogOut> Sign Out</button>
                         </li>
                     </ul>
                 </Dropdown.Content>
