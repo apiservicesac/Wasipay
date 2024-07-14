@@ -6,6 +6,7 @@ import { CreateProductView } from "@/shop/infrastructure/driving-adapter/dashboa
 import { CheckouView } from "@/shop/infrastructure/driving-adapter/public/views/checkout";
 import ShopView from "@/shop/infrastructure/driving-adapter/public/views/home";
 import ProductOverView from "@/shop/infrastructure/driving-adapter/public/views/home/components/product_overview";
+import { ProfileInfoView } from "@/shop/infrastructure/driving-adapter/public/views/profile";
 
 interface RouteObject {
     path: string;
@@ -27,6 +28,8 @@ const publicRoutes: Array<RouteObject> = [
 ]
 
 const authRoutes: Array<RouteObject> = [
+    { path: "/profile", component: ProfileInfoView },
+
     { path: "/dashboard", component: AdminView },
 
     // Products
