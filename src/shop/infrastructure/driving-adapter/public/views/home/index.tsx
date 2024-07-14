@@ -20,7 +20,7 @@ const ShopView = () => {
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
                                 <NavItemCustom label="Store" eventKey={'store-tab'}/>  
                                 <Authorization onlyAdmin={true}>
-                                    <NavItemCustom label="Profile" eventKey="profile-tab" />  
+                                    <NavItemCustom label="Info" eventKey="info-tab" />  
                                     <NavItemCustom label="Integration" eventKey="integration-tab" />  
                                 </Authorization> 
                             </Nav>
@@ -31,7 +31,7 @@ const ShopView = () => {
                             <Store />
                         </Tab.Pane>
                         <Authorization onlyAdmin={true}>
-                            <Tab.Pane eventKey="profile-tab" id="profile-tab">                            
+                            <Tab.Pane eventKey="info-tab" id="info-tab">                            
                                 <ProfileInfo />
                             </Tab.Pane>
                             <Tab.Pane eventKey="integration-tab" id="integration-tab">                            
