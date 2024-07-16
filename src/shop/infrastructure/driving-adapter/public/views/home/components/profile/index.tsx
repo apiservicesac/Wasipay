@@ -2,6 +2,7 @@ import React from 'react';
 import { BadgeCheck, ImagePlus, MapPin, UserCircle } from 'lucide-react';
 import Skeleton from 'react-loading-skeleton';
 import { ProfileInfoHelper } from './helper';
+import Authorization from '@/common/security/Authorization';
 
 const ShopProfileInfo = ({ className }: { className: string }) => {
     const helper = ProfileInfoHelper();
@@ -21,20 +22,22 @@ const ShopProfileInfo = ({ className }: { className: string }) => {
                                 alt=''
                                 className='object-cover border-0 rounded-full img-thumbnail user-profile-image'
                             />
-                            <div className='shadow-md absolute bottom-0 flex items-center justify-center size-8 rounded-full right-0 profile-photo-edit border-0'>
-                                <input
-                                    id='profile-img-file-input'
-                                    type='file'
-                                    className='hidden profile-img-file-input'
-                                    onChange={helper.handleImageChange}
-                                />
-                                <label
-                                    htmlFor='profile-img-file-input'
-                                    className='flex items-center justify-center size-8 bg-gray-50 rounded-full shadow-lg cursor-pointer profile-photo-edit'
-                                >
-                                    <ImagePlus className='size-4 text-custom-500 fill-slate-50 ' />
-                                </label>
-                            </div>
+                            <Authorization onlyAdmin={true}>
+                                <div className='shadow-md absolute bottom-0 flex items-center justify-center size-8 rounded-full right-0 profile-photo-edit border-0'>
+                                    <input
+                                        id='profile-img-file-input'
+                                        type='file'
+                                        className='hidden profile-img-file-input'
+                                        onChange={helper.handleImageChange}
+                                    />
+                                    <label
+                                        htmlFor='profile-img-file-input'
+                                        className='flex items-center justify-center size-8 bg-gray-50 rounded-full shadow-lg cursor-pointer profile-photo-edit'
+                                    >
+                                        <ImagePlus className='size-4 text-custom-500 fill-slate-50 ' />
+                                    </label>
+                                </div>
+                            </Authorization>
                         </div>
                     </div>
                     <div className='lg:col-span-10 2xl:col-span-9 text-center'>
