@@ -47,7 +47,10 @@ const Widgets = () => {
                     <div className="flex items-center justify-center mx-auto text-red-500 bg-red-100 rounded-full size-14 dark:bg-red-500/20">
                         <View />
                     </div>
-                    <h5 className="mt-4 mb-2"><CountUp end={3519} className="counter-value" /></h5>
+                    <h5 className="mt-4 mb-2">
+                        -
+                        {/* <CountUp end={0} className="counter-value" /> */}
+                    </h5>
                     <p className="text-slate-500 dark:text-zink-200">Total Views</p>
                 </div>
             </div>
