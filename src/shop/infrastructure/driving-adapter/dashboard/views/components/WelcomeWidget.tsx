@@ -154,7 +154,10 @@ const WelcomeWidget = () => {
                         <div className="col-span-12 lg:col-span-8 2xl:col-span-7">
                             <h5 className="mb-3 font-normal tracking-wide text-slate-200">Welcome to Wasipay 🎉</h5>
                             {/* <p className="mb-5 text-slate-400">An ecommerce dashboard has just that purpose. It provides your ecommerce team with a clear overview of key financial and website KPIs at any time.</p> */}
-                            <Link to={"/dashboard/product"} className="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-500/20 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-500/20 dark:ring-custom-400/20">Take a Product</Link>
+                            <div className='flex gap-2'>
+                                <Link to={"/dashboard/product"} className="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-500/20 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-500/20 dark:ring-custom-400/20">Take a Product</Link>
+                                <Link to={"/dashboard/product"} className="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-500/20 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-500/20 dark:ring-custom-400/20">Payment Methods</Link>
+                            </div>                            
                         </div>
                         <div className="hidden col-span-12 2xl:col-span-3 lg:col-span-2 lg:col-start-11 2xl:col-start-10 lg:block">
                             <img src={dashboard} alt="" className="h-40 2xl:ml-auto" />
