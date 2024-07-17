@@ -30,3 +30,8 @@ export enum OrderStatus {
     DELIVERED = 'DELIVERED',
     CANCELLED = 'CANCELLED'
 }
+
+export enum CurrencyType {
+    PEN = 'PEN',
+    USD = 'USD',
+}
