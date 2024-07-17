@@ -1,4 +1,4 @@
-import { AddressEntity as Entity } from '@/shop/domain/entities';
+import { PaymentMethodShopEntity as Entity } from '@/shop/domain/entities';
 import { CustomReponse } from '@/shared/entities/Response';
 import { AxiosConfig } from '@/shared/services/axios';
 
