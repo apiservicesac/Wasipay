@@ -1,6 +1,7 @@
 import { LoginView } from "@/Auth/infrastructure/driving-adapter/views/login";
 import { LogoutView } from "@/Auth/infrastructure/driving-adapter/views/logout";
 import AdminView from "@/shop/infrastructure/driving-adapter/dashboard/views";
+import { PaymentMehtodsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/payment_methods";
 import { ProductsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products";
 import { CreateProductView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products/create-wizard-product";
 import { CheckouView } from "@/shop/infrastructure/driving-adapter/public/views/checkout";
@@ -28,10 +29,12 @@ const publicRoutes: Array<RouteObject> = [
 ]
 
 const authRoutes: Array<RouteObject> = [
-    { path: "/profile", component: ProfileInfoView },
+    { path: "/profile", component: ProfileInfoView },        
 
     { path: "/dashboard", component: AdminView },
 
+    { path: "/dashboard/payment-methods", component: PaymentMehtodsView },
+    
     // Products
     { path: "/dashboard/product", component: ProductsView },
     { path: "/dashboard/product/create", component: CreateProductView },
