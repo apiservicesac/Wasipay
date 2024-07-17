@@ -1,0 +1,23 @@
+import { PaymentMethodShopEntity as Entity } from "@/shop/domain/entities"
+import { PaymentMethodShopRepository as Repository } from "@/shop/domain/repositories"
+import { CreateEntityException } from "@/shared/exceptions"
+
+export class CreateUseCase {
+
+    private readonly _repository: Repository
+
+    constructor(
+        repository: Repository
+    ) {
+        this._repository = repository
+    }
+
+    async run(shop_id: string, formData: FormData): Promise<Entity> {
+
+        const entity: Entity | null = await this._repository.save(shop_id, formData)
+
+        if(entity === null) throw new CreateEntityException()
+        
+        return entity
+    }
+}

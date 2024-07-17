@@ -5,6 +5,7 @@ import { CardData } from './Card'
 import { AddressEntity } from './Address'
 import { OrderLineEntity } from './OrderLine'
 import { OrderEntity } from './Order'
+import { PaymentMethodShopEntity } from './PaymentMethodShop'
 
 export type {
     ProductEntity,
@@ -15,4 +16,5 @@ export type {
     AddressEntity,
     OrderLineEntity,
     OrderEntity,
+    PaymentMethodShopEntity,
 }
