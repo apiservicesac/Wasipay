@@ -7,10 +7,7 @@ export const OrderSummary = ({ helper }:{ helper: any }) => {
     return (
         <div className="card">
                         <div className="card-body">
-                            <h6 className="mb-4 text-15">Orders Summary</h6>
-                            <div className="px-4 py-3 mb-4 text-sm text-red-500 border border-transparent rounded-md bg-red-50 dark:bg-red-400/20">
-                                These products are limited, checkout within <span className="font-bold">03m 21s</span>
-                            </div>
+                            <h6 className="mb-4 text-15">Orders Summary</h6>                            
                             <div className="overflow-x-auto">
                                 <table className="w-full">
                                     <tbody>
