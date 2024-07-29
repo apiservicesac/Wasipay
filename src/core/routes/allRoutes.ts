@@ -1,6 +1,7 @@
 import { LoginView } from "@/Auth/infrastructure/driving-adapter/views/login";
 import { LogoutView } from "@/Auth/infrastructure/driving-adapter/views/logout";
 import AdminView from "@/shop/infrastructure/driving-adapter/dashboard/views";
+import { OrdersView } from "@/shop/infrastructure/driving-adapter/dashboard/views/orders";
 import { PaymentMehtodsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/payment_methods";
 import { ProductsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products";
 import { CreateProductView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products/create-wizard-product";
@@ -43,8 +44,8 @@ const authRoutes: Array<RouteObject> = [
     { path: "/dashboard/product", component: ProductsView },
     { path: "/dashboard/product/create", component: CreateProductView },
 
-    // // Orders
-    // { path: "/dashboard/order", component: OrdersView },
+    // Orders
+    { path: "/dashboard/order", component: OrdersView },
 ]
 
 export { publicRoutes, authRoutes };

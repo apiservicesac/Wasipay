@@ -65,7 +65,7 @@ const OrdersOverviewChart = ({ chartId }: any) => {
     //  Total Employee
     const series = [{
         name: 'Orders',
-        data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 3.4, 5.5, 8.8]
+        data: []
     }];
 
     var options: any = {
