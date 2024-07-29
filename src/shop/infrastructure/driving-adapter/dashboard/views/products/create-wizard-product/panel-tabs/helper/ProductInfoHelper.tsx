@@ -69,7 +69,7 @@ export const ProductInfoHelper = () => {
         }
     }
 
-    const handleEditorDescriptionChange = (event: any, editor: any) => {
+    const handleEditorDescriptionChange = (editor: any) => {
         const data = editor.getData();
         validation.setFieldValue('description', data);
     };
