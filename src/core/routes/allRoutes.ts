@@ -7,6 +7,7 @@ import { CreateProductView } from "@/shop/infrastructure/driving-adapter/dashboa
 import { CheckouView } from "@/shop/infrastructure/driving-adapter/public/views/checkout";
 import ShopView from "@/shop/infrastructure/driving-adapter/public/views/home";
 import ProductOverView from "@/shop/infrastructure/driving-adapter/public/views/home/components/product_overview";
+import { OrderOverview } from "@/shop/infrastructure/driving-adapter/public/views/order_overview";
 import { ProfileInfoView } from "@/shop/infrastructure/driving-adapter/public/views/profile";
 
 interface RouteObject {
@@ -18,6 +19,9 @@ interface RouteObject {
 const publicRoutes: Array<RouteObject> = [
     { path: "/", component: ShopView },
     { path: "/product/:id", component: ProductOverView },
+    
+    { path: "/order", component: OrderOverview },
+    
     { path: "/checkout", component: CheckouView },
     { path: "/login", component: LoginView },
     // { path: "/register", component: RegisterView },
