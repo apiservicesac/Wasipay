@@ -30,7 +30,7 @@ const Widgets = () => {
                         <Truck />
                     </div>
                     <h5 className="mt-4 mb-2"><CountUp end={orders?.length!} className="counter-value" /></h5>
-                    <p className="text-slate-500 dark:text-zink-200">My Orders</p>
+                    <p className="text-slate-500 dark:text-zink-200">Orders</p>
                 </div>
             </Link>
             <Link to={'/dashboard/product'} className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer order-2 2xl:order-3">
@@ -39,7 +39,7 @@ const Widgets = () => {
                         <Package />
                     </div>
                     <h5 className="mt-4 mb-2"><CountUp end={products?.length!} className="counter-value" /></h5>
-                    <p className="text-slate-500 dark:text-zink-200">My Products</p>
+                    <p className="text-slate-500 dark:text-zink-200">Products</p>
                 </div>
             </Link>
             <div className="col-span-12 card md:col-span-6 lg:col-span-3 2xl:col-span-2 cursor-pointer order-2 2xl:order-3">
