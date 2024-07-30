@@ -3,7 +3,7 @@ import { MoveRight } from "lucide-react";
 import Select from 'react-select';
 import { ProductInfoHelper } from "./helper/ProductInfoHelper";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';;
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export const ProductInfo = () => {   
 
