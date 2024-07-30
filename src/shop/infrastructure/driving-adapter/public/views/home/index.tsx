@@ -8,8 +8,9 @@ import { LayoutPublic } from "@/common/layout_2";
 import { ProfileInfo } from "./components/tabs-components/profile-info";
 import { Integration } from "./components/tabs-components/integration";
 import Authorization from "@/common/security/Authorization";
+import { withTranslation } from "react-i18next";
 
-const ShopView = () => {
+const ShopView = (props: any) => {
     return (
         <LayoutPublic>
             <React.Fragment>
@@ -18,10 +19,10 @@ const ShopView = () => {
                         <ShopProfileInfo  className="card-body !px-2.5" />
                         <div className="card-body !px-2.5 !py-0">
                             <Nav className="flex flex-wrap w-full text-sm font-medium text-center nav-tabs items-center justify-center">
-                                <NavItemCustom label="Store" eventKey={'store-tab'}/>  
+                                <NavItemCustom label={props.t("Store")} eventKey={'store-tab'}/>  
                                 <Authorization onlyAdmin={true}>
-                                    <NavItemCustom label="Info" eventKey="info-tab" />  
-                                    <NavItemCustom label="Integration" eventKey="integration-tab" />  
+                                    <NavItemCustom label={props.t("Profile")} eventKey="info-tab" />  
+                                    <NavItemCustom label={props.t("Integrations")} eventKey="integration-tab" />  
                                 </Authorization> 
                             </Nav>
                         </div>
@@ -45,4 +46,4 @@ const ShopView = () => {
     );
 }
 
-export default ShopView;
+export default withTranslation()(ShopView);
