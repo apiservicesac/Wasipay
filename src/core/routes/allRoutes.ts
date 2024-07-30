@@ -1,6 +1,6 @@
 import { LoginView } from "@/Auth/infrastructure/driving-adapter/views/login";
 import { LogoutView } from "@/Auth/infrastructure/driving-adapter/views/logout";
-import AdminView from "@/shop/infrastructure/driving-adapter/dashboard/views";
+import AdminView from "@/shop/infrastructure/driving-adapter/dashboard/views/home";
 import { OrdersView } from "@/shop/infrastructure/driving-adapter/dashboard/views/orders";
 import { PaymentMehtodsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/payment_methods";
 import { ProductsView } from "@/shop/infrastructure/driving-adapter/dashboard/views/products";

@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import TableContainer from "@/common/TableContainer";
-import ActionCard from "../components/action";
+import ActionCard from "./components/action";
 import { Helpers } from "./helpers";
 import { useQueryClient } from "@tanstack/react-query";
 import { ProductItemEntity } from "@/shop/domain/entities";
