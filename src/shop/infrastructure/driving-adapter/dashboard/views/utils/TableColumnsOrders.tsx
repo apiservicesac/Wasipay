@@ -1,4 +1,5 @@
 import { Dropdown } from "@/common/components/Dropdown";
+import { formatCurrency } from "@/common/utils/format";
 import { Eye, MoreHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -62,6 +63,9 @@ export const ColumnsOrders = [
         accessorKey: "total_amount",
         enableColumnFilter: false,
         enableSorting: true,
+        cell: (cell: any) => {
+            return formatCurrency.format(cell.row.original?.total_amount)
+        }
     },
     {
         header: "Status",
