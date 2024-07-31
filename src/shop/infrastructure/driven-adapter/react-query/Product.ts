@@ -74,6 +74,20 @@ class ProductAdapter {
         this._queryClient.cancelQueries({ queryKey: ['query_product_list'] })
         this._queryClient.setQueryData(['query_product_list'], prevProductItems)     
     }
+
+    async sortBy(ascending: boolean = true): Promise<void> {
+        const sortedProducts = this._product_list?.sort((a: ProductItemEntity, b: ProductItemEntity) => {
+            if (a.product?.price! < b.product?.price!) {
+                return ascending ? -1 : 1;
+            }
+            if (a.product?.price! > b.product?.price!) {
+                return ascending ? 1 : -1;
+            }
+            return 0;
+        });
+        this._queryClient.cancelQueries({ queryKey: ['query_product_list'] });
+        this._queryClient.setQueryData(['query_product_list'], sortedProducts);     
+    }
 }
 
 export {

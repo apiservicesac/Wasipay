@@ -16,7 +16,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 const ProductOverView = () => {
     const helper = ProductOverViewHelper()
 
-    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
+    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper({setData: false})
 
       
     return (

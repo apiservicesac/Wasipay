@@ -1,22 +1,17 @@
 import { Minus, Plus, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { ProductItemEntity } from '@/shop/domain/entities';
-import { useQueryClient } from '@tanstack/react-query';
 import { CartHelper } from '@/common/components/cart/helper';
 import { formatCurrency, formatDiscountPrice } from '@/common/utils/format';
 
-export const ProductsComponent = ({ list }: { list: boolean }) => {
-    const queryClient =  useQueryClient()
+export const ProductsComponent = ({ helper }: { helper:  any }) => {
 
-    const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
-    
-
-    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
+    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper({ setData: helper.setData})
 
     return (
-        <div className={`grid grid-cols-2 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 2xl:grid-cols-5 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!list && "gridView"}`} id="cardGridView">
+        <div className={`grid grid-cols-2 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 2xl:grid-cols-5 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!helper.list && "gridView"}`} id="cardGridView">
 
-            {(products || []).map((item: ProductItemEntity) => (
+            {(helper.data || []).map((item: ProductItemEntity) => (
                 <div key={item?.product?.id} className="card md:group-[.gridView]:flex relative">
                     <div className="relative group-[.gridView]:static p-3 md:p-5 group-[.gridView]:p-2">
                         <div className="group-[.gridView]:p-3 group-[.gridView]:bg-slate-100 dark:group-[.gridView]:bg-zink-600 group-[.gridView]:inline-block rounded-md">

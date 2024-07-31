@@ -1,13 +1,14 @@
 import React from "react";
 
 import { ProductsComponent } from "./components/products";
-import { PaginationComponent } from "./pagination";
-import { FilterComponent } from "./components/filters/filters";
-import { SortFilterComponent } from "./components/filters/sort_filter";
+import { PaginationComponent } from "./components/pagination";
+import SortFilterComponent from "./components/sort_filter";
+import { FilterComponent } from "./components/sort_filter/components/filters";
+import { HelperStore } from "./helper";
 
 export const Store = () => {
 
-    const [list, setList] = React.useState<boolean>(true);
+    const helper = HelperStore()
 
     return (
         <React.Fragment>                        
@@ -16,8 +17,8 @@ export const Store = () => {
                     <FilterComponent />                  
                 </div>
                 <div className="2xl:col-span-9">                    
-                    <SortFilterComponent list={list} setList={setList}/>
-                    <ProductsComponent list={list}/>
+                    <SortFilterComponent helper={helper} />                    
+                    <ProductsComponent helper={helper} />
                     <PaginationComponent />                    
                 </div>
             </div>

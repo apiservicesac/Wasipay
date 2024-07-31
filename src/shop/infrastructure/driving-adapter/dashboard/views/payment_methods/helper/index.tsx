@@ -72,7 +72,7 @@ export const PaymentMethodHelper = () => {
 
         onSubmit: async (values: any) => {
             const formData = new FormData();
-            console.log(values)
+
             Object.keys(values).forEach(key => {
                 if (values[key]) {
                     formData.append(key, values[key]);

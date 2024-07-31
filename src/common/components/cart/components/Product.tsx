@@ -5,7 +5,7 @@ import { formatCurrency } from "@/common/utils/format";
 
 export const ProductItem = ({ item }:{ item:ProductItemEntity }) => {
 
-    const { removeProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
+    const { removeProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper({setData: false})
 
     return (
         <div className="flex gap-2 product" id={`product${item.product!.id}`}>

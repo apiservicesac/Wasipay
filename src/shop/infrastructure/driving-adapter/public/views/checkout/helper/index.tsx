@@ -18,7 +18,7 @@ import { toast } from "sonner"
 
 export const CheckoutHelper = () => {
     const { stateUser } = UseLocalContext()
-    const { resetProductsCart } = CartHelper()
+    const { resetProductsCart } = CartHelper({setData: false})
 
     const [paymentMethod, setPaymentMethod] = React.useState<string | null >(null)
 

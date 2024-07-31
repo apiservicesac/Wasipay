@@ -13,6 +13,7 @@ const useProduct = () => {
     const update = React.useCallback((product_id: string, data: ProductEntity) => productAdapter.update(product_id, data), [productAdapter]);
     const update_field = React.useCallback((product_id: string, field: string, value: any) => productAdapter.update_field(product_id, field, value), [productAdapter]);
     const deleteProduct = React.useCallback((id: string) => productAdapter.delete(id), [productAdapter]);
+    const sortBy = React.useCallback((ascending: boolean) => productAdapter.sortBy(ascending), [productAdapter])
 
     return {
         getAll,
@@ -20,7 +21,8 @@ const useProduct = () => {
         create,
         update,
         update_field,
-        delete: deleteProduct
+        delete: deleteProduct,
+        sortBy
     };
 };
 

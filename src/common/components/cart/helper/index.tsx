@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "@/core/redux/hooks"
 import { ProductItemEntity } from "@/shop/domain/entities";
 import { useQueryClient } from "@tanstack/react-query";
 
-export const CartHelper = () => {
+export const CartHelper = ({ setData = false }: { setData: any }) => {
     const queryClient =  useQueryClient()
 
     const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
@@ -26,7 +26,10 @@ export const CartHelper = () => {
         })
 
         queryClient.cancelQueries({ queryKey: ['query_product_list'] })
-        queryClient.setQueryData(['query_product_list'], updatedProducts)              
+        queryClient.setQueryData(['query_product_list'], updatedProducts)    
+        if(setData){
+            setData(updatedProducts)
+        }          
     };
 
     const resetProductsCart = () => {  
@@ -39,6 +42,9 @@ export const CartHelper = () => {
         })
         queryClient.cancelQueries({ queryKey: ['query_product_list'] })
         queryClient.setQueryData(['query_product_list'], updatedProducts) 
+        if(setData){
+            setData(updatedProducts)
+        }
     };
     
     const removeProductCart = (product_id: string) => {
@@ -57,6 +63,9 @@ export const CartHelper = () => {
             })
             queryClient.cancelQueries({ queryKey: ['query_product_list'] })
             queryClient.setQueryData(['query_product_list'], updatedProducts) 
+            if(setData){
+                setData(updatedProducts)
+            }
         }
     };
     
@@ -76,6 +85,9 @@ export const CartHelper = () => {
         })
         queryClient.cancelQueries({ queryKey: ['query_product_list'] })
         queryClient.setQueryData(['query_product_list'], updatedProducts) 
+        if(setData){
+            setData(updatedProducts)
+        }
     };
     
     const increaseProductQuantity = (product_id: string) => {
@@ -93,6 +105,9 @@ export const CartHelper = () => {
         })
         queryClient.cancelQueries({ queryKey: ['query_product_list'] })
         queryClient.setQueryData(['query_product_list'], updatedProducts) 
+        if(setData){
+            setData(updatedProducts)
+        }
     };
 
 
