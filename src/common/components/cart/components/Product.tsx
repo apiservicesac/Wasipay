@@ -1,9 +1,9 @@
-import { ProductItemEntity } from "@/shop/domain/entities";
 import { Minus, Plus, Trash } from "lucide-react";
 import { CartHelper } from "../helper";
 import { formatCurrency } from "@/common/utils/format";
+import { ProductItemEntity } from "@/features/product/domain/entities";
 
-export const ProductItem = ({ item }:{ item:ProductItemEntity }) => {
+export const ProductItem = ({ item }:{ item: ProductItemEntity }) => {
 
     const { removeProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper({setData: false})
 

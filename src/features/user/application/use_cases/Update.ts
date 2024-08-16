@@ -1,5 +1,5 @@
-import { UserEntity as Entity } from "@/Auth/domain/entities"
-import { UserRepository as Repository } from "@/Auth/domain/repositories"
+import { UserRepository as Repository } from "../../domain/repositories"
+import { UserEntity as Entity } from "../../domain/entities"
 import { UpdateEntityException } from "@/shared/exceptions"
 
 export class UpdateUseCase {

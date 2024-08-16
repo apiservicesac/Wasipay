@@ -16,7 +16,7 @@ class QueryUser {
     async init(setStateUser: (user: UserEntity) => void): Promise<void> {
         const userUseCase = new GetByIdUseCase(this.repository) 
         const user = await userUseCase.run((await this.tokenService.checkTokens()).decoded.id, this.tokenService.getAccessToken()!)
-        setStateUser(user)
+        setStateUser(user as UserEntity)
     }
 
     async login(email: string, password: string): Promise<void> {

@@ -12,7 +12,7 @@ export const HelperStore = () => {
     const [drawerFilter, setDrawerFilter] = React.useState<boolean>(false);
     const drawerEndToggle = () => setDrawerFilter(!drawerFilter);
 
-    const filterSearchData = (e: any) => {
+    const filterSearchData = (_: any) => {
         // const search = e.target.value;
         // const keysToSearch = ['product.name'];
         // filterDataBySearch(products as ProductItemEntity[], search, keysToSearch, setData);

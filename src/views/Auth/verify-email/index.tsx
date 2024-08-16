@@ -1,7 +1,7 @@
 import React from "react";
 
-import AuthIcon from "@/Auth/infrastructure/driving-adapter/components/AuthIcon";
 import { Link } from "react-router-dom";
+import AuthIcon from "../components/AuthIcon";
 
 
 export const VerifyEmailView = () => {

@@ -1,5 +1,5 @@
-import { UserEntity } from "@/Auth/domain/entities";
-import { ProductEntity } from "@/shop/domain/entities";
+import { ProductEntity } from "@/features/product/domain/entities";
+import { UserEntity } from "@/features/user/domain/entities";
 import { createContext, useContext, useState, ReactNode } from "react";
 
 interface LocalStateContextType {

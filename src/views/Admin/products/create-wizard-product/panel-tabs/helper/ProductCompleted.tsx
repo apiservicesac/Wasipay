@@ -10,7 +10,7 @@ export const ProductCompletedHelper = () => {
 
     const onSubmitCompleted = async () => {
         const { images, ...product_data } = productCreate!!
-        await create(images, product_data);
+        await create(images!, product_data);
         navigate("/dashboard/product")
     }
 

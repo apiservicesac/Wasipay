@@ -1,10 +1,8 @@
-import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { QueryPaymentMethodShop } from "../react-query";
 
 const usePaymentMethodShop = () => {
-    const queryClient = useQueryClient()
-    const queryProduct = new QueryPaymentMethodShop(queryClient);
+    const queryProduct = new QueryPaymentMethodShop();
 
     const created = React.useCallback((formData: FormData) => queryProduct.created(formData), [queryProduct]);
     const updated = React.useCallback((id: string, formData: FormData) => queryProduct.updated(id, formData), [queryProduct]);

@@ -1,4 +1,4 @@
-import { OrderRepository as Repository } from "@/shop/domain/repositories"
+import { OrderRepository as Repository } from "@/features/order/domain/repositories"
 import { NotFoundEntityException } from "@/shared/exceptions"
 
 export class GetNextCodeUseCase {

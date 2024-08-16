@@ -1,4 +1,4 @@
-import { UserRepository as Repository } from "@/Auth/domain/repositories"
+import { UserRepository as Repository } from "../../domain/repositories"
 import { DeleteEntityException } from "@/shared/exceptions"
 
 export class DeleteUseCase {
