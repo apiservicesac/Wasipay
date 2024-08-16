@@ -3,11 +3,11 @@ import { X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/core/redux/hooks";
 import Drawer from "@/common/components/Drawer";
-import { ProductItemEntity } from "@/shop/domain/entities";
 import { ProductItem } from "./components/Product";
 import { useQueryClient } from "@tanstack/react-query";
 import Authorization, { LoggedIn, LoggedOut } from "@/common/security/Authorization";
 import { formatCurrency } from "@/common/utils/format";
+import { ProductItemEntity } from "@/features/product/domain/entities";
 
 const CartComponent = ({ show, handleDrawer }: any) => {
 

@@ -1,6 +1,6 @@
 import { NotFoundEntityException } from "@/shared/exceptions"
-import { UserEntity as Entity } from "@/Auth/domain/entities"
-import { UserRepository as Repository } from "@/Auth/domain/repositories"
+import { UserRepository as Repository } from "../../domain/repositories"
+import { UserEntity as Entity } from "../../domain/entities"
 
 export class GetByIdUseCase {
 

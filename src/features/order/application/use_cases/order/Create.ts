@@ -1,20 +1,19 @@
-import { OrderEntity } from "@/shop/domain/entities"
-import { OrderRepository } from "@/shop/domain/repositories"
+import { OrderEntity as Entity } from "@/features/order/domain/entities"
+import { OrderRepository as Repository } from "@/features/order/domain/repositories"
 import { CreateEntityException } from "@/shared/exceptions"
 
 export class CreateUseCase {
 
-    private readonly _order_repository: OrderRepository
+    private readonly _order_repository: Repository
 
     constructor(
-        order_repository: OrderRepository,
+        order_repository: Repository,
     ) {
         this._order_repository = order_repository
     }
 
-    async run(order: OrderEntity): Promise<OrderEntity> {
-
-        const orderEntity: OrderEntity | null = await this._order_repository.save(order)
+    async run(order: Entity): Promise<Entity> {    
+        const orderEntity: Entity | null = await this._order_repository.save(order)
         if(orderEntity === null) throw new CreateEntityException("Error al crear la orden.")
         return orderEntity
     }

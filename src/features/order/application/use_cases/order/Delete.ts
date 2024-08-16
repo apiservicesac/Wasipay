@@ -1,5 +1,5 @@
-import { OrderRepository as Repository } from "@/shop/domain/repositories"
 import { DeleteEntityException } from "@/shared/exceptions"
+import { OrderRepository as Repository } from "@/features/order/domain/repositories"
 
 export class DeleteUseCase {
 

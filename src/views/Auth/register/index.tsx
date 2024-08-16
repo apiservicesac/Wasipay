@@ -1,5 +1,4 @@
 import React from "react";
-import AuthIcon from "@/Auth/infrastructure/driving-adapter/components/AuthIcon";
 import { Link } from "react-router-dom";
 
 // Formik validation
@@ -7,6 +6,7 @@ import * as Yup from "yup";
 import { useFormik as useFormic } from "formik";
 
 import { Mail } from "lucide-react";
+import AuthIcon from "../components/AuthIcon";
 
 export const RegisterView = () => {
 

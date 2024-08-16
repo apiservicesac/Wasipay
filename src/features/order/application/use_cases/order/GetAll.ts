@@ -1,5 +1,5 @@
-import { OrderEntity as Entity } from '@/shop/domain/entities'
-import { OrderRepository as Repository } from '@/shop/domain/repositories'
+import { OrderEntity as Entity } from "@/features/order/domain/entities"
+import { OrderRepository as Repository } from "@/features/order/domain/repositories"
 
 export class GetAllUseCase {
 

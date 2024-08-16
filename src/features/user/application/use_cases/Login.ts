@@ -1,5 +1,5 @@
-import { AuthResponse } from "@/Auth/domain/entities"
-import { UserRepository as Repository } from "@/Auth/domain/repositories"
+import { AuthResponse } from "../../domain/entities"
+import { UserRepository as Repository } from "../../domain/repositories"
 import { AuthenticateException } from "@/shared/exceptions"
 
 export class LoginUseCase {

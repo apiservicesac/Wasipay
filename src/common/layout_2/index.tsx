@@ -2,8 +2,8 @@ import React from "react";
 import { HeaderLayout } from "./header";
 import CartComponent from "../components/cart";
 import { WhatsAppIcon } from "../components/wsp_icon";
-import { ProductItemEntity } from "@/shop/domain/entities";
 import { useQueryClient } from "@tanstack/react-query";
+import { ProductItemEntity } from "@/features/product/domain/entities";
 
 export const LayoutPublic = ({ children }: any) => {
 
