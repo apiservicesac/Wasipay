@@ -1,18 +1,31 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { UseLocalContext } from "../context/UseLocalContext";
-import { UserRole } from "@/Auth/domain/enums";
+import { UserRole } from "@/features/user/domain/enums";
 
-const AuthProtected: React.FC<any> = ({ children }) => {
+const AuthDashbaordProtected: React.FC<any> = ({ children }) => {
 
   const { stateUser } = UseLocalContext();  
-  const isAdmin = stateUser && stateUser.role === UserRole.ADMIN;
 
-  if (isAdmin) {
+  if (stateUser && stateUser.role === UserRole.ADMIN) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 
   return <Navigate to={{ pathname: "/" }} />;
 };
 
-export default AuthProtected;
+const AuthProtected: React.FC<any> = ({ children }) => {
+
+  const { stateUser } = UseLocalContext();  
+
+  if (stateUser && stateUser.role === UserRole.USER) {
+    return <React.Fragment>{children}</React.Fragment>;
+  }
+
+  return <Navigate to={{ pathname: "/" }} />;
+};
+
+export {
+  AuthProtected,
+  AuthDashbaordProtected
+};

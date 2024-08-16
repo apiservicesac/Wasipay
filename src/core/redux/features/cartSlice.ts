@@ -1,4 +1,4 @@
-import { CartEntity, ProductItemEntity } from "@/shop/domain/entities";
+import { ProductItemEntity } from "@/features/product/domain/entities";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: CartEntity = {

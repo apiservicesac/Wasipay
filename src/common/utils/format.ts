@@ -1,4 +1,4 @@
-import { ProductEntity } from "@/shop/domain/entities";
+import { ProductEntity } from "@/features/product/domain/entities";
 
 export const formatCurrency = new Intl.NumberFormat('es-PE', {
     style: 'currency',
