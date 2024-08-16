@@ -1,6 +1,6 @@
 import { setTotalPriceCart } from "@/core/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/core/redux/hooks"
-import { ProductItemEntity } from "@/shop/domain/entities";
+import { ProductItemEntity } from "@/features/product/domain/entities";
 import { useQueryClient } from "@tanstack/react-query";
 
 export const CartHelper = ({ setData = false }: { setData: any }) => {

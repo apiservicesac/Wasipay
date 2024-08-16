@@ -1,12 +1,12 @@
 import { Dropdown } from "@/common/components/Dropdown"
-import { CommonHelper } from "@/common/helper"
 import Authorization, { LoggedIn, LoggedOut } from "@/common/security/Authorization"
+import { useUser } from "@/features/user/infrastructure/driving-adapter/hooks/useUser"
 import { LogIn, LogOut, User2 } from "lucide-react"
 import { Link } from "react-router-dom"
 
 export const UserDropdownMenu = () => {
 
-    const { logoutSessionAuth } = CommonHelper()
+    const { logout } = useUser()
 
     return (
         <Dropdown className="relative flex items-center h-header">
@@ -24,7 +24,7 @@ export const UserDropdownMenu = () => {
                                 to={"/profile"}><User2 className="inline-block size-4"></User2> Profile</Link>
                             </li>
                             <li className="pt-2 mt-2 border-t border-slate-200 dark:border-zink-500">
-                                <button onClick={logoutSessionAuth} type="button" className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
+                                <button onClick={logout} type="button" className="block py-1.5 text-base font-medium transition-all duration-200 ease-linear text-slate-600 dropdown-item hover:text-custom-500 focus:text-custom-500 dark:text-zink-200 dark:hover:text-custom-500 dark:focus:text-custom-500" 
                                 ><LogOut className="inline-block size-4"></LogOut> Sign Out</button>
                             </li>
                         </LoggedIn>

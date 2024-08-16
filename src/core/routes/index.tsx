@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { authRoutes, publicRoutes } from './allRoutes';
+import { authRoutes, authDashboardRoutes, publicRoutes } from './allRoutes';
 import LayoutAuth from '@/common/layout_1';
-import AuthProtected from './AuthProtected';
+import { AuthDashbaordProtected, AuthProtected } from './AuthProtected';
 
 const RouteIndex = () => {
   return (
@@ -23,10 +23,21 @@ const RouteIndex = () => {
           path={route.path}
           element={
             <AuthProtected>
+                <route.component />
+            </AuthProtected>      
+          }
+        />
+      ))}
+      {authDashboardRoutes.map((route: any, idx: number) => (
+        <Route
+          key={idx}
+          path={route.path}
+          element={
+            <AuthDashbaordProtected>
               <LayoutAuth>
                 <route.component />
               </LayoutAuth>
-            </AuthProtected>      
+            </AuthDashbaordProtected>      
           }
         />
       ))}        
