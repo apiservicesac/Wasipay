@@ -12,9 +12,9 @@ class ProductAdapter {
     });
   }
 
-  async getAll(shop_id: string): Promise<CustomReponse<Entity[]>> {
+  async getAll(): Promise<CustomReponse<Entity[]>> {
     try {
-      const response : CustomReponse<Entity[]> = await this._axios.get(`/product/get-all/${shop_id}`);
+      const response : CustomReponse<Entity[]> = await this._axios.get(`/product/get-all`);
       return response;
     } catch (error) {
       console.error('Error al obtener las aplicaciones:', error);
@@ -32,70 +32,6 @@ class ProductAdapter {
     }
   }
 
-  async getNextCode(shop_id: string): Promise<CustomReponse<string>> {
-    try {
-      const response : CustomReponse<string> = await this._axios.get(`/product/get-next-code/${shop_id}`);
-      return response;
-    } catch (error) {
-      console.error('Error al obtener el producto por ID:', error);
-      throw error;
-    }
-  }
-
-  async create(shop_id: string, data: Entity): Promise<CustomReponse<Entity>> {
-    try {
-      const response : CustomReponse<Entity> = await this._axios.post(`/product/create/${shop_id}`, data);
-      return response;
-    } catch (error) {
-      console.error('Error al crear el producto:', error);
-      throw error;
-    }
-  }
-
-  async update(product_id: string, data: Entity): Promise<CustomReponse<Entity>> {
-    try {
-      const response : CustomReponse<Entity> = await this._axios.put(`/product/update/${product_id}`, data);
-      return response;
-    } catch (error) {
-      console.error('Error al crear el producto:', error);
-      throw error;
-    }
-  }
-
-  async update_field(id: string, data: any): Promise<CustomReponse<Entity>> {
-    try {
-      const response : CustomReponse<Entity> = await this._axios.patch(`/product/update-field/${id}`, data);
-      return response;
-    } catch (error) {
-      console.error('Error al crear el producto:', error);
-      throw error;
-    }
-  }
-
-
-  async update_images(id: string, formData: FormData): Promise<CustomReponse<Entity>> {
-    try {
-      const response : CustomReponse<Entity> = await this._axios.post(`/product/update-images/${id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      return response;
-    } catch (error) {
-      console.error('Error al crear el producto:', error);
-      throw error;
-    }
-  }
-
-  async delete(id: string): Promise<CustomReponse<null>> {
-    try {
-      const response : CustomReponse<null> = await this._axios.delete(`/product/delete/${id}`);
-      return response;
-    } catch (error) {
-      console.error('Error al eliminar el producto:', error);
-      throw error;
-    }
-  }
 }
 
 const base_url : string = `${import.meta.env.VITE_API_URL}`;

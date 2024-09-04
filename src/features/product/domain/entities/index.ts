@@ -1,6 +1,5 @@
-import { ProductEntity, ProductItemEntity } from './Product'
+import { ProductEntity } from './Product'
 
 export type {
     ProductEntity,
-    ProductItemEntity,
 }
