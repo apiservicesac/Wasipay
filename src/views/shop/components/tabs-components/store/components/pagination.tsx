@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppSelector } from "@/core/redux/hooks";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export const PaginationComponent = () => {
     const products: any = useAppSelector((state) => state.productReducer);
@@ -9,7 +9,6 @@ export const PaginationComponent = () => {
     const [currentPage, setCurrentPage] = React.useState(products.page || 1);
     const totalPages = products.totalPages;
     const maxVisiblePages = 4;
-    const navigate = useNavigate()
 
     // Función para obtener las páginas a mostrar
     const getVisiblePages = () => {

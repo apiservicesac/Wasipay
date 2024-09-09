@@ -1,11 +1,8 @@
 import React from "react";
 import { QueryProduct } from "../react-query";
 import { useQueryClient } from "@tanstack/react-query";
-import { useAppSelector } from "@/core/redux/hooks";
 
 const useProduct = () => {
-
-    const product_reducer = useAppSelector((state) => state.productReducer)
 
     const queryClient = useQueryClient()
     const queryProduct = new QueryProduct(queryClient);

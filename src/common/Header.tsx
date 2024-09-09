@@ -1,6 +1,6 @@
-import { ChevronsLeft, Search, Store } from 'lucide-react';
+import { Search, Store } from 'lucide-react';
 import React from 'react';
-import { Link, useLocation, useNavigate, useRoutes } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ children }: { children : React.ReactNode }) => {    
 
