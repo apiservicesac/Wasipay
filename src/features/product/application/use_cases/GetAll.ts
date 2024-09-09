@@ -1,5 +1,5 @@
-import { ProductEntity as Entity } from '@/features/product/domain/entities'
 import { ProductRepository as Repository } from '@/features/product/domain/repositories'
+import { ProductResponse } from '../../domain/repositories/Response'
 
 export class GetAllUseCase {
 
@@ -11,8 +11,9 @@ export class GetAllUseCase {
         this._repository = repository
     }
 
-    async run(): Promise<Entity[] | null > {
-        const entities: Entity[] | null = await this._repository.getAll()
+    async run(shop_id: string, page: number): Promise<ProductResponse | null > {
+        console.log(shop_id, page)
+        const entities: ProductResponse | null = await this._repository.getAll(shop_id, page)
         return entities
     }
 }

@@ -1,4 +1,5 @@
 import { ProductEntity as Entity } from '@/features/product/domain/entities';
+import { ProductResponse } from '@/features/product/domain/repositories/Response';
 import { CustomReponse } from '@/shared/entities/Response';
 import { AxiosConfig } from '@/shared/services/axios';
 
@@ -12,15 +13,20 @@ class ProductAdapter {
     });
   }
 
-  async getAll(): Promise<CustomReponse<Entity[]>> {
+  async getAll(shop_id: string, page: number): Promise<CustomReponse<ProductResponse>> {
     try {
-      const response : CustomReponse<Entity[]> = await this._axios.get(`/product/get-all`);
+      const response: CustomReponse<ProductResponse> = await this._axios.get(`/product/get-all/${shop_id}`, {
+        params: {
+          page: page
+        }
+      });
       return response;
     } catch (error) {
-      console.error('Error al obtener las aplicaciones:', error);
+      console.error('Error al obtener los productos:', error);
       throw error;
     }
   }
+
 
   async getById(id: string): Promise<CustomReponse<Entity>> {
     try {

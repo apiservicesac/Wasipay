@@ -1,19 +1,17 @@
 import RouteIndex from "./routes";
 import { Toaster } from 'sonner'
-import { useProduct } from "@/features/product/infrastructure/driving-adapter/hooks/useProduct";
 import { useUser } from "@/features/user/infrastructure/driving-adapter/hooks/useUser";
 import React from "react";
+import useFetchShops from "@/features/shop/infrastructure/driving-adapter/hooks/useFetchShops";
 
 function App() {
 
   const [userLoaded, setUserLoaded] = React.useState<boolean>(true);
 
+  const { init: initUser } = useUser()  
 
-  const { init: initUser } = useUser()
-  const { init : initProducts } = useProduct();
+  useFetchShops()
   
-  initProducts()
-
   React.useEffect(() => {            
     initUser()
     .then(() => {
