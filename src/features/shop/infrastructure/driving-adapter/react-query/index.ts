@@ -1,49 +1,49 @@
-import { QueryClient } from '@tanstack/react-query';
-
 import { ImplementationAxios as AxiosShop } from "@/features/shop/infrastructure/implementation/axios";
-import { useQuery } from "@tanstack/react-query";
 import { ShopEntity } from '@/features/shop/domain/entities';
-import { GetByIdUseCase, UpdateFieldUseCase, UpdateUseCase } from '@/features/shop/application/use_cases';
+import { GetAllUseCase, GetByIdUseCase } from '@/features/shop/application/use_cases';
+import { useAppDispatch, useAppSelector } from '@/core/redux/hooks';
+import { AppDispatch } from '@/core/redux/store';
+// import { setShops } from '@/core/redux/features/shopSlice';
 
 
 class QueryShop {
     private shop_id = `${import.meta.env.VITE_SHOP_ID}`
-    private queryClient: QueryClient;
     private repository: AxiosShop;
+    private dispatch : AppDispatch
 
-    constructor(queryClient: QueryClient) {
-        this.queryClient = queryClient;
+
+    constructor() {
         this.repository = new AxiosShop()
+        this.dispatch = useAppDispatch()        
     }
 
     async init(): Promise<void> {
         const shop_use_case = new GetByIdUseCase(this.repository)   
-
-        useQuery({
-            queryKey: ['shop_profile'],
-            queryFn: () => shop_use_case.run(this.shop_id),
-            refetchOnMount: false,
-        });
+        const response = await shop_use_case.run(this.shop_id);
+        // this.dispatch(setShopProfile(response as ShopEntity))
     }
-    
+
     getShop(): ShopEntity {
-        const shop = this.queryClient.getQueryData(['shop_profile']);
+        const shop = useAppSelector((state) => state.shopReducer.shop_profile)
         return shop as ShopEntity    
     }
 
-    async update(values: ShopEntity): Promise<void> {
-        const shop_use_case = new UpdateUseCase(this.repository)   
-        const response = await shop_use_case.run(this.shop_id!, values)        
-        this.queryClient.cancelQueries({ queryKey: ['shop_profile'] })
-        this.queryClient.setQueryData(['shop_profile'], response)     
+
+    async getAll(): Promise<void> {
+        const shop_use_case = new GetAllUseCase(this.repository)   
+        const response = await shop_use_case.run()
+        // this.dispatch(setShops(response as ShopEntity[]))
     }
 
-    async update_field(field: string, values: any): Promise<void> {
-        const shopUseCase = new UpdateFieldUseCase(this.repository)   
-        const response = await shopUseCase.run(this.shop_id, field, values)                            
-        this.queryClient.cancelQueries({ queryKey: ['shop_profile'] })
-        this.queryClient.setQueryData(['shop_profile'], response)                             
+    getShops(): ShopEntity[] {
+        const shops = useAppSelector((state) => state.shopReducer.shops)
+        return shops as ShopEntity[]   
     }
+
+    getByIdShop(id: string): ShopEntity | undefined {
+        const shops = useAppSelector((state) => state.shopReducer.shops)
+        return shops?.find((shop: ShopEntity) => shop.id === id);
+    }    
 
 }
 

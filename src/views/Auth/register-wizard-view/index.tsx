@@ -3,7 +3,7 @@ import BreadCrumb from "@/common/BreadCrumb";
 import { MapPin, PartyPopper, Rocket, User2 } from "lucide-react";
 import Tab from "@/common/components/Tab/Tab";
 import { Nav } from "@/common/components/Tab/Nav";
-import { LayoutBasic } from "@/common/layout_0";
+import { LayoutBasic } from "@/common/header/layout_basic";
 
 import { ShopInfo } from "./panel-tabs/ShopProfile";
 import { PersonalInfo } from "./panel-tabs/ProfileInfo";
