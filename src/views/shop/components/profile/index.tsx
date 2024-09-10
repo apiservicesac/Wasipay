@@ -39,7 +39,7 @@ const ShopProfileInfo = ({ className }: { className: string }) => {
                                     {helper.products ? (
                                         helper.products
                                     ) : (
-                                        <Skeleton />
+                                        "0"
                                     )}
                                     +
                                 </h5>

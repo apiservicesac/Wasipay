@@ -1,9 +1,21 @@
-import { ShoppingCart } from 'lucide-react';
+import { Search, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { ProductEntity } from '@/features/product/domain/entities';
 import { formatCurrency } from '@/common/utils/format';
 
 export const ProductsComponent = ({ helper }: { helper:  any }) => {
+
+    if (!helper.data || helper.data.length === 0) {
+        return (
+            <div className="noresult">
+                <div className="py-6 text-center">
+                    <Search className="size-6 mx-auto text-sky-500 fill-sky-100 dark:sky-500/20" />
+                    <h5 className="mt-2 mb-1">Sorry! No Results Found</h5>
+                    <p className="mb-0 text-slate-500 dark:text-zinc-200">We are working to bring you the best deals from this store!</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={`grid grid-cols-2 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-3 2xl:grid-cols-4 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!helper.list && "gridView"}`} id="cardGridView">
