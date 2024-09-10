@@ -1,5 +1,7 @@
 {    
-    "Stores": "Tiendas",
-    "Integrations": "Integraciones",
-    "Profile": "Perfil"
+    "Shops": "Tiendas",
+    "Shop": "Tienda",
+    "View Shop": "Ver Tienda",
+    "Products": "Productos",
+    "Buy Now": "Comprar Ahora"
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ProductEntity } from '@/features/product/domain/entities';
 import { formatCurrency } from '@/common/utils/format';
 
-export const ProductsComponent = ({ helper }: { helper:  any }) => {
+export const ProductsComponent = ({ props, helper }: { props:any, helper:  any }) => {
 
     if (!helper.data || helper.data.length === 0) {
         return (
@@ -57,7 +57,7 @@ export const ProductsComponent = ({ helper }: { helper:  any }) => {
                         </div>
 
                         <div className="flex items-center gap-2 mt-4 group-[.gridView]:mt-0 group-[.gridView]:self-end">
-                            <Link type="button" to={item?.url!} target='_blank' className="w-full bg-white border-dashed text-slate-500 btn border-slate-500 hover:text-slate-500 hover:bg-slate-50 hover:border-slate-600 focus:text-slate-600 focus:bg-slate-50 focus:border-slate-600 active:text-slate-600 active:bg-slate-50 active:border-slate-600 dark:bg-zink-700 dark:text-zink-200 dark:border-zink-400 dark:ring-zink-400/20 dark:hover:bg-zink-600 dark:hover:text-zink-100 dark:focus:bg-zink-600 dark:focus:text-zink-100 dark:active:bg-zink-600 dark:active:text-zink-100"><ShoppingCart className="inline-block size-3 leading-none" /> <span className="align-middle">Buy Now</span></Link>                            
+                            <Link type="button" to={item?.url!} target='_blank' className="w-full bg-white border-dashed text-slate-500 btn border-slate-500 hover:text-slate-500 hover:bg-slate-50 hover:border-slate-600 focus:text-slate-600 focus:bg-slate-50 focus:border-slate-600 active:text-slate-600 active:bg-slate-50 active:border-slate-600 dark:bg-zink-700 dark:text-zink-200 dark:border-zink-400 dark:ring-zink-400/20 dark:hover:bg-zink-600 dark:hover:text-zink-100 dark:focus:bg-zink-600 dark:focus:text-zink-100 dark:active:bg-zink-600 dark:active:text-zink-100"><ShoppingCart className="inline-block size-3 leading-none" /> <span className="align-middle">{props.t("Buy Now")}</span></Link>                            
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,9 @@ import React from 'react';
 import { BadgeCheck } from 'lucide-react';
 import { ProfileInfoHelper } from './helper';
 import Skeleton from 'react-loading-skeleton';
+import { withTranslation } from 'react-i18next';
 
-const ShopProfileInfo = ({ className }: { className: string }) => {
+const ShopProfileInfo = (props: any, { className }: { className: string }) => {
     
     const helper = ProfileInfoHelper()
 
@@ -43,8 +44,8 @@ const ShopProfileInfo = ({ className }: { className: string }) => {
                                     )}
                                     +
                                 </h5>
-                                <p className='text-slate-500 dark:text-zink-200'>
-                                    Shops
+                                <p className='text-slate-500 dark:text-zink-200'>                                    
+                                    {props.t("Shops")}
                                 </p>
                             </li>
                         </ul>
@@ -93,4 +94,4 @@ const ShopProfileInfo = ({ className }: { className: string }) => {
     );
 };
 
-export default ShopProfileInfo;
+export default withTranslation()(ShopProfileInfo);

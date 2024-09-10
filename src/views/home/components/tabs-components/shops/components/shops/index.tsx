@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { ShopEntity } from '@/features/shop/domain/entities';
 import { ShoppingBagIcon } from "lucide-react";
 import { useAppSelector } from "@/core/redux/hooks";
+import { withTranslation } from "react-i18next";
 
-export const ShopsComponent = () => {
+const ShopsComponent = (props: any) => {
 
     const shops = useAppSelector((state) => state.shopReducer.shops)
 
@@ -20,7 +21,7 @@ export const ShopsComponent = () => {
                             <h5 className="mb-1 text-16"><Link to="/pages-account">{item.name}</Link></h5>
                         </div>
                         <div className="flex gap-2 mt-5">
-                            <Link to={`/shop/${item.id}`} className="bg-white text-custom-500 btn border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:bg-zink-700 dark:hover:bg-custom-500 dark:ring-custom-400/20 dark:focus:bg-custom-500 grow"><ShoppingBagIcon className="inline-block size-4 ltr:mr-1 rtl:ml-1" /> <span className="align-middle">Open Shop</span></Link>
+                            <Link to={`/shop/${item.id}`} className="bg-white text-custom-500 btn border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:bg-zink-700 dark:hover:bg-custom-500 dark:ring-custom-400/20 dark:focus:bg-custom-500 grow"><ShoppingBagIcon className="inline-block size-4 ltr:mr-1 rtl:ml-1" /> <span className="align-middle">{props.t("View Shop")}</span></Link>
                         </div>
                     </div>
                 </div>
@@ -28,3 +29,4 @@ export const ShopsComponent = () => {
         </div>
     );
 }
+export default withTranslation()(ShopsComponent);
