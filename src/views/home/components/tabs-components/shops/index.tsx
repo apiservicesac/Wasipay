@@ -1,7 +1,7 @@
 import React from "react";
 
 import ShopsComponent from "./components/shops";
-import { PaginationComponent } from "./components/pagination";
+// import { PaginationComponent } from "./components/pagination";
 // import { FilterComponent } from "./components/sort_filter/components/filters";
 import { Search } from "lucide-react";
 
@@ -22,7 +22,7 @@ export const Shops = () => {
                         </div> 
                     </div>
                     <ShopsComponent />
-                    <PaginationComponent />
+                    {/* <PaginationComponent /> */}
                 </div>
             </div>
         </React.Fragment>
