@@ -1,12 +1,13 @@
 import { Dropdown } from "@/common/components/Dropdown"
-import Authorization, { LoggedIn, LoggedOut } from "@/common/security/Authorization"
-import { useUser } from "@/features/user/infrastructure/driving-adapter/hooks/useUser"
-import { LogIn, LogOut, User2 } from "lucide-react"
-import { Link } from "react-router-dom"
+// import Authorization, { LoggedIn, LoggedOut } from "@/common/security/Authorization"
+// import { useUser } from "@/features/user/infrastructure/driving-adapter/hooks/useUser"
+// import { LogIn, LogOut, User2 } from "lucide-react"
+import { User2 } from "lucide-react"
+// import { Link } from "react-router-dom"
 
 export const UserDropdownMenu = () => {
 
-    const { logout } = useUser()
+    // const { logout } = useUser()
 
     return (
         <Dropdown className="relative flex items-center h-header">
@@ -16,7 +17,7 @@ export const UserDropdownMenu = () => {
             <Dropdown.Content placement="right-end" className="absolute z-50 p-4 text-left bg-white rounded-md shadow-md !top-4 dropdown-menu min-w-[14rem] dark:bg-zink-600" aria-labelledby="dropdownMenuButton">
                 <h6 className="mb-2 text-sm font-normal text-slate-500 dark:text-zink-300">Bienvenido a Wasipay</h6>
                 
-                <ul>
+                {/* <ul>
                     <Authorization>
                         <LoggedIn>
                             <li>
@@ -36,7 +37,7 @@ export const UserDropdownMenu = () => {
                         </LoggedOut>
                     </Authorization>
                    
-                </ul>
+                </ul> */}
             </Dropdown.Content>
         </Dropdown>
     )
