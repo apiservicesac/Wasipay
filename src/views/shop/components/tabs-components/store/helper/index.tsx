@@ -1,9 +1,12 @@
 import { ProductEntity } from "@/features/product/domain/entities";
 import React from "react";
-import filterDataBySearch from "@/common/utils/filterDataBySearch";
 import { useAppSelector } from "@/core/redux/hooks";
+import { useNavigate } from "react-router-dom";
 
 export const HelperStore = () => {
+
+    const navigate = useNavigate()
+
     const [list, setList] = React.useState<boolean>(true);
 
     const product_reducer = useAppSelector((state) => state.productReducer)
@@ -16,8 +19,12 @@ export const HelperStore = () => {
 
     const filterSearchData = (e: any) => {
         const search = e.target.value;
-        const keysToSearch = ['title'];
-        filterDataBySearch(product_reducer.products as ProductEntity[], search, keysToSearch, setData);
+        if(search.length >= 3) {
+            navigate(`?page=1&sortby=${product_reducer.sortBy}&sortorder=${product_reducer.sortOrder}&search=${search}`)
+            return
+        }
+        navigate(`?page=${product_reducer.page}&sortby=${product_reducer.sortBy}&sortorder=${product_reducer.sortOrder}`)
+        return
     };
 
     React.useEffect(() => {

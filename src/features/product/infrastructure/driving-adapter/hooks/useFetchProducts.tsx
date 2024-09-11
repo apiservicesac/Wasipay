@@ -12,16 +12,20 @@ const useFetchProducts = () => {
 
     const { id: shop_id } = useParams();
     const [searchParams] = useSearchParams();
+    
     const page = searchParams.get('page') || '1';
-
+    const sortby = searchParams.get('sortby') || '';
+    const sortorder = searchParams.get('sortorder') || '';
+    const search = searchParams.get('search') || '';
+    
     const productRepository = new AxiosProduct();
     const productUseCase = new ProductUseCaseGetAll(productRepository);
     
     return useQuery({
-        queryKey: ['query_product_list', shop_id!, parseInt(page)],
+        queryKey: ['query_product_list', shop_id!, parseInt(page), sortby, sortorder, search],
         queryFn: async () => {
             console.log(shop_id, page);
-            const response = await productUseCase.run(shop_id!, parseInt(page));
+            const response = await productUseCase.run(shop_id!, parseInt(page), sortby, sortorder, search);
             dispatch(setProducts(response as ProductResponse));
             return response;
         },

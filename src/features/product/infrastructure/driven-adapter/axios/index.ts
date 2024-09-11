@@ -13,11 +13,14 @@ class ProductAdapter {
     });
   }
 
-  async getAll(shop_id: string, page: number): Promise<CustomReponse<ProductResponse>> {
+  async getAll(shop_id: string, page: number, sortby: string, sortorder: string, search: string): Promise<CustomReponse<ProductResponse>> {
     try {
       const response: CustomReponse<ProductResponse> = await this._axios.get(`/product/get-all/${shop_id}`, {
         params: {
-          page: page
+          page: page,
+          sortby: sortby,
+          sortorder: sortorder,
+          search: search
         }
       });
       return response;

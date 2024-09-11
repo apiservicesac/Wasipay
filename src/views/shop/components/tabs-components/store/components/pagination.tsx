@@ -1,15 +1,21 @@
 import React from "react";
 import { useAppSelector } from "@/core/redux/hooks";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export const PaginationComponent = () => {
+    const navigate = useNavigate()
+    const [searchParams] = useSearchParams();
+    const search = searchParams.get('search') || '';
     const products: any = useAppSelector((state) => state.productReducer);
-    const { id: shop_id } = useParams();
-    const [currentPage, setCurrentPage] = React.useState(products.page || 1);
+    const [currentPage, setCurrentPage] = React.useState(1);
     const totalPages = products.totalPages;
     const maxVisiblePages = 4;
 
+    React.useEffect(() => {
+        setCurrentPage(products.page)
+    }, [products.page])
+ 
     // Función para obtener las páginas a mostrar
     const getVisiblePages = () => {
         if (totalPages <= maxVisiblePages) {
@@ -24,6 +30,7 @@ export const PaginationComponent = () => {
     const goToPage = (page: number) => {
         if (page >= 1 && page <= totalPages) {
             setCurrentPage(page);            
+            navigate(`?page=${page}&sortby=${products.sortBy}&sortorder=${products.sortOrder}&search=${search}`)
         }
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
@@ -59,14 +66,12 @@ export const PaginationComponent = () => {
                 
                 {getVisiblePages().map((page: number) => (
                     <li key={page}>
-                        <Link
-                            to={`/shop/${shop_id}?page=${page}`}                            
+                        <span
                             onClick={() => goToPage(page)}
-                            className={`
-                                inline-flex items-center justify-center bg-white size-8 transition-all duration-150 ease-linear border rounded border-slate-200 text-slate-500 hover:text-custom-500 hover:bg-custom-100 focus:bg-custom-50 focus:text-custom-500 [&.active]:text-white [&.active]:bg-custom-500 [&.active]:border-custom-500 [&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 [&.disabled]:cursor-auto ${currentPage === page ? "active" : ""}`}
+                            className={`cursor-pointer inline-flex items-center justify-center bg-white size-8 transition-all duration-150 ease-linear border rounded border-slate-200 text-slate-500 hover:text-custom-500 hover:bg-custom-100 focus:bg-custom-50 focus:text-custom-500 [&.active]:text-white [&.active]:bg-custom-500 [&.active]:border-custom-500 [&.active]:hover:text-custom-700 [&.disabled]:text-slate-400 [&.disabled]:cursor-auto ${currentPage === page ? "active" : ""}`}
                         >
                         {page}
-                        </Link>
+                        </span>
                     </li>
                 ))}
 

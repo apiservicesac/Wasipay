@@ -6,8 +6,8 @@ import { ProductResponse } from "@/features/product/domain/repositories/Response
 
 class ImplementationAxios implements Repository {
 
-    async getAll(shop_id: string, page: number): Promise<ProductResponse> {
-        const { data }: { data?: ProductResponse } = await Axios.getAll(shop_id, page);
+    async getAll(shop_id: string, page: number, sortby: string, sortorder: string, search: string): Promise<ProductResponse> {
+        const { data }: { data?: ProductResponse } = await Axios.getAll(shop_id, page, sortby, sortorder, search);
         return data!
     }
     

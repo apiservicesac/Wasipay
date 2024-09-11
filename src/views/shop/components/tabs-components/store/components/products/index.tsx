@@ -24,7 +24,7 @@ export const ProductsComponent = ({ props, helper }: { props:any, helper:  any }
                 <div id={item?.id} key={item?.id} className="card md:group-[.gridView]:flex relative">
 
                     {item?.discount && item?.discount != "0" && (
-                        <div className="z-50 absolute top-0 right-0 bg-red-600 text-white text-sm font-bold py-2 px-4 rounded-bl-lg">
+                        <div className="z-20 absolute top-0 right-0 bg-red-600 text-white text-sm font-bold py-2 px-4 rounded-bl-lg">
                             {item.discount}
                         </div>
                     )}

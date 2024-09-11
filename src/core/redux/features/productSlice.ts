@@ -7,6 +7,9 @@ const initialState: any = {
   pageSize: 20,
   total: 0,
   totalPages: 0,
+  label: 'Lowest Price',
+  sortBy: 'price_offer',
+  sortOrder: 'ASC'
 };
 
 export const product_slice = createSlice({
@@ -27,14 +30,20 @@ export const product_slice = createSlice({
     },
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
-    }
+    },
+    setSortBy: (state, action: PayloadAction<{label: string, sortBy: string, sortOrder: string}>) => {
+      state.label = action.payload.label;
+      state.sortBy = action.payload.sortBy;
+      state.sortOrder = action.payload.sortOrder;
+    },
   },
 });
 
 export const {
     setProducts,
     resetProducts,
-    setPage
+    setPage,
+    setSortBy,
 } = product_slice.actions;
 
 export default product_slice.reducer;

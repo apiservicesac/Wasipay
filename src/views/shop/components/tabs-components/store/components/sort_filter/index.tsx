@@ -3,7 +3,7 @@ import { FilterDrawer } from "./components/filter_drawer";
 import Sortby from "./components/sort_by";
 import IconButton from "./components/IconButton";
 
-const SortFilterComponent = ({ helper } : {helper: any}) => {
+const SortFilterComponent = ({ helper } : { helper: any }) => {
 
     return (
         <div className="flex flex-wrap items-center gap-2 justify-between">
