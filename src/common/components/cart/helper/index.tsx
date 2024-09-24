@@ -1,35 +1,31 @@
-import { setTotalPriceCart } from "@/core/redux/features/cartSlice";
+import { addProductCartStore, resetProductCartStore, setTotalPriceCart } from "@/core/redux/features/cartSlice";
+import { setProducts } from "@/core/redux/features/productSlice";
 import { useAppDispatch, useAppSelector } from "@/core/redux/hooks"
 import { ProductItemEntity } from "@/features/product/domain/entities";
-import { useQueryClient } from "@tanstack/react-query";
 
-export const CartHelper = ({ setData = false }: { setData: any }) => {
-    const queryClient =  useQueryClient()
+export const CartHelper = () => {
 
-    const products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
+    const products : ProductItemEntity[] | undefined = useAppSelector((state) => state.productReducer.products)
     
     const total_cart_price = useAppSelector((state) => state.cartReducer.total_price)
+    const cart_products = useAppSelector((state) => state.cartReducer.products)
 
     const dispatch = useAppDispatch()
 
-    const addProductCart = (newProduct: ProductItemEntity) => {
+    const addProductCart = (product_id: string) => {
         const updatedProducts = [...products!]?.map((p: ProductItemEntity) => {
-            if (p.product?.id === newProduct?.product!.id) {
+            if (p.product?.id === product_id) {
                 const updatedProduct = { ...p };
                 updatedProduct.in_cart = true;
                 updatedProduct.quantity! ++;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
                 dispatch(setTotalPriceCart(total_cart_price! + updatedProduct.total_price))
+                dispatch(addProductCartStore([...cart_products, updatedProduct]))
                 return updatedProduct;
             }
             return p;
         })
-
-        queryClient.cancelQueries({ queryKey: ['query_product_list'] })
-        queryClient.setQueryData(['query_product_list'], updatedProducts)    
-        if(setData){
-            setData(updatedProducts)
-        }          
+        dispatch(setProducts(updatedProducts as ProductItemEntity[]))
     };
 
     const resetProductsCart = () => {  
@@ -39,12 +35,9 @@ export const CartHelper = ({ setData = false }: { setData: any }) => {
             updatedProduct.total_price = 0;
             updatedProduct.in_cart = false;             
             return updatedProduct;
-        })
-        queryClient.cancelQueries({ queryKey: ['query_product_list'] })
-        queryClient.setQueryData(['query_product_list'], updatedProducts) 
-        if(setData){
-            setData(updatedProducts)
-        }
+        })  
+        dispatch(setProducts(updatedProducts as ProductItemEntity[]))        
+        dispatch(resetProductCartStore())
     };
     
     const removeProductCart = (product_id: string) => {
@@ -60,12 +53,10 @@ export const CartHelper = ({ setData = false }: { setData: any }) => {
                     return updatedProduct;
                 }
                 return p;
-            })
-            queryClient.cancelQueries({ queryKey: ['query_product_list'] })
-            queryClient.setQueryData(['query_product_list'], updatedProducts) 
-            if(setData){
-                setData(updatedProducts)
-            }
+            })  
+            dispatch(setProducts(updatedProducts as ProductItemEntity[]))
+            const products_cart = cart_products?.filter((cart_item:ProductItemEntity) => cart_item.product?.id !== product_id)
+            dispatch(addProductCartStore(products_cart))    
         }
     };
     
@@ -76,18 +67,24 @@ export const CartHelper = ({ setData = false }: { setData: any }) => {
                 updatedProduct.quantity! --;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
                 dispatch(setTotalPriceCart(total_cart_price! - updatedProduct.product!.price!))
-                if(updatedProduct.quantity === 0) {                    
-                    updatedProduct.in_cart = false;                   
+                if(updatedProduct.quantity === 0) { 
+                    updatedProduct.in_cart = false                   
                 }
                 return updatedProduct;
             }
             return p;
+        })  
+        dispatch(setProducts(updatedProducts as ProductItemEntity[]))
+        const products_cart =cart_products?.map((cart_item:ProductItemEntity) => {
+            if(cart_item.product?.id === product_id) {
+                const product = updatedProducts?.find((item:ProductItemEntity) => item.product?.id === product_id)
+                return product
+            }else {
+                return cart_item
+            }
         })
-        queryClient.cancelQueries({ queryKey: ['query_product_list'] })
-        queryClient.setQueryData(['query_product_list'], updatedProducts) 
-        if(setData){
-            setData(updatedProducts)
-        }
+        console.log(products_cart)
+        dispatch(addProductCartStore(products_cart))  
     };
     
     const increaseProductQuantity = (product_id: string) => {
@@ -103,11 +100,16 @@ export const CartHelper = ({ setData = false }: { setData: any }) => {
             }
             return p;
         })
-        queryClient.cancelQueries({ queryKey: ['query_product_list'] })
-        queryClient.setQueryData(['query_product_list'], updatedProducts) 
-        if(setData){
-            setData(updatedProducts)
-        }
+        dispatch(setProducts(updatedProducts as ProductItemEntity[]))
+        const products_cart = cart_products?.map((cart_item:ProductItemEntity) => {
+            if(cart_item.product?.id === product_id) {
+                const product = updatedProducts?.find((item:ProductItemEntity) => item.product?.id === product_id)
+                return product
+            }else {
+                return cart_item
+            }
+        })
+        dispatch(addProductCartStore(products_cart))
     };
 
 

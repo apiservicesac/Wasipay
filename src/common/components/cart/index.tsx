@@ -4,17 +4,13 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "@/core/redux/hooks";
 import Drawer from "@/common/components/Drawer";
 import { ProductItem } from "./components/Product";
-import { useQueryClient } from "@tanstack/react-query";
 import Authorization, { LoggedIn, LoggedOut } from "@/common/security/Authorization";
 import { formatCurrency } from "@/common/utils/format";
 import { ProductItemEntity } from "@/features/product/domain/entities";
 
 const CartComponent = ({ show, handleDrawer }: any) => {
 
-    const queryClient =  useQueryClient()
-
-    const cart_products : ProductItemEntity[] | undefined = queryClient.getQueryData(['query_product_list'])
-    const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
+    const cart_products : ProductItemEntity[] | undefined = useAppSelector((state) => state.cartReducer.products)    
     const cart_price = useAppSelector((state) => state.cartReducer)
 
     return (
@@ -25,7 +21,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                         <h5 className="mb-0 text-16">
                             Shopping Cart 
                             <span className="inline-flex items-center justify-center size-5 ml-1 text-[11px] font-medium border     rounded-full text-white bg-custom-500 border-custom-500">
-                                {filter_product_cart?.length}
+                                {cart_products?.length}
                             </span>
                         </h5>
                     </div>
@@ -40,7 +36,7 @@ const CartComponent = ({ show, handleDrawer }: any) => {
                     <div className="h-[calc(100vh_-_370px)] p-4 overflow-y-auto product-list">
                         <div className="flex flex-col gap-4">
                             {
-                                (filter_product_cart || [])?.map((item: ProductItemEntity) => (
+                                (cart_products || [])?.map((item: ProductItemEntity) => (
                                     <ProductItem item={item} key={item.product?.id}/>
                                 ))
                             }

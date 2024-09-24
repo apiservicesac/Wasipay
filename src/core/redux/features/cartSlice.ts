@@ -13,7 +13,10 @@ export const cart_slice = createSlice({
   initialState,
   reducers: {
     addProductCartStore: (state, action: PayloadAction<ProductItemEntity[]>) => {
-      state.products = action.payload
+      state.products = action.payload.filter((item) => item.in_cart)
+    },
+    resetProductCartStore: (state) => {
+      state.products = []
     },
     setTotalPriceCart: (state, action: PayloadAction<number>) => {
       state.total_price = action.payload
@@ -29,6 +32,7 @@ export const cart_slice = createSlice({
 
 export const {
   addProductCartStore,
+  resetProductCartStore,
   setTotalPriceCart,
   setSubtotalPriceCart,
 } = cart_slice.actions;

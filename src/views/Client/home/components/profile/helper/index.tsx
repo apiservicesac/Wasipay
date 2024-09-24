@@ -3,13 +3,12 @@ import { ChangeEvent } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useShop } from "@/features/shop/infrastructure/driving-adapter/hooks/useShop";
 import { ShopEntity } from "@/features/shop/domain/entities";
-import { ProductItemEntity } from "@/features/product/domain/entities";
 import { OrderEntity } from "@/features/order/domain/entities";
-import { useProduct } from "@/features/product/infrastructure/driving-adapter/hooks/useProduct";
 import { useOrder } from "@/features/order/infrastructure/driving-adapter/hooks/useOrder";
 import { toast } from "sonner";
 import { ImplementationAxios  as AxiosShop } from "@/features/shop/infrastructure/implementation/axios";
 import { UpdateImageUseCase } from "@/features/shop/application/use_cases";
+import { useAppSelector } from "@/core/redux/hooks";
 
 export const ProfileInfoHelper = () => {
 
@@ -17,14 +16,16 @@ export const ProfileInfoHelper = () => {
 
     const shopRepository = new AxiosShop()
     const shopUseCase = new UpdateImageUseCase(shopRepository)   
-    const { getShop } = useShop();
-    const { getAll: getAllProduct } = useProduct();
+    const { getShop } = useShop();    
     const { getAll: getAllOrder } = useOrder();
     
-    const query_shop_profile : ShopEntity = getShop()
-    const query_product_list : ProductItemEntity[] = getAllProduct()
+    const query_shop_profile : ShopEntity = getShop()    
     const query_orders_list : OrderEntity[] = getAllOrder()
 
+
+    const products_total = useAppSelector((state) => state.productReducer.total)
+
+    
     
     const handleImageChange = async (event: ChangeEvent<HTMLInputElement>) => {
         try {    
@@ -47,7 +48,7 @@ export const ProfileInfoHelper = () => {
     return {
         handleImageChange,
         query_shop_profile,
-        query_product_list,
+        products_total,
         query_orders_list,
     }
 }

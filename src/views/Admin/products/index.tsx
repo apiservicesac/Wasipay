@@ -1,11 +1,11 @@
 import { Search } from "lucide-react";
 import TableContainer from "@/common/TableContainer";
 import { Helpers } from "./helpers";
-import { useProduct } from "@/features/product/infrastructure/driving-adapter/hooks/useProduct";
+import { useAppSelector } from "@/core/redux/hooks";
+
 export const ProductsView = () => {
-    
-    const { getAll } = useProduct();
-    const products = getAll()
+       
+    const products = useAppSelector((state) => state.productReducer.products)
     const { columns } = Helpers()
     
     return (

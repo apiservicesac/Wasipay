@@ -1,4 +1,3 @@
-import { useAppSelector } from "@/core/redux/hooks"
 import { useFormik } from "formik"
 import * as Yup from "yup";
 import { UseLocalContext } from "@/core/context/UseLocalContext"
@@ -6,18 +5,18 @@ import { CartHelper } from "@/common/components/cart/helper"
 import { useNavigate } from "react-router-dom"
 import React from "react"
 import { toast } from "sonner"
-import { ProductItemEntity } from "@/features/product/domain/entities";
 import { ShopEntity } from "@/features/shop/domain/entities";
 import { useAddress } from "@/features/address/infrastructure/driving-adapter/hooks/useAddress";
 import { OrderStatus } from "@/features/order/domain/enums";
 import { OrderEntity, OrderLineEntity, OrderPaymentEntity } from "@/features/order/domain/entities";
 import { useShop } from "@/features/shop/infrastructure/driving-adapter/hooks/useShop";
-import { useProduct } from "@/features/product/infrastructure/driving-adapter/hooks/useProduct";
 import { useOrder } from "@/features/order/infrastructure/driving-adapter/hooks/useOrder";
+import { useAppSelector } from "@/core/redux/hooks";
+import { ProductItemEntity } from "@/features/product/domain/entities";
 
 export const CheckoutHelper = () => {
     const { stateUser } = UseLocalContext()
-    const { resetProductsCart } = CartHelper({setData: false})
+    const { resetProductsCart } = CartHelper()
 
     const [paymentMethod, setPaymentMethod] = React.useState<string | null >(null)
 
@@ -26,9 +25,9 @@ export const CheckoutHelper = () => {
     const { getShop } = useShop();
     const shop_profile : ShopEntity = getShop()
 
-    const { getAll } = useProduct()
-    const cart_products : ProductItemEntity[] = getAll();
-    const filter_product_cart = cart_products?.filter((product) => product.in_cart === true)
+    const cart_products = useAppSelector((state) => state.productReducer.products)
+
+    const filter_product_cart = cart_products?.filter((product: ProductItemEntity) => product.in_cart === true)
 
     const { create } = useOrder()
 
@@ -81,7 +80,7 @@ export const CheckoutHelper = () => {
         
         const address = await createAddress(validation.values)!
 
-        const orderLines : OrderLineEntity[] = filter_product_cart?.map((line) => {
+        const orderLines : OrderLineEntity[] = filter_product_cart?.map((line: ProductItemEntity) => {
             return {
                 product_id: line.product?.id,
                 quantity: line.quantity,

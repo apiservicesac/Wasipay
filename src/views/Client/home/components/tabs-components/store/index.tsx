@@ -5,8 +5,9 @@ import { PaginationComponent } from "./components/pagination";
 import SortFilterComponent from "./components/sort_filter";
 import { FilterComponent } from "./components/sort_filter/components/filters";
 import { HelperStore } from "./helper";
+import { withTranslation } from "react-i18next";
 
-export const Store = () => {
+const Store = (props: any) => {
 
     const helper = HelperStore()
 
@@ -18,10 +19,12 @@ export const Store = () => {
                 </div>
                 <div className="2xl:col-span-9">                    
                     <SortFilterComponent helper={helper} />                    
-                    <ProductsComponent helper={helper} />
+                    <ProductsComponent props={props} helper={helper} />
                     <PaginationComponent />                    
                 </div>
             </div>
         </React.Fragment>
     );
 };
+
+export default withTranslation()(Store)

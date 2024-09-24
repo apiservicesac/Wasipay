@@ -1,31 +1,32 @@
-import { useProduct } from "@/features/product/infrastructure/driving-adapter/hooks/useProduct";
-import { ProductItemEntity } from "@/features/product/domain/entities";
-// import filterDataBySearch from "@/shop/infrastructure/driving-adapter/dashboard/views/utils/filterDataBySearch";
 import React from "react";
+import { useAppSelector } from "@/core/redux/hooks";
+import { useNavigate } from "react-router-dom";
 
 export const HelperStore = () => {
+
+    const navigate = useNavigate()
+
     const [list, setList] = React.useState<boolean>(true);
-    const { getAll } = useProduct()
-    const products : ProductItemEntity[] = getAll()
-    const [data, setData] = React.useState<ProductItemEntity[]>(products  as ProductItemEntity[])
+
+    const product_reducer = useAppSelector((state) => state.productReducer)    
 
     const [drawerFilter, setDrawerFilter] = React.useState<boolean>(false);
+
     const drawerEndToggle = () => setDrawerFilter(!drawerFilter);
 
-    const filterSearchData = (_: any) => {
-        // const search = e.target.value;
-        // const keysToSearch = ['product.name'];
-        // filterDataBySearch(products as ProductItemEntity[], search, keysToSearch, setData);
-    };   
-
-    React.useEffect(() => {
-        setData(products)
-    }, [products])
+    const filterSearchData = (e: any) => {
+        const search = e.target.value;
+        if(search.length >= 3) {
+            navigate(`?page=1&sortby=${product_reducer.sortBy}&sortorder=${product_reducer.sortOrder}&search=${search}`)
+            return
+        }
+        navigate(`?page=${product_reducer.page}&sortby=${product_reducer.sortBy}&sortorder=${product_reducer.sortOrder}`)
+        return
+    };
 
     return {
-        products,
         list, setList,
-        data, setData,
+        data: product_reducer.products,
         drawerEndToggle, drawerFilter,
         filterSearchData,
     }

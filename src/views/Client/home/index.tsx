@@ -3,17 +3,16 @@ import ShopProfileInfo from "./components/profile";
 import Tab from "@/common/components/Tab/Tab";
 import { Nav } from "@/common/components/Tab/Nav";
 import NavItemCustom from "@/common/components/Tab/NavItemCustom";
-import { Store } from "./components/tabs-components/store";
+import Store from "./components/tabs-components/store";
 import { LayoutPublic } from "@/common/layout_2";
-// import { ProfileInfo } from "./components/tabs-components/profile-info";
-// import { Integration } from "./components/tabs-components/integration";
-// import Authorization from "@/common/security/Authorization";
 import { withTranslation } from "react-i18next";
 import Authorization from "@/common/security/Authorization";
 import { ProfileInfo } from "./components/tabs-components/profile-info";
 import { Integration } from "./components/tabs-components/integration";
+import useFetchProducts from "@/features/product/infrastructure/driving-adapter/hooks/useFetchProducts";
 
 const ShopView = (props: any) => {
+    useFetchProducts()
     return (
         <LayoutPublic>
             <React.Fragment>

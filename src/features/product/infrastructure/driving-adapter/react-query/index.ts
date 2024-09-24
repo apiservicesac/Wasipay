@@ -1,38 +1,20 @@
-import { QueryClient } from '@tanstack/react-query';
-
 import { ImplementationAxios as AxiosProduct } from "@/features/product/infrastructure/implementation/axios";
-import { CreateUseCase, GetNextCodeUseCase, GetAllUseCase as ProductUseCaseGetAll, UpdateImagesUseCase } from '@/features/product/application/use_cases'
-import { useQuery } from "@tanstack/react-query";
+import { CreateUseCase, GetNextCodeUseCase, UpdateImagesUseCase } from '@/features/product/application/use_cases'
 import { ProductEntity, ProductItemEntity } from '@/features/product/domain/entities';
 
 
 class QueryProduct {
     private shop_id = `${import.meta.env.VITE_SHOP_ID}`
-    private queryClient: QueryClient;
+    private productSlice: any;
     private productRepository: AxiosProduct;
 
-    constructor(queryClient: QueryClient) {
-        this.queryClient = queryClient;
+    constructor(productSlice: any) {
+        this.productSlice = productSlice;
         this.productRepository = new AxiosProduct()
     }
 
-    async init(): Promise<void> {
-        const productUseCase = new ProductUseCaseGetAll(this.productRepository)   
-        useQuery({
-            queryKey: ['query_product_list'],
-            queryFn: () => productUseCase.run(this.shop_id),
-            refetchOnMount: false,
-        });
-    }
-    
-    getAll(): ProductItemEntity[] {
-        const products = this.queryClient.getQueryData(['query_product_list']);
-        return products as ProductItemEntity[]
-    }
-
     getById(product_id: string): ProductItemEntity {
-        const products : ProductItemEntity[] | undefined = this.queryClient.getQueryData(['query_product_list'])
-        const product = products?.find((item) => item?.product?.id === product_id);
+        const product = this.productSlice.products?.find((item: ProductItemEntity) => item?.product?.id === product_id);
         return product as ProductItemEntity;
     }
 
@@ -53,9 +35,7 @@ class QueryProduct {
             total_price: 0,
             in_cart: false,
         }
-        const prevProductItems = this.getAll()
-        this.queryClient.cancelQueries({ queryKey: ['query_product_list'] })
-        this.queryClient.setQueryData(['query_product_list'], [...prevProductItems!, newProduct])
+        console.log(newProduct)        
     }
 
     async updateImages(product_id: string, images: any[]): Promise<ProductEntity> {

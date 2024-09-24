@@ -83,8 +83,8 @@ const ShopProfileInfo = ({ className }: { className: string }) => {
                             </li>
                             <li className='px-5'>
                                 <h5>
-                                    {helper.query_product_list ? (
-                                        helper.query_product_list.length
+                                    {helper.products_total ? (
+                                        helper.products_total
                                     ) : (
                                         <Skeleton />
                                     )}

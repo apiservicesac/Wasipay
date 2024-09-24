@@ -1,5 +1,7 @@
 {    
     "Store": "Tienda",
     "Integrations": "Integraciones",
-    "Profile": "Perfil"
+    "Profile": "Perfil",
+    "Lowest Price": "Precio más bajo",
+    "Highest Price": "Precio más alto"
 }

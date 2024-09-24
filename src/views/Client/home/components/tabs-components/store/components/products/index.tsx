@@ -1,12 +1,24 @@
-import { Minus, Plus, ShoppingCart } from 'lucide-react';
+import { Minus, Plus, Search, ShoppingCart } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { ProductItemEntity } from '@/features/product/domain/entities';
 import { CartHelper } from '@/common/components/cart/helper';
 import { formatCurrency, formatDiscountPrice } from '@/common/utils/format';
 
-export const ProductsComponent = ({ helper }: { helper:  any }) => {
+export const ProductsComponent = ({ props, helper }: { props:any, helper:  any }) => {
 
-    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper({ setData: helper.setData})
+    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
+    
+    if (!helper.data || helper.data.length === 0) {
+        return (
+            <div className="noresult">
+                <div className="py-6 text-center">
+                    <Search className="size-6 mx-auto text-sky-500 fill-sky-100 dark:sky-500/20" />
+                    <h5 className="mt-2 mb-1">{props.t("Sorry! No Results Found")}</h5>
+                    <p className="mb-0 text-slate-500 dark:text-zinc-200">{props.t("We are working to bring you the best deals from this store!")}</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className={`grid grid-cols-2 mt-5 md:grid-cols-3 [&.gridView]:grid-cols-1 xl:grid-cols-4 2xl:grid-cols-5 group [&.gridView]:xl:grid-cols-1 gap-x-5 ${!helper.list && "gridView"}`} id="cardGridView">
@@ -44,7 +56,7 @@ export const ProductsComponent = ({ helper }: { helper:  any }) => {
                                     </div>
                                 </div>
                             ) : (
-                                <button type="button" onClick={() => addProductCart(item)} className="w-full bg-white border-dashed text-slate-500 btn border-slate-500 hover:text-slate-500 hover:bg-slate-50 hover:border-slate-600 focus:text-slate-600 focus:bg-slate-50 focus:border-slate-600 active:text-slate-600 active:bg-slate-50 active:border-slate-600 dark:bg-zink-700 dark:text-zink-200 dark:border-zink-400 dark:ring-zink-400/20 dark:hover:bg-zink-600 dark:hover:text-zink-100 dark:focus:bg-zink-600 dark:focus:text-zink-100 dark:active:bg-zink-600 dark:active:text-zink-100"><ShoppingCart className="inline-block size-3 leading-none" /> <span className="align-middle">Add to Cart</span></button>
+                                <button type="button" onClick={() => addProductCart(item?.product?.id!)} className="w-full bg-white border-dashed text-slate-500 btn border-slate-500 hover:text-slate-500 hover:bg-slate-50 hover:border-slate-600 focus:text-slate-600 focus:bg-slate-50 focus:border-slate-600 active:text-slate-600 active:bg-slate-50 active:border-slate-600 dark:bg-zink-700 dark:text-zink-200 dark:border-zink-400 dark:ring-zink-400/20 dark:hover:bg-zink-600 dark:hover:text-zink-100 dark:focus:bg-zink-600 dark:focus:text-zink-100 dark:active:bg-zink-600 dark:active:text-zink-100"><ShoppingCart className="inline-block size-3 leading-none" /> <span className="align-middle">Add to Cart</span></button>
                             )}
                             <a href="#!" className="hidden md:flex text-xl w-[50px] items-center justify-center text-white transition-all duration-200 ease-linear bg-green-500 rounded size-9 hover:bg-green-500 dark:bg-pink-500/20 dark:hover:bg-pink-500/30">
                                 <i className="ri-whatsapp-line"></i>

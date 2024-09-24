@@ -16,7 +16,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 const ProductOverView = () => {
     const helper = ProductOverViewHelper()
 
-    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper({setData: false})
+    const { addProductCart, decreaseProductQuantity, increaseProductQuantity } = CartHelper()
 
       
     return (
@@ -66,7 +66,7 @@ const ProductOverView = () => {
                                     </div>
                                 ) : (
                                                                     
-                                    <button onClick={() => addProductCart(helper.product!)} type="button" className="w-full bg-white border-dashed text-custom-500 btn border-custom-500 hover:text-custom-500 hover:bg-custom-50 hover:border-custom-600 focus:text-custom-600 focus:bg-custom-50 focus:border-custom-600 active:text-custom-600 active:bg-custom-50 active:border-custom-600 dark:bg-zink-700 dark:ring-custom-400/20 dark:hover:bg-custom-800/20 dark:focus:bg-custom-800/20 dark:active:bg-custom-800/20">
+                                    <button onClick={() => addProductCart(helper.product?.product?.id!)} type="button" className="w-full bg-white border-dashed text-custom-500 btn border-custom-500 hover:text-custom-500 hover:bg-custom-50 hover:border-custom-600 focus:text-custom-600 focus:bg-custom-50 focus:border-custom-600 active:text-custom-600 active:bg-custom-50 active:border-custom-600 dark:bg-zink-700 dark:ring-custom-400/20 dark:hover:bg-custom-800/20 dark:focus:bg-custom-800/20 dark:active:bg-custom-800/20">
                                         <ShoppingCart className="inline-block size-3 align-middle ltr:mr-1 rtl:ml-1" />
                                         <span className="align-middle">Add to Cart</span>
                                     </button>
@@ -74,7 +74,7 @@ const ProductOverView = () => {
                                 )}
 
                                    
-                                    <Link to={'/checkout'} onClick={() => addProductCart(helper.product!)} type="button" className="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-red-400/20">Buy Now</Link>
+                                    <Link to={'/checkout'} onClick={() => addProductCart(helper.product?.product?.id!)} type="button" className="w-full text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-red-400/20">Buy Now</Link>
                                 </div>                                
                             </div>
                         </div>
