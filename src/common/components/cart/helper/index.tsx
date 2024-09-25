@@ -17,7 +17,7 @@ export const CartHelper = () => {
             if (p.product?.id === product_id) {
                 const updatedProduct = { ...p };
                 updatedProduct.in_cart = true;
-                updatedProduct.quantity! ++;
+                updatedProduct.quantity! =  1;
                 updatedProduct.total_price = updatedProduct.product!.price! * updatedProduct.quantity!;
                 dispatch(setTotalPriceCart(total_cart_price! + updatedProduct.total_price))
                 dispatch(addProductCartStore([...cart_products, updatedProduct]))
