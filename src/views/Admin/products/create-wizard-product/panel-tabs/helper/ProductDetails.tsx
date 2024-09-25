@@ -5,9 +5,14 @@ import { ProductEntity } from "@/features/product/domain/entities";
 import { ProductState, ProductTax, ProductVisibility } from "@/features/product/domain/enums";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useProduct } from "@/features/product/infrastructure/driving-adapter/hooks/useProduct";
+import { useParams } from "react-router-dom";
 
 
 export const ProductDetailsHelper = () => {
+    const { getById } = useProduct();
+    const { id: product_id } = useParams()
+    const edit_product = getById(product_id!)
 
     const { changeTab } = useTabContext();
 
@@ -20,15 +25,15 @@ export const ProductDetailsHelper = () => {
     const validation :any = useFormik({
         initialValues: {            
             quantity:  1,
-            sku: "",
-            brand: "",
-            price: 0,
-            discount: 0,
-            product_tax: "INCLUDE_PRICE",
-            publish_date_time: new Date(),
-            status: "AVAILABLE",
-            visibility: "DRAFT",
-            tags: ""
+            sku: edit_product ? edit_product.product?.sku : "",
+            brand: edit_product ? edit_product.product?.brand : "",
+            price: edit_product ? edit_product.product?.price : 0,
+            discount: edit_product ? edit_product.product?.discount : 0,
+            product_tax: edit_product ? edit_product.product?.product_tax : "INCLUDE_PRICE",
+            publish_date_time: edit_product ? edit_product.product?.publish_date_time : new Date(),
+            status: edit_product ? edit_product.product?.status : "AVAILABLE",
+            visibility: edit_product ? edit_product.product?.visibility : "DRAFT",
+            tags: edit_product ? edit_product.product?.tags : ""
         },
         validationSchema: Yup.object().shape({            
             quantity: Yup.number()

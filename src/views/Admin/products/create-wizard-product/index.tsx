@@ -27,7 +27,7 @@ export const CreateProductView = () => {
                                         </a>
                                     </Nav.Item>
                                     <Nav.Item eventKey="product-details" className="group/item">
-                                        <a href="#!" data-target="product-details" data-tab-id="2" className="block px-4 py-5 text-center rounded-md text-slate-500 bg-slate-50 dark:text-zink-200 dark:bg-zink-600 group-[.active]/item:bg-custom-500 group-[.active]/item:text-custom-50">
+                                        <a href="#!"  onClick={() => { console.log("HOLA") }} data-target="product-details" data-tab-id="2" className="block px-4 py-5 text-center rounded-md text-slate-500 bg-slate-50 dark:text-zink-200 dark:bg-zink-600 group-[.active]/item:bg-custom-500 group-[.active]/item:text-custom-50">
                                             <SquareGanttChart className="block h-6 mx-auto fill-slate-200 dark:fill-zink-400 group-[.active]/item:fill-slate-200 dark:group-[.active]/item:fill-custom-500" />
                                             <span className="block mt-3 font-medium text-15">2. Product Details</span>
                                         </a>

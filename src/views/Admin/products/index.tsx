@@ -2,6 +2,7 @@ import { Search } from "lucide-react";
 import TableContainer from "@/common/TableContainer";
 import { Helpers } from "./helpers";
 import { useAppSelector } from "@/core/redux/hooks";
+import { ProductItemEntity } from "@/features/product/domain/entities";
 
 export const ProductsView = () => {
        
@@ -19,7 +20,7 @@ export const ProductsView = () => {
                             isGlobalFilter={true}
                             isPagination={true}
                             columns={(columns || [])}
-                            data={(products.flatMap((item) => item.product) || [])}
+                            data={(products.flatMap((item: ProductItemEntity) => item.product) || [])}
                             customPageSize={7}
                             divclassName="overflow-x-auto"
                             tableclassName="w-full whitespace-nowrap"

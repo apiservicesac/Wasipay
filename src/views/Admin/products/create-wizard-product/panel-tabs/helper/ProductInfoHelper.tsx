@@ -5,16 +5,22 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import React from "react";
 import { useProduct } from "@/features/product/infrastructure/driving-adapter/hooks/useProduct";
+import { useParams } from "react-router-dom";
 
 
 export const ProductInfoHelper = () => {
+
+    const { id: product_id } = useParams()
+    
+    const { nextCodeProduct, getById } = useProduct();
+
+    const edit_product = getById(product_id!)
 
     const { changeTab } = useTabContext();
 
     const { setStateProduct } = UseLocalContext();
 
-    const { nextCodeProduct } = useProduct();
-
+    
     const productCategoryOptions = [
         { value: '', label: 'Select Category' },
         { value: 'Mobiles, Computers', label: 'Mobiles, Computers' },
@@ -36,11 +42,11 @@ export const ProductInfoHelper = () => {
     
     const validation :any = useFormik({
         initialValues: {
-            name: "",
-            product_code: "",
-            product_category: "",
-            product_type: "",
-            description: "",
+            name: edit_product ? edit_product.product?.name : "",
+            product_code: edit_product ? edit_product.product?.product_code : "",
+            product_category: edit_product ? edit_product.product?.product_category : "",
+            product_type: edit_product ? edit_product.product?.product_type : "",
+            description: edit_product ? edit_product.product?.description : "",
         },
         validationSchema: Yup.object().shape({
             name: Yup.string().required("Product Title is required"),
@@ -75,13 +81,15 @@ export const ProductInfoHelper = () => {
         validation.setFieldValue('description', data);
     };
 
-    const getNextCodeProduct = async () => {
+    const getNextCodeProduct = async () => {        
         const product_code = await nextCodeProduct();
-        validation.setFieldValue('product_code', product_code);
+        validation.setFieldValue('product_code', product_code);    
     }
 
     React.useEffect(() => {
-        getNextCodeProduct()
+        if(!edit_product) {
+            getNextCodeProduct()
+        }
     }, [])
 
     return {

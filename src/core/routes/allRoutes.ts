@@ -37,6 +37,7 @@ const authDashboardRoutes: Array<RouteObject> = [
     // Products
     { path: "/dashboard/product", component: ProductsView },
     { path: "/dashboard/product/create", component: CreateProductView },
+    { path: "/dashboard/product/edit/:id", component: CreateProductView },
 
     // Orders
     { path: "/dashboard/order", component: OrdersView },
