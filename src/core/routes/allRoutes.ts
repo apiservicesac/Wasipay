@@ -1,8 +1,3 @@
-import AdminView from "@/views/Admin/home";
-import { OrdersView } from "@/views/Admin/orders";
-import { PaymentMehtodsView } from "@/views/Admin/payment_methods";
-import { ProductsView } from "@/views/Admin/products";
-import { CreateProductView } from "@/views/Admin/products/create-wizard-product";
 import { LoginView } from "@/views/Auth/login";
 import { LogoutView } from "@/views/Auth/logout";
 import { CheckoutView } from "@/views/Client/checkout";
@@ -27,20 +22,4 @@ const authRoutes: Array<RouteObject> = [
     { path: "/checkout", component: CheckoutView },
 ]
 
-
-const authDashboardRoutes: Array<RouteObject> = [
-
-    { path: "/dashboard", component: AdminView },
-
-    { path: "/dashboard/payment-methods", component: PaymentMehtodsView },
-    
-    // Products
-    { path: "/dashboard/product", component: ProductsView },
-    { path: "/dashboard/product/create", component: CreateProductView },
-    { path: "/dashboard/product/edit/:id", component: CreateProductView },
-
-    // Orders
-    { path: "/dashboard/order", component: OrdersView },
-]
-
-export { publicRoutes, authRoutes, authDashboardRoutes };
+export { publicRoutes, authRoutes };
