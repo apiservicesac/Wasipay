@@ -4,14 +4,14 @@ module.exports = {
     content: [
         "./index.html",
         "./src/**/*.{js,ts,jsx,tsx}",
-        "./node_modules/simplebar-react/**/*",
+        // "./node_modules/simplebar-react/**/*",
         "./node_modules/apexcharts/**/*",
-        "./node_modules/@fullcalendar/**/*",
+        // "./node_modules/@fullcalendar/**/*",
         "./node_modules/swiper/**/*",
-        "./node_modules/prismjs/**/**/*",
+        // "./node_modules/prismjs/**/**/*",
         "./node_modules/flatpickr/**/*",
-        "./node_modules/react-toastify/**/*",
-        "./node_modules/lightbox.js-react/**/*",
+        // "./node_modules/react-toastify/**/*",
+        // "./node_modules/lightbox.js-react/**/*",
     ],
     darkMode: ['class', '[data-mode="dark"]'],
     theme: {
@@ -269,19 +269,19 @@ module.exports = {
         require('./plugins/card.js'),
         require('./plugins/drawer.js'),
         //third party libraries
-        require('./plugins/flatpicker.js'),
-        require('./plugins/simplebar.js'),
+        // require('./plugins/flatpicker.js'),
+        // require('./plugins/simplebar.js'),
         require('./plugins/swiper.js'),
-        require('./plugins/toastify.js'),
+        // require('./plugins/toastify.js'),
         require('./plugins/dropzone.js'),
         // require('./plugins/colorpicker.js'),  // instead react-color picker
         require('./plugins/ckeditor.js'),
         require('./plugins/apexcharts.js'),
-        require('./plugins/maps.js'), // google-maps-react
+        // require('./plugins/maps.js'), // google-maps-react
         // require('./plugins/multijs.js'), // instead react-dual-listbox
-        require('./plugins/fullcalendar.js'),
-        require('./plugins/lightbox.js'),
-        require('./plugins/prismjs.js'),
+        // require('./plugins/fullcalendar.js'),
+        // require('./plugins/lightbox.js'),
+        // require('./plugins/prismjs.js'),
         //apps pages
         require('./plugins/apps.js'),
     ]
