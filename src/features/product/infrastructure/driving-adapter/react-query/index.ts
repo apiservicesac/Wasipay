@@ -28,13 +28,7 @@ class QueryProduct {
         const productUseCase = new CreateUseCase(this.productRepository)   
 
         const productCreated : ProductEntity = await productUseCase.run(this.shop_id, product_data!)
-        const productUpdatedImages = await this.updateImages(productCreated.id!, images)
-        const newProduct : ProductItemEntity = {
-            product: productUpdatedImages,
-            quantity: 0,
-            total_price: 0,
-            in_cart: false,
-        }
+        await this.updateImages(productCreated.id!, images)
     }
 
     async updateImages(product_id: string, images: any[]): Promise<ProductEntity> {
