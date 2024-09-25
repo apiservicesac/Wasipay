@@ -17,8 +17,7 @@ const AuthDashbaordProtected: React.FC<any> = ({ children }) => {
 const AuthProtected: React.FC<any> = ({ children }) => {
 
   const { stateUser } = UseLocalContext();  
-
-  if (stateUser && stateUser.role === UserRole.USER) {
+  if (stateUser && stateUser.role === UserRole.USER || stateUser && stateUser.role === UserRole.ADMIN) {
     return <React.Fragment>{children}</React.Fragment>;
   }
 

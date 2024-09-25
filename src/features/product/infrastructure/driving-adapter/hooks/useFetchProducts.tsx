@@ -30,14 +30,10 @@ const useFetchProducts = () => {
         queryFn: async () => {            
             const response = await productUseCase.run(shop_id!, parseInt(page), sortby, sortorder, search);
             const update_data = response!.products.map((item: ProductEntity) => {
-                const cart_product = cart_reducer.products.find((cart_item: ProductItemEntity) => cart_item!.product!.id! === item!.id!)
-                
-                if (cart_product) {
-                    console.log("Producto encontrado en el carrito:", cart_product);
-                    console.log({product: item, ...cart_product})
+                const cart_product = cart_reducer.products.find((cart_item: ProductItemEntity) => cart_item!.product!.id! === item!.id!)                
+                if (cart_product) {                    
                     return {product: item, ...cart_product};
-                } else {
-                    console.log("Producto no encontrado, manteniendo el original:", item);
+                } else {                    
                     return {product: item, quantity: 0, total_price: 0, in_cart: false};
                 }
             });            

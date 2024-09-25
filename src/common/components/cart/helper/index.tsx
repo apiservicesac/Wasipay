@@ -83,7 +83,6 @@ export const CartHelper = () => {
                 return cart_item
             }
         })
-        console.log(products_cart)
         dispatch(addProductCartStore(products_cart))  
     };
     

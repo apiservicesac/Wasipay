@@ -35,7 +35,6 @@ class QueryProduct {
             total_price: 0,
             in_cart: false,
         }
-        console.log(newProduct)        
     }
 
     async updateImages(product_id: string, images: any[]): Promise<ProductEntity> {
@@ -67,7 +66,6 @@ class QueryProduct {
                 blobs.forEach((blob, index) => {
                     const key : string = Object.keys(images!)[index];
                     const image = images![parseInt(key)];
-                    console.log('images', blob, image.name)
                     formData.append('images', blob, image.name);
                 });
             })
