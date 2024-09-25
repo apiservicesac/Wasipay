@@ -40,10 +40,7 @@ export const PaymentMethodHelper = () => {
     }
 
     // Update Data
-    const handleUpdateClick = (item: Entity) => {        
-        if(item.image) {
-            setSelectfiles({priview: item.image.url, name: item.image.nam})
-        }
+    const handleUpdateClick = (item: Entity) => {                
         setIsEdit(item);
         setShowModal(true);
     };
@@ -66,45 +63,14 @@ export const PaymentMethodHelper = () => {
         }),
 
         onSubmit: async (values: any) => {
-            const formData = new FormData();
-
-            Object.keys(values).forEach(key => {
-                if (values[key]) {
-                    formData.append(key, values[key]);
-                }
-            });
-
-            if(selectfiles && selectfiles.type) {                
-                formData.append("images", selectfiles)
-                if(isEdit && isEdit.image){
-                    formData.append("image_delete_id", isEdit.image.id)
-                }
-            }
-
             if (isEdit) {                
-                updated(isEdit?.id!, formData)
+                updated(isEdit?.id!, values)
             } else {
-                created(formData)
+                created(values)
             }
             toggleOptions();
         },
     });
-
-    // Dropzone
-    const [selectfiles, setSelectfiles] = React.useState<any>();
-    const handleAcceptfiles = (files: any) => {
-        const newImages = files?.map((file: any) => {
-            return Object.assign(file, {
-                priview: URL.createObjectURL(file),
-            });
-        });
-        setSelectfiles(newImages[0]);
-    };
-
-
-    const handleOpenSelectFileClick = (e: any) => {
-        e.stopPropagation();
-    };
 
     // Open Toggle Options
     const toggleOptions = () => {
@@ -127,13 +93,7 @@ export const PaymentMethodHelper = () => {
 
         // Modal
         showModal,
-        isEdit,
-
-        // Dropzone
-        handleAcceptfiles,
-        selectfiles,
-        setSelectfiles,
-        handleOpenSelectFileClick,
+        isEdit,        
 
         // Delete Modal
         openModalDelete,

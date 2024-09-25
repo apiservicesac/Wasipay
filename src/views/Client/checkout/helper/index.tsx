@@ -107,6 +107,7 @@ export const CheckoutHelper = () => {
         create(newOrder)
         resetProductsCart()
         navigate("/")
+        toast.success("Su orden fue recibida Correctamente.")
     }
 
     return {

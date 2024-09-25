@@ -1,10 +1,9 @@
 import React from "react";
 
 // icons
-import { Plus, MoreHorizontal, FileEdit, Trash2, UploadCloud, Smartphone } from 'lucide-react';
+import { Plus, MoreHorizontal, FileEdit, Trash2, Smartphone } from 'lucide-react';
 import { Link } from "react-router-dom";
 
-import Dropzone from "react-dropzone";
 import DeleteModal from "@/common/DeleteModal";
 import BreadCrumb from "@/common/BreadCrumb";
 import { Dropdown } from "@/common/components/Dropdown";
@@ -56,8 +55,9 @@ export const PaymentMehtodsView = () => {
                                     </Dropdown.Content>
                                 </Dropdown>
                             </div>
+
                             <div className="flex items-center justify-center size-16 mx-auto rounded-full bg-slate-100 outline outline-slate-100 outline-offset-1 dark:bg-zink-600 dark:outline-zink-600">
-                                <img src={item.logo} alt="" className="h-10 rounded-full" />
+                                <img src="{item.image.url}" alt="" className="h-10 rounded-full" />
                             </div>
 
                             <div className="mt-4 mb-6 text-center">
@@ -81,58 +81,7 @@ export const PaymentMehtodsView = () => {
                         e.preventDefault();
                         helper.validation.handleSubmit();
                         return false;
-                    }}>
-                        <div className="mb-3">
-                            <label htmlFor="companyLogo" className="inline-block mb-2 text-base font-medium">Company Logo</label>
-                            {!helper.selectfiles && (
-                                <Dropzone
-                                    onDrop={(acceptedFiles) => {
-                                        helper.handleAcceptfiles(acceptedFiles);
-                                    }}
-                                >
-                                    {({ getRootProps, getInputProps }) => (
-                                        <div
-                                            className="flex items-center justify-center bg-white border border-dashed rounded-md cursor-pointer dropzone border-slate-200 dropzone2 dark:bg-zinc-600 dark:border-zinc-500"
-                                            onClick={helper.handleOpenSelectFileClick}
-                                            {...getRootProps()}
-                                        >
-                                            <input id="fileInput" {...getInputProps()} style={{ display: 'none' }} />
-                                            <div className="w-full py-5 text-lg text-center dz-message needsclick">
-                                                <div className="mb-3">
-                                                    <UploadCloud className="block size-12 mx-auto text-slate-500 fill-slate-200 dark:text-zinc-200 dark:fill-zinc-500" />
-                                                </div>
-                                                <h5 className="mb-0 font-normal text-slate-500 dark:text-zinc-200 text-15">
-                                                    Drag and drop your logo or <Link to="#!">browse</Link> your logo
-                                                </h5>
-                                            </div>
-                                        </div>
-                                    )}
-                                </Dropzone>
-                            )}                           
-
-                            <ul className="flex flex-wrap mb-0 gap-x-5" id="dropzone-preview2">
-                                {
-                                    helper.selectfiles && (
-                                        <li className="mt-5" id="dropzone-preview-list2">
-                                            <div className="border rounded border-slate-200 dark:border-zink-500">
-                                                <div className="p-2 text-center">
-                                                    <div>
-                                                        <div className="p-2 mx-auto rounded-md size-14 bg-slate-100 dark:bg-zink-600">
-                                                            <img className="block w-full h-full rounded-md" src={helper.selectfiles.priview} alt={helper.selectfiles.name} />
-                                                        </div>
-                                                    </div>                                                    
-                                                    <div className="mt-2">
-                                                        <button data-dz-remove className="px-2 py-1.5 text-xs text-white bg-red-500 border-red-500 btn hover:text-white hover:bg-red-600 hover:border-red-600 focus:text-white focus:bg-red-600 focus:border-red-600 focus:ring focus:ring-red-100 active:text-white active:bg-red-600 active:border-red-600 active:ring active:ring-red-100 dark:ring-custom-400/20" onClick={() => {
-                                                            helper.setSelectfiles('');                                                            
-                                                        }}>Delete</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    )
-                                }
-                            </ul>
-                        </div>
+                    }}>                        
                         <div className="mb-3">
                             <label htmlFor="typeInput" className="inline-block mb-2 text-base font-medium">Payment Method</label>
                             <input type="text" id="typeInput" className="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200" placeholder="Payment Method"

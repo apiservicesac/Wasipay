@@ -12,9 +12,9 @@ class PaymentMethodShopAdapter {
     });
   }
   
-  async create(shop_id: string, formData: FormData): Promise<CustomReponse<Entity>> {
+  async create(shop_id: string, data: Entity): Promise<CustomReponse<Entity>> {
     try {
-      const response : CustomReponse<Entity> = await this._axios.post(`/payment-method-shop/create/${shop_id}`, formData, {
+      const response : CustomReponse<Entity> = await this._axios.post(`/payment-method-shop/create/${shop_id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -26,9 +26,9 @@ class PaymentMethodShopAdapter {
     }
   }
 
-  async update(id: string, formData: FormData): Promise<CustomReponse<Entity>> {
+  async update(id: string, data: Entity): Promise<CustomReponse<Entity>> {
     try {
-      const response : CustomReponse<Entity> = await this._axios.put(`/payment-method-shop/update/${id}`, formData, {
+      const response : CustomReponse<Entity> = await this._axios.put(`/payment-method-shop/update/${id}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

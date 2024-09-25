@@ -5,18 +5,18 @@ import { PaymentMethodShopAxios as Axios } from '@/features/payment_method_shop/
 
 class ImplementationAxios implements Repository {
     
-    async save (shop_id: string, formData: FormData): Promise<Entity | null> {
+    async save (shop_id: string, data: Entity): Promise<Entity | null> {
         try{
-            const response : CustomReponse<Entity> = await Axios.create(shop_id, formData);
+            const response : CustomReponse<Entity> = await Axios.create(shop_id, data);
             return response.data as Entity
         }catch {
             return null
         }
     }   
 
-    async update(id: string, formData: FormData): Promise<Entity | null> {
+    async update(id: string, data: Entity): Promise<Entity | null> {
         try{
-            const response : CustomReponse<Entity> = await Axios.update(id, formData);
+            const response : CustomReponse<Entity> = await Axios.update(id, data);
             return response.data as Entity
         }catch {
             return null
