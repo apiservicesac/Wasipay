@@ -1,9 +1,9 @@
 import React from "react";
 
-import { ProductsComponent } from "./components/products";
-import { PaginationComponent } from "./components/pagination";
-import SortFilterComponent from "./components/sort_filter";
-import { FilterComponent } from "./components/sort_filter/components/filters";
+import { ProductsComponent } from "./products";
+import { PaginationComponent } from "./buttons/pagination";
+import SortFilterComponent from "./buttons/sort_filter";
+import { FilterComponent } from "./buttons/sort_filter/components/filters";
 import { HelperStore } from "./helper";
 import { withTranslation } from "react-i18next";
 
