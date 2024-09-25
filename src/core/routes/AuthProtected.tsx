@@ -21,7 +21,7 @@ const AuthProtected: React.FC<any> = ({ children }) => {
     return <React.Fragment>{children}</React.Fragment>;
   }
 
-  return <Navigate to={{ pathname: "/" }} />;
+  return <Navigate to={{ pathname: "/login" }} />;
 };
 
 export {

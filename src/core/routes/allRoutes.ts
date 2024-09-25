@@ -6,7 +6,7 @@ import { CreateProductView } from "@/views/Admin/products/create-wizard-product"
 import { LoginView } from "@/views/Auth/login";
 import { LogoutView } from "@/views/Auth/logout";
 import { CheckoutView } from "@/views/Client/checkout";
-import ProductOverView from "@/views/Client/home/components/product_overview";
+import ProductOverView from "@/views/Client/product_overview";
 import ShopView from "@/views/Client/home/index";
 
 interface RouteObject {
