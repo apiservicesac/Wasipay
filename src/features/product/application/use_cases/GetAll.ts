@@ -1,5 +1,5 @@
 import { ProductRepository as Repository } from '@/features/product/domain/repositories'
-import { ProductResponse } from '../../domain/repositories/Response'
+import { ProductResponse } from '@/features/product/domain/entities'
 
 export class GetAllUseCase {
 

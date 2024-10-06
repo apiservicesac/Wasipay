@@ -12,7 +12,7 @@ const ShopProfileInfo = (props: any, { className }: { className: string }) => {
         <React.Fragment>
             <div className={className}>
                 <div className='grid grid-cols-1 place-items-center'>
-                    <div className='lg:col-span-2 2xl:col-span-1 inline-block'>
+                    <div className='lg:col-span-2 2xl:col-span-1 inline-block mt-4'>
                         <div className='relative inline-block size-28 rounded-full shadow-md bg-slate-100 profile-user'>
                             <img
                                 src={

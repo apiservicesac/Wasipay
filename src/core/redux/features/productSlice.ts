@@ -1,4 +1,4 @@
-import { ProductResponse } from "@/features/product/domain/repositories/Response";
+import { ProductResponse } from '@/features/product/domain/entities'
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {

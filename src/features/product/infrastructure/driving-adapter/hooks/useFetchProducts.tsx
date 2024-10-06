@@ -3,7 +3,7 @@ import { ImplementationAxios as AxiosProduct } from "@/features/product/infrastr
 import { GetAllUseCase as ProductUseCaseGetAll } from '@/features/product/application/use_cases';
 import { useParams, useSearchParams } from "react-router-dom";
 import { setProducts } from "@/core/redux/features/productSlice";
-import { ProductResponse } from "@/features/product/domain/repositories/Response";
+import { ProductResponse } from '@/features/product/domain/entities'
 import { useAppDispatch } from "@/core/redux/hooks";
 
 const useFetchProducts = () => {

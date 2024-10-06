@@ -1,5 +1,4 @@
-import { ProductEntity as Entity } from '@/features/product/domain/entities';
-import { ProductResponse } from '@/features/product/domain/repositories/Response';
+import { ProductEntity as Entity, ProductResponse } from '@/features/product/domain/entities';
 import { CustomReponse } from '@/shared/entities/Response';
 import { AxiosConfig } from '@/shared/services/axios';
 
